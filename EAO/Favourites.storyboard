@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VdM-ka-v3D">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Item-->
+        <scene sceneID="SfB-6B-ial">
+            <objects>
+                <navigationController id="VdM-ka-v3D" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="mfb-Z2-laN"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2kX-cd-zMe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="e42-ei-hVA" kind="relationship" relationship="rootViewController" id="AGG-QR-UCi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YTe-Q9-tal" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-345" y="153"/>
+        </scene>
+        <!--Favourites View Controller-->
+        <scene sceneID="9GB-dI-Vab">
+            <objects>
+                <viewController id="e42-ei-hVA" customClass="FavouritesViewController" customModule="EAO" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dKb-G6-BAF"/>
+                        <viewControllerLayoutGuide type="bottom" id="BqV-G1-OE9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GAn-6K-zHP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="p3k-Ng-jlf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WfX-tH-1Dh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="375" y="152"/>
+        </scene>
+    </scenes>
+</document>
