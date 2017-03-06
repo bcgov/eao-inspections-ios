@@ -36,6 +36,10 @@
 		9688D5861E69ED9200C49CD7 /* InspectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9688D5851E69ED9200C49CD7 /* InspectionsViewController.swift */; };
 		9688D5881E69EDA300C49CD7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9688D5871E69EDA300C49CD7 /* MapViewController.swift */; };
 		9688D58B1E69F10400C49CD7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9688D58A1E69F10400C49CD7 /* UIColor.swift */; };
+		BD3B058C1E6A3737005E2C19 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3B058B1E6A3737005E2C19 /* MapKit.framework */; };
+		BD3B05901E6A3797005E2C19 /* InspectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3B058E1E6A3797005E2C19 /* InspectionTableViewCell.swift */; };
+		BD3B05911E6A3797005E2C19 /* InspectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3B058F1E6A3797005E2C19 /* InspectionTableViewCell.xib */; };
+		BD3B05951E6A3B6E005E2C19 /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3B05941E6A3B6E005E2C19 /* MKMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +86,10 @@
 		9688D5851E69ED9200C49CD7 /* InspectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionsViewController.swift; sourceTree = "<group>"; };
 		9688D5871E69EDA300C49CD7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9688D58A1E69F10400C49CD7 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		BD3B058B1E6A3737005E2C19 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		BD3B058E1E6A3797005E2C19 /* InspectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionTableViewCell.swift; sourceTree = "<group>"; };
+		BD3B058F1E6A3797005E2C19 /* InspectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectionTableViewCell.xib; sourceTree = "<group>"; };
+		BD3B05941E6A3B6E005E2C19 /* MKMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD3B058C1E6A3737005E2C19 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +117,7 @@
 				9688D51A1E69DA4300C49CD7 /* EAO */,
 				9688D52F1E69DA4300C49CD7 /* EAOTests */,
 				9688D5191E69DA4300C49CD7 /* Products */,
+				BD3B058A1E6A3736005E2C19 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,6 +174,7 @@
 		9688D5521E69DAEE00C49CD7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BD3B05931E6A3B30005E2C19 /* MKMapView */,
 				9688D5911E69F1CB00C49CD7 /* UIAlertController */,
 				9688D5901E69F1C600C49CD7 /* UIImage */,
 				9688D58F1E69F1BA00C49CD7 /* UINavigationItem */,
@@ -274,6 +285,7 @@
 		9688D55E1E69E67600C49CD7 /* MapModule */ = {
 			isa = PBXGroup;
 			children = (
+				BD3B05921E6A3A8A005E2C19 /* MapKit */,
 				9688D5771E69ED1900C49CD7 /* MapViewController */,
 				9688D5711E69EB5400C49CD7 /* Map.storyboard */,
 			);
@@ -344,6 +356,7 @@
 		9688D5781E69ED2000C49CD7 /* InspectionsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				BD3B058D1E6A376C005E2C19 /* cells */,
 				9688D5851E69ED9200C49CD7 /* InspectionsViewController.swift */,
 			);
 			name = InspectionsViewController;
@@ -427,6 +440,38 @@
 				9688D5401E69DA7B00C49CD7 /* UIAlertController.swift */,
 			);
 			name = UIAlertController;
+			sourceTree = "<group>";
+		};
+		BD3B058A1E6A3736005E2C19 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD3B058B1E6A3737005E2C19 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD3B058D1E6A376C005E2C19 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				BD3B058E1E6A3797005E2C19 /* InspectionTableViewCell.swift */,
+				BD3B058F1E6A3797005E2C19 /* InspectionTableViewCell.xib */,
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
+		BD3B05921E6A3A8A005E2C19 /* MapKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MapKit;
+			sourceTree = "<group>";
+		};
+		BD3B05931E6A3B30005E2C19 /* MKMapView */ = {
+			isa = PBXGroup;
+			children = (
+				BD3B05941E6A3B6E005E2C19 /* MKMapView.swift */,
+			);
+			name = MKMapView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -517,6 +562,7 @@
 				9688D56C1E69EADC00C49CD7 /* Login.storyboard in Resources */,
 				9688D5721E69EB5500C49CD7 /* Map.storyboard in Resources */,
 				9688D5261E69DA4300C49CD7 /* LaunchScreen.storyboard in Resources */,
+				BD3B05911E6A3797005E2C19 /* InspectionTableViewCell.xib in Resources */,
 				9688D5701E69EAF100C49CD7 /* Favourites.storyboard in Resources */,
 				9688D5741E69EB7100C49CD7 /* Inspections.storyboard in Resources */,
 				9688D5231E69DA4300C49CD7 /* Assets.xcassets in Resources */,
@@ -541,10 +587,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9688D5841E69ED8400C49CD7 /* ProjectsViewController.swift in Sources */,
+				BD3B05901E6A3797005E2C19 /* InspectionTableViewCell.swift in Sources */,
 				9688D54F1E69DA8F00C49CD7 /* UIApplication.swift in Sources */,
 				9688D54B1E69DA7B00C49CD7 /* UINavigationItem.swift in Sources */,
 				9688D5481E69DA7B00C49CD7 /* Constant.swift in Sources */,
 				9688D5821E69ED7600C49CD7 /* FavouritesViewController.swift in Sources */,
+				BD3B05951E6A3B6E005E2C19 /* MKMapView.swift in Sources */,
 				9688D5451E69DA7B00C49CD7 /* CommonTableView.swift in Sources */,
 				9688D56A1E69EAAF00C49CD7 /* TabBarViewController.swift in Sources */,
 				9688D5441E69DA7B00C49CD7 /* CommonMethods.swift in Sources */,
@@ -768,6 +816,7 @@
 				9688D5371E69DA4300C49CD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9688D5381E69DA4300C49CD7 /* Build configuration list for PBXNativeTarget "EAOTests" */ = {
 			isa = XCConfigurationList;
@@ -776,6 +825,7 @@
 				9688D53A1E69DA4300C49CD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

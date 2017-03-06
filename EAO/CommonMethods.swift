@@ -25,5 +25,22 @@ extension CommonMethods {
         let tabBarController = appdel.window?.rootViewController
         tabBarController?.dismiss(animated: true, completion: nil)
     }
+    
+    class func showStoryBoard(storyBoard: String){
+        
+        let appdel = UIApplication.shared.delegate as! AppDelegate
+        let storyBoardS = UIStoryboard(name:storyBoard, bundle: nil).instantiateInitialViewController()!
+        let root = appdel.window?.rootViewController
+        storyBoardS.modalTransitionStyle = .coverVertical
+        root?.present(storyBoardS, animated: false, completion: nil)
+        
+    }
+    
+    class func hideViewController(viewController: CommonViewController){
+        
+        viewController.dismiss(animated: true, completion: nil)
+        
+    }
+    
 }
 

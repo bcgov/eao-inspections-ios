@@ -19,6 +19,6 @@ class InspectionsViewController: CommonViewController {
 //MARK: - Setup
 extension InspectionsViewController {
     fileprivate func setup() {
-        setNavigationBar(with: .inspections, leftButtonType: .menu, rightButtonType: .none)
+        setNavigationBar(with: .inspections, leftButtonType: .back, rightButtonType: .none)
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 enum BarButtonType {
-    case none, menu, back
+    case none, menu, back, search
 }
 enum BarButtonPosition {
     case left, right
@@ -34,7 +34,7 @@ enum ViewControllerType {
 }
 
 class CommonViewController: UIViewController {
-    fileprivate let titleAttributes = [NSForegroundColorAttributeName: UIColor.purple] //change to appropriate colour
+    fileprivate let titleAttributes = [NSForegroundColorAttributeName: UIColor.navigationBarTintColor] //change to appropriate colour
     var showStatusIndicator: Bool = false {
         didSet {
             UIApplication.shared.isNetworkActivityIndicatorVisible = showStatusIndicator
@@ -79,6 +79,10 @@ extension CommonViewController {
             break
         case .back:
             break
+        case .search:
+            break
+            
+            
         }
 
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
