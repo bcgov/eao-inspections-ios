@@ -43,7 +43,7 @@ extension InspectionsViewController {
         
         let map = MKMapView.inspectionMap(tableViewYPos: tableView.frame.origin.y)
         let mapY = navigationController?.navigationBar.frame.size.height
-        map.center = CGPoint(x: map.center.x, y: map.center.y+mapY!)
+        map.frame = CGRect(x: map.frame.origin.x, y: map.frame.origin.y+mapY!, width: map.frame.size.width, height: map.frame.size.height - mapY!)
         self.view.addSubview(map)
         
     }

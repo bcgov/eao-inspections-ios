@@ -285,7 +285,6 @@
 		9688D55E1E69E67600C49CD7 /* MapModule */ = {
 			isa = PBXGroup;
 			children = (
-				BD3B05921E6A3A8A005E2C19 /* MapKit */,
 				9688D5771E69ED1900C49CD7 /* MapViewController */,
 				9688D5711E69EB5400C49CD7 /* Map.storyboard */,
 			);
@@ -459,13 +458,6 @@
 			name = cells;
 			sourceTree = "<group>";
 		};
-		BD3B05921E6A3A8A005E2C19 /* MapKit */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = MapKit;
-			sourceTree = "<group>";
-		};
 		BD3B05931E6A3B30005E2C19 /* MKMapView */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,7 +516,7 @@
 				TargetAttributes = {
 					9688D5171E69DA4300C49CD7 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = TCH45SXZ69;
+						DevelopmentTeam = 8T23CDYZ37;
 						ProvisioningStyle = Automatic;
 					};
 					9688D52B1E69DA4300C49CD7 = {
@@ -745,7 +737,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TCH45SXZ69;
+				DEVELOPMENT_TEAM = 8T23CDYZ37;
 				INFOPLIST_FILE = EAO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.freshworks.EAO;
@@ -758,7 +750,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TCH45SXZ69;
+				DEVELOPMENT_TEAM = 8T23CDYZ37;
 				INFOPLIST_FILE = EAO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.freshworks.EAO;

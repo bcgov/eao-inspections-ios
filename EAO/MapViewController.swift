@@ -41,16 +41,20 @@ extension MapViewController{
         
     }
     
-    //MARK: locationManager Delegate Methods
+    //MARK: locationManager Methods
     
     internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        print("derr")
         let location = locations.first!
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 10000, 10000)
         map.setRegion(coordinateRegion, animated: false)
         locationManager?.stopUpdatingLocation()
         locationManager = nil
+        
+        let annotation: MKPointAnnotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
+        annotation.title = "Current location"
+        map.addAnnotation(annotation)
         
     }
     

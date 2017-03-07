@@ -12,7 +12,6 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="yAG-Yp-a33">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Oiv-pN-i1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController id="JZp-Jz-4zM" customClass="TabBarViewController" customModule="EAO" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="w5n-pV-ZkU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -27,6 +26,7 @@
                         <segue destination="RbW-I5-Rv1" kind="relationship" relationship="viewControllers" id="iT0-jX-Ni5"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oiv-pN-i1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-286" y="38"/>
         </scene>
@@ -34,7 +34,9 @@
         <scene sceneID="tLs-ed-2YR">
             <objects>
                 <viewControllerPlaceholder storyboardName="Map" id="Roq-Hq-gxl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="jHj-Mw-QP8"/>
+                    <tabBarItem key="tabBarItem" title="Map" id="jHj-Mw-QP8">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
+                    </tabBarItem>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWd-UF-JnC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,7 +46,7 @@
         <scene sceneID="3Mo-KC-nL7">
             <objects>
                 <viewControllerPlaceholder storyboardName="Inspections" id="KhY-H0-P1Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="sD5-P9-Gup"/>
+                    <tabBarItem key="tabBarItem" title="Inspections" id="sD5-P9-Gup"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ch2-0G-rV9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,7 +56,7 @@
         <scene sceneID="rvs-Kd-Vex">
             <objects>
                 <viewControllerPlaceholder storyboardName="Projects" id="Z4o-Dd-8wq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="UoP-CU-ClU"/>
+                    <tabBarItem key="tabBarItem" title="Projects" id="UoP-CU-ClU"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VSk-J2-I68" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -64,7 +66,7 @@
         <scene sceneID="n3P-mw-TJq">
             <objects>
                 <viewControllerPlaceholder storyboardName="Settings" id="RbW-I5-Rv1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Ckw-b9-d4B"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="Ckw-b9-d4B"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pky-IR-Gc7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -74,7 +76,7 @@
         <scene sceneID="5aQ-rp-V6l">
             <objects>
                 <viewControllerPlaceholder storyboardName="Favourites" id="47Z-lK-4CT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="v5Z-5Y-wPe"/>
+                    <tabBarItem key="tabBarItem" title="Favourites" id="v5Z-5Y-wPe"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PBg-dP-4Wg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

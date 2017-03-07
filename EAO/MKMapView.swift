@@ -39,9 +39,9 @@ extension MKMapView {
         let mapView = MKMapView()
         
         let leftMargin:CGFloat = 0
-        let topMargin:CGFloat = 50
+        let topMargin:CGFloat = 60
         let mapWidth:CGFloat = screenSize.width
-        let mapHeight:CGFloat = tableViewYPos - 50
+        let mapHeight:CGFloat = tableViewYPos - 60
         
         mapView.frame = CGRect(x: leftMargin, y: topMargin, width: mapWidth, height: mapHeight)
         
