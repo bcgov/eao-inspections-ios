@@ -21,6 +21,7 @@ class InspectionsViewController: CommonViewController {
 
 //MARK: - Setup
 extension InspectionsViewController {
+    
     fileprivate func setup() {
         
         setNavigationBar(with: .inspections, leftButtonType: .back, rightButtonType: .none)
@@ -44,7 +45,9 @@ extension InspectionsViewController {
         let map = MKMapView.inspectionMap(tableViewYPos: tableView.frame.origin.y)
         let mapY = navigationController?.navigationBar.frame.size.height
         map.frame = CGRect(x: map.frame.origin.x, y: map.frame.origin.y+mapY!, width: map.frame.size.width, height: map.frame.size.height - mapY!)
+        
         self.view.addSubview(map)
         
     }
+    
 }

@@ -49,6 +49,12 @@ extension MKMapView {
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
         
+        mapView.layer.masksToBounds = false
+        mapView.layer.shadowColor = UIColor.tableCellShadow.cgColor
+        mapView.layer.shadowOffset = CGSize(width:0,height:3.0)
+        mapView.layer.shadowOpacity = 0.5
+        mapView.layer.shadowRadius = 2.0
+        
         return mapView
         
     }

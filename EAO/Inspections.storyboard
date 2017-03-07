@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Inspections-->
         <scene sceneID="rGf-tb-sRq">
             <objects>
                 <navigationController id="Xwl-Cu-CCi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="v0s-ni-MGw"/>
+                    <tabBarItem key="tabBarItem" title="Inspections" id="v0s-ni-MGw"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Ks-4U-uhr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

@@ -68,7 +68,7 @@ extension CommonTableView: UITableViewDataSource {
             
             
             cell.setLabels(WithTitle:labels.object(at: 0) as! String, title2:labels.object(at: 1) as! String, date:labels.object(at: 2) as! String)
-        
+            
             return cell;
 
         }
@@ -76,7 +76,7 @@ extension CommonTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 80
+        return 75
         
     }
     
