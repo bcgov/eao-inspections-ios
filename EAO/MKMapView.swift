@@ -32,4 +32,25 @@ extension MKMapView {
         
     }
     
+    class func inspectionMap(tableViewYPos: CGFloat) -> MKMapView{
+        
+        let screenSize: CGRect = UIScreen.main.bounds
+        
+        let mapView = MKMapView()
+        
+        let leftMargin:CGFloat = 0
+        let topMargin:CGFloat = 50
+        let mapWidth:CGFloat = screenSize.width
+        let mapHeight:CGFloat = tableViewYPos - 50
+        
+        mapView.frame = CGRect(x: leftMargin, y: topMargin, width: mapWidth, height: mapHeight)
+        
+        mapView.mapType = MKMapType.standard
+        mapView.isZoomEnabled = true
+        mapView.isScrollEnabled = true
+        
+        return mapView
+        
+    }
+    
 }

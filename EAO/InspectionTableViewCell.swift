@@ -10,19 +10,24 @@ import UIKit
 
 class InspectionTableViewCell: CommonTableViewCell {
 
-    @IBOutlet var title: UILabel!
-    @IBOutlet var title2: UILabel!
-    @IBOutlet var date: UILabel!
+    @IBOutlet fileprivate var titleL: UILabel!
+    @IBOutlet fileprivate var titleL2: UILabel!
+    @IBOutlet fileprivate var dateL: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
+    
+}
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+extension InspectionTableViewCell{
+    
+    func setLabels(WithTitle title: String, title2: String, date: String){
+        
+        titleL.text = title
+        titleL2.text = title2
+        dateL.text = date
+        
     }
     
 }

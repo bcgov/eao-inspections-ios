@@ -46,7 +46,7 @@ extension CommonTableView {
         /* Register nibs in here */
         switch tableViewType {
         case .inspections:
-            //register inspection table cell(s)
+            self.registerNib(withIdentifier: "InspectionTableViewCell")
             break
         }
     }
@@ -61,13 +61,33 @@ extension CommonTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch tableViewType {
         case .inspections:
-            //return home table cell
-            break
-        }
+            
+            let cell: InspectionTableViewCell! = tableView.dequeueReusableCell(withIdentifier: "InspectionTableViewCell", for: indexPath) as! InspectionTableViewCell
+            
+            let labels:NSMutableArray! = dataArray.object(at: indexPath.row) as! NSMutableArray
+            
+            
+            cell.setLabels(WithTitle:labels.object(at: 0) as! String, title2:labels.object(at: 1) as! String, date:labels.object(at: 2) as! String)
+        
+            return cell;
 
-        return UITableViewCell(style: .default, reuseIdentifier: "Default")
+        }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 80
+        
+    }
+    
 }
 
 //MARK: - UITableView Delegate
 extension CommonTableView: UITableViewDelegate {}
+
+
+
+
+
+
+
