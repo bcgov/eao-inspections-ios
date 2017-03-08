@@ -16,16 +16,26 @@ class MapViewController: CommonViewController,CLLocationManagerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
         self.view.addSubview(map)
-        getPermissions()
+        setup()
     }
     
 }
+
+//MARK: Setup
 extension MapViewController{
     
     fileprivate func setup() {
+        
+        setupNavigationBar()
+        getPermissions()
+        
+    }
+    
+    fileprivate func setupNavigationBar(){
+        
         setNavigationBar(with: .map, leftButtonType: .back, rightButtonType: .none)
+        
     }
     
     fileprivate func getPermissions(){
@@ -41,7 +51,10 @@ extension MapViewController{
         
     }
     
-    //MARK: locationManager Methods
+}
+
+//MARK: locationManager Methods
+extension MapViewController{
     
     internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         

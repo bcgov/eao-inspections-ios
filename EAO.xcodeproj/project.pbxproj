@@ -36,6 +36,7 @@
 		9688D5861E69ED9200C49CD7 /* InspectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9688D5851E69ED9200C49CD7 /* InspectionsViewController.swift */; };
 		9688D5881E69EDA300C49CD7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9688D5871E69EDA300C49CD7 /* MapViewController.swift */; };
 		9688D58B1E69F10400C49CD7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9688D58A1E69F10400C49CD7 /* UIColor.swift */; };
+		BD1959251E708B15002BC8FC /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1959241E708B15002BC8FC /* UIImageView.swift */; };
 		BD3B058C1E6A3737005E2C19 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3B058B1E6A3737005E2C19 /* MapKit.framework */; };
 		BD3B05901E6A3797005E2C19 /* InspectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3B058E1E6A3797005E2C19 /* InspectionTableViewCell.swift */; };
 		BD3B05911E6A3797005E2C19 /* InspectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3B058F1E6A3797005E2C19 /* InspectionTableViewCell.xib */; };
@@ -86,6 +87,7 @@
 		9688D5851E69ED9200C49CD7 /* InspectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionsViewController.swift; sourceTree = "<group>"; };
 		9688D5871E69EDA300C49CD7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9688D58A1E69F10400C49CD7 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		BD1959241E708B15002BC8FC /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		BD3B058B1E6A3737005E2C19 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BD3B058E1E6A3797005E2C19 /* InspectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionTableViewCell.swift; sourceTree = "<group>"; };
 		BD3B058F1E6A3797005E2C19 /* InspectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectionTableViewCell.xib; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		9688D5521E69DAEE00C49CD7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BD1959231E708AE7002BC8FC /* UIImageView */,
 				BD3B05931E6A3B30005E2C19 /* MKMapView */,
 				9688D5911E69F1CB00C49CD7 /* UIAlertController */,
 				9688D5901E69F1C600C49CD7 /* UIImage */,
@@ -441,6 +444,14 @@
 			name = UIAlertController;
 			sourceTree = "<group>";
 		};
+		BD1959231E708AE7002BC8FC /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				BD1959241E708B15002BC8FC /* UIImageView.swift */,
+			);
+			name = UIImageView;
+			sourceTree = "<group>";
+		};
 		BD3B058A1E6A3736005E2C19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -584,6 +595,7 @@
 				9688D54B1E69DA7B00C49CD7 /* UINavigationItem.swift in Sources */,
 				9688D5481E69DA7B00C49CD7 /* Constant.swift in Sources */,
 				9688D5821E69ED7600C49CD7 /* FavouritesViewController.swift in Sources */,
+				BD1959251E708B15002BC8FC /* UIImageView.swift in Sources */,
 				BD3B05951E6A3B6E005E2C19 /* MKMapView.swift in Sources */,
 				9688D5451E69DA7B00C49CD7 /* CommonTableView.swift in Sources */,
 				9688D56A1E69EAAF00C49CD7 /* TabBarViewController.swift in Sources */,

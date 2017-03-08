@@ -10,7 +10,7 @@ import UIKit
 
 class CommonMethods: NSObject {}
 
-//MARK: -
+//MARK: - ViewController present and dismiss
 extension CommonMethods {
     class func showLaunchScreen() {
         let appdel = UIApplication.shared.delegate as! AppDelegate

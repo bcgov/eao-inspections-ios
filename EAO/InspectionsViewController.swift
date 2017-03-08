@@ -11,6 +11,7 @@ import MapKit
 
 class InspectionsViewController: CommonViewController {
     
+    //MARK: IBActions
     @IBAction func ProgressAction(){
         progressA()
     }
@@ -23,7 +24,9 @@ class InspectionsViewController: CommonViewController {
         submittedA()
     }
     
+    //MARK: Variables
     @IBOutlet var tableView: CommonTableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +66,7 @@ extension InspectionsViewController {
     
 }
 
+//MARK: Actions
 extension InspectionsViewController {
     
     fileprivate func progressA(){

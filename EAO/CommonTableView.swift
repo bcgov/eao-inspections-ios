@@ -45,7 +45,7 @@ extension CommonTableView {
         
         self.dataSource = self
         self.delegate = self
-        self.estimatedRowHeight = 66
+        self.estimatedRowHeight = 75
         self.rowHeight = UITableViewAutomaticDimension
     }
 
