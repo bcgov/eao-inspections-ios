@@ -18,9 +18,9 @@ class InspectionTableViewCell: CommonTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        titleL.textColor = UIColor.tableWordColor
+        titleL.textColor = UIColor.tableWordColor2
         titleL2.textColor = UIColor.tableWordColor
-        dateL.textColor = UIColor.tableWordColor
+        dateL.textColor = UIColor.tableWordColor2
         backgroundImage.backgroundColor = UIColor.tableBackgroundCell
         
         layer.masksToBounds = false

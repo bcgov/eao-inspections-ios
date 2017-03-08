@@ -28,9 +28,15 @@ extension UIColor {
         
     }
     
+    static var tableWordColor2: UIColor{
+        
+        return .init(red: 0x33/0xFF, green: 0x5b/0xFF, blue: 0x9f/0xFF, alpha: 0xFF/0xFF)
+        
+    }
+    
     static var tableBackgroundCell: UIColor{
         
-        return .init(red: 0xEF/0xFF, green: 0xEF/0xFF, blue: 0xEF/0xFF, alpha: 0xFF/0xFF)
+        return .init(red: 0xFE/0xFF, green: 0xFE/0xFF, blue: 0xFE/0xFF, alpha: 0xFE/0xFF)
         
     }
     
@@ -40,6 +46,30 @@ extension UIColor {
         
     }
     
+    static var inspectionBackground: UIColor{
+        
+        return .init(red: 0xF2/0xFF, green: 0xF2/0xFF, blue: 0xF2/0xFF, alpha: 0xFF/0xFF)
+        
+    }
+    
     //MARK: - Tab Bar
+    
+    static var tabWordColor: UIColor{
+        
+        return .init(white: 0xFF/0xFF, alpha: 1)
+        
+    }
+    
+    static var tabBackgroundColor: UIColor{
+        
+        return .init(red: 0x33/0xFF, green: 0x5b/0xFF, blue: 0x9f/0xFF, alpha: 0xFF/0xFF)
+        
+    }
+    
+    static var tabUnselectedBackgroundColor: UIColor{
+        
+        return .init(white: 0xEF/0xFF, alpha: 1)
+        
+    }
     
 }

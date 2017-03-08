@@ -36,6 +36,13 @@ class CommonTableView: UITableView {
 //MARK: - Setup
 extension CommonTableView {
     fileprivate func setup() {
+        
+        switch tableViewType {
+        case .inspections:
+            self.backgroundColor = UIColor.inspectionBackground
+            break
+        }
+        
         self.dataSource = self
         self.delegate = self
         self.estimatedRowHeight = 66
