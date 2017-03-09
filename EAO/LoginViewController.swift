@@ -15,13 +15,25 @@ class LoginViewController: CommonViewController {
     
     @IBAction func login(){
     
+        checkLoginCreds()
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
+extension LoginViewController {
+    
+    fileprivate func checkLoginCreds(){
+        
         if usernameT.text != "" && passwordT.text != ""{
             
             CommonMethods.hideViewController(viewController:self)
             CommonMethods.showStoryBoard(storyBoard: "TabBar")
             
         }else{
-            
             
             CommonMethods.hideViewController(viewController:self)
             CommonMethods.showStoryBoard(storyBoard: "TabBar")
@@ -31,9 +43,4 @@ class LoginViewController: CommonViewController {
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-    }
 }

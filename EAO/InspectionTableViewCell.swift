@@ -17,6 +17,15 @@ class InspectionTableViewCell: CommonTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setup()
+        
+    }
+    
+}
+
+extension InspectionTableViewCell{
+    
+    fileprivate func setup(){
         
         titleL.textColor = UIColor.tableWordColor2
         titleL2.textColor = UIColor.tableWordColor
@@ -24,14 +33,9 @@ class InspectionTableViewCell: CommonTableViewCell {
         backgroundImage.backgroundColor = UIColor.tableBackgroundCell
         
         layer.masksToBounds = false
-        
         backgroundImage.setShadow()
         
     }
-    
-}
-
-extension InspectionTableViewCell{
     
     func setLabels(WithTitle title: String, title2: String, date: String){
         

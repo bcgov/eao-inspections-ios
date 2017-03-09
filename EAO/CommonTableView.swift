@@ -72,9 +72,13 @@ extension CommonTableView: UITableViewDataSource {
             let cell: InspectionTableViewCell! = tableView.dequeueReusableCell(withIdentifier: "InspectionTableViewCell", for: indexPath) as! InspectionTableViewCell
             
             let labels:NSMutableArray! = dataArray.object(at: indexPath.row) as! NSMutableArray
+            let topTitle = labels.object(at: 0)
+            let midTitle = labels.object(at: 1)
+            let dateText = labels.object(at: 2)
             
-            
-            cell.setLabels(WithTitle:labels.object(at: 0) as! String, title2:labels.object(at: 1) as! String, date:labels.object(at: 2) as! String)
+            cell.setLabels(WithTitle:topTitle as! String,
+                           title2:midTitle as! String,
+                           date:dateText as! String)
             
             return cell;
 
@@ -83,7 +87,13 @@ extension CommonTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 75
+        switch tableViewType {
+            
+        case .inspections:
+            
+            return 75
+            
+        }
         
     }
     

@@ -40,26 +40,13 @@ extension InspectionsViewController {
     fileprivate func setup() {
         
         setNavigationBar(with: .inspections, leftButtonType: .back, rightButtonType: .none)
-        
-        let arr1 : NSMutableArray = ["Title1","Title2","Jan. 6/14"]
-        let arr2 : NSMutableArray = ["Title4","Title5","Jan. 7/14"]
-        let arr3 : NSMutableArray = ["Title6","Title7","Jan. 8/14"]
-        let arr4 : NSMutableArray = ["Title8","Title9","Jan. 9/14"]
-        let arr5 : NSMutableArray = ["Title10","Title11","Jan. 10/14"]
-        let arr6 : NSMutableArray = ["Title12","Title13","Jan. 11/14"]
-        let tableViewArr : NSMutableArray = [arr1,arr2,arr3,arr4,arr5,arr6]
-        
         tableView.tableViewType = .inspections
         
-        tableView.dataArray = tableViewArr
-        DispatchQueue.main.async{
-            self.tableView.reloadData()
-        }
+        progressA()
         
-        let map = MKMapView.inspectionMap(tableViewYPos: tableView.frame.origin.y)
-        let mapY = navigationController?.navigationBar.frame.size.height
-        map.frame = CGRect(x: map.frame.origin.x, y: map.frame.origin.y+mapY!, width: map.frame.size.width, height: map.frame.size.height - mapY!)
-        
+        let navHeight = navigationController?.navigationBar.frame.size.height
+        let map = MKMapView.inspectionMap(tableViewYPos: tableView.frame.origin.y,
+                                        NavigationHeight: navHeight!)
         self.view.addSubview(map)
         
     }

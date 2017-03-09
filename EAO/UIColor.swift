@@ -8,9 +8,9 @@
 
 import UIKit
 
+//MARK: - Navigation
 extension UIColor {
     
-    //MARK: - Navigation
     static var navigationBarColor: UIColor {
         return .init(red: 0x33/0xFF, green: 0x5b/0xFF, blue: 0x9f/0xFF, alpha: 0xFF/0xFF)
     }
@@ -20,8 +20,18 @@ extension UIColor {
         return .white
         
     }
+    
+    static var inspectionBackground: UIColor{
+        
+        return .init(red: 0xF2/0xFF, green: 0xF2/0xFF, blue: 0xF2/0xFF, alpha: 0xFF/0xFF)
+        
+    }
+    
+}
 
-    //MARK: - Inpsections
+//MARK: - Inpsections
+extension UIColor {
+    
     static var tableWordColor: UIColor{
         
         return .init(red: 0x4F/0xFF, green: 0x4F/0xFF, blue: 0x4F/0xFF, alpha: 0xFF/0xFF)
@@ -46,13 +56,11 @@ extension UIColor {
         
     }
     
-    static var inspectionBackground: UIColor{
-        
-        return .init(red: 0xF2/0xFF, green: 0xF2/0xFF, blue: 0xF2/0xFF, alpha: 0xFF/0xFF)
-        
-    }
+}
+
+//MARK: - Tab Bar
+extension UIColor {
     
-    //MARK: - Tab Bar
     static var tabWordColor: UIColor{
         
         return .init(white: 0xFF/0xFF, alpha: 1)
@@ -72,3 +80,10 @@ extension UIColor {
     }
     
 }
+
+
+
+
+
+
+

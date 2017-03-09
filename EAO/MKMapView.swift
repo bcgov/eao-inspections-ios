@@ -22,7 +22,10 @@ extension MKMapView {
         let mapWidth:CGFloat = screenSize.width
         let mapHeight:CGFloat = screenSize.height
         
-        mapView.frame = CGRect(x: leftMargin, y: topMargin, width: mapWidth, height: mapHeight)
+        mapView.frame = CGRect(x: leftMargin,
+                               y: topMargin,
+                               width: mapWidth,
+                               height: mapHeight)
         
         mapView.mapType = MKMapType.standard
         mapView.isZoomEnabled = true
@@ -32,18 +35,21 @@ extension MKMapView {
         
     }
     
-    class func inspectionMap(tableViewYPos: CGFloat) -> MKMapView{
+    class func inspectionMap(tableViewYPos: CGFloat, NavigationHeight: CGFloat) -> MKMapView{
         
         let screenSize: CGRect = UIScreen.main.bounds
         
         let mapView = MKMapView()
         
         let leftMargin:CGFloat = 0
-        let topMargin:CGFloat = 60
+        let topMargin:CGFloat = 60 + NavigationHeight
         let mapWidth:CGFloat = screenSize.width
-        let mapHeight:CGFloat = tableViewYPos - 60
+        let mapHeight:CGFloat = tableViewYPos - 60 - NavigationHeight
         
-        mapView.frame = CGRect(x: leftMargin, y: topMargin, width: mapWidth, height: mapHeight)
+        mapView.frame = CGRect(x: leftMargin,
+                               y: topMargin,
+                               width: mapWidth,
+                               height: mapHeight)
         
         mapView.mapType = MKMapType.standard
         mapView.isZoomEnabled = true
