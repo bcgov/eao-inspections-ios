@@ -23,7 +23,7 @@ class InspectionCell: CommonTableViewCell {
     
 }
 
-extension InspectionTableViewCell{
+extension InspectionCell{
     
     fileprivate func setup(){
         

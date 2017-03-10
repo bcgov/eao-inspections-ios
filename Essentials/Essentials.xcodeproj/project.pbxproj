@@ -108,6 +108,7 @@
 		110B7FA61E56375300650A9D /* Essentials */ = {
 			isa = PBXGroup;
 			children = (
+				11BE71041E733E63000BF9C4 /* Shapes */,
 				110B7FE41E56384500650A9D /* Views */,
 				110B7FE51E56384C00650A9D /* Table */,
 				110B7FDD1E5637A200650A9D /* Extensions */,
@@ -167,6 +168,13 @@
 				110B7FE01E56382B00650A9D /* Table.swift */,
 			);
 			name = Table;
+			sourceTree = "<group>";
+		};
+		11BE71041E733E63000BF9C4 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Shapes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

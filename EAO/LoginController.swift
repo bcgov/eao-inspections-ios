@@ -24,7 +24,7 @@ class LoginController: CommonViewController {
     }
 }
 
-extension LoginViewController {
+extension LoginController {
     
     fileprivate func checkLoginCreds(){
         

@@ -17,9 +17,15 @@ class FavoritesController: CommonViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for i in 0...100{
+        for i in 1...100{
             
-            favorites.append("\(i)")
+            var text = ""
+            
+            for j in 0...i{
+                text += "\(j)"
+            }
+            
+            favorites.append(text)
             tableView.insertRows(at: [IndexPath(row: i, section: 0)], with: .none)
         }
         
