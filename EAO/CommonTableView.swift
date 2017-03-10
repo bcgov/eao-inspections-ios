@@ -53,7 +53,7 @@ extension CommonTableView {
         /* Register nibs in here */
         switch tableViewType {
         case .inspections:
-            self.registerNib(withIdentifier: "InspectionTableViewCell")
+            self.registerNib(withIdentifier: "InspectionsCell")
             break
         }
     }
@@ -69,7 +69,7 @@ extension CommonTableView: UITableViewDataSource {
         switch tableViewType {
         case .inspections:
             
-            let cell: InspectionTableViewCell! = tableView.dequeueReusableCell(withIdentifier: "InspectionTableViewCell", for: indexPath) as! InspectionTableViewCell
+            let cell: InspectionCell! = tableView.dequeueReusableCell(withIdentifier: "InspectionsCell", for: indexPath) as! InspectionCell
             
             let labels:NSMutableArray! = dataArray.object(at: indexPath.row) as! NSMutableArray
             let topTitle = labels.object(at: 0)
