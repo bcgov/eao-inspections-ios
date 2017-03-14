@@ -9,18 +9,7 @@
 
 
 extension UIView {
-    
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        if tag == 1491625{
-             
-            self.layer.cornerRadius = self.frame.width/2
-        }
-    }
-    
-    
-    
+ 
     public func animateLayoutUsingSpring(duration: Double, dumping: CGFloat, completion: (()->Void)? = nil){
         
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: dumping, initialSpringVelocity: 0.25, options: .curveLinear, animations: {
@@ -76,11 +65,52 @@ extension UIView {
 
 extension UIView{
     
-    @IBInspectable public var circularize: Bool{
+    @IBInspectable public var masksToBounds: Bool{
         get { return false }
         set {
             
-            tag = 1491625
+            layer.masksToBounds = newValue
+        }
+    }
+    
+    @IBInspectable public var shadowColor: UIColor{
+        get { return UIColor.black }
+        set {
+
+            layer.shadowColor = newValue.cgColor
+        }
+    }
+    
+    @IBInspectable public var shadowOffsetX: CGFloat{
+        get { return 0 }
+        set {
+ 
+            layer.shadowOffset.width = newValue
+        }
+    }
+    
+    @IBInspectable public var shadowOffsetY: CGFloat{
+        get { return 0 }
+        set {
+            
+            layer.shadowOffset.height = newValue
+        }
+    }
+    
+    
+    @IBInspectable public var shadowOpacity: Float{
+        get { return 0 }
+        set {
+ 
+            layer.shadowOpacity = newValue
+        }
+    }
+    
+    @IBInspectable public var shadowRadius: CGFloat{
+        get { return 0 }
+        set {
+ 
+            layer.shadowRadius = newValue
         }
     }
     

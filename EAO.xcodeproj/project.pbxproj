@@ -10,6 +10,8 @@
 		11B1671F1E71E9700057D697 /* Essentials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B1671E1E71E9390057D697 /* Essentials.framework */; };
 		11B167201E71E9700057D697 /* Essentials.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11B1671E1E71E9390057D697 /* Essentials.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11B167271E7206380057D697 /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B167261E7206380057D697 /* FavoritesCell.swift */; };
+		11DBE9141E774DD900C9575C /* DocumentDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBE9131E774DD900C9575C /* DocumentDetail.swift */; };
+		11DBE9171E775CA200C9575C /* ProjectsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBE9161E775CA200C9575C /* ProjectsCell.swift */; };
 		9688D51C1E69DA4300C49CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9688D51B1E69DA4300C49CD7 /* AppDelegate.swift */; };
 		9688D5211E69DA4300C49CD7 /* TabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9688D51F1E69DA4300C49CD7 /* TabBarController.storyboard */; };
 		9688D5231E69DA4300C49CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9688D5221E69DA4300C49CD7 /* Assets.xcassets */; };
@@ -88,6 +90,8 @@
 		11B167191E71E9380057D697 /* Essentials.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Essentials.xcodeproj; path = Essentials/Essentials.xcodeproj; sourceTree = "<group>"; };
 		11B167261E7206380057D697 /* FavoritesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
 		11B167291E72069F0057D697 /* EAO-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EAO-Bridging-Header.h"; sourceTree = "<group>"; };
+		11DBE9131E774DD900C9575C /* DocumentDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentDetail.swift; sourceTree = "<group>"; };
+		11DBE9161E775CA200C9575C /* ProjectsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsCell.swift; sourceTree = "<group>"; };
 		9688D5181E69DA4300C49CD7 /* EAO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EAO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9688D51B1E69DA4300C49CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9688D5201E69DA4300C49CD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TabBarController.storyboard; sourceTree = "<group>"; };
@@ -160,6 +164,22 @@
 			isa = PBXGroup;
 			children = (
 				11B167261E7206380057D697 /* FavoritesCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		11DBE9151E774DE800C9575C /* DocumentDetail */ = {
+			isa = PBXGroup;
+			children = (
+				11DBE9131E774DD900C9575C /* DocumentDetail.swift */,
+			);
+			name = DocumentDetail;
+			sourceTree = "<group>";
+		};
+		11DBE9181E775CC800C9575C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				11DBE9161E775CA200C9575C /* ProjectsCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -302,13 +322,14 @@
 		9688D55C1E69DDB300C49CD7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9688D55D1E69E3B500C49CD7 /* Login */,
 				9688D5631E69EA2A00C49CD7 /* TabBar */,
 				9688D55E1E69E67600C49CD7 /* Map */,
 				9688D55F1E69E69C00C49CD7 /* Inspections */,
 				9688D5601E69E6A500C49CD7 /* Projects */,
 				9688D5611E69E6AB00C49CD7 /* Favourites */,
 				9688D5621E69E6C000C49CD7 /* Settings */,
-				9688D55D1E69E3B500C49CD7 /* Login */,
+				11DBE9151E774DE800C9575C /* DocumentDetail */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -394,6 +415,7 @@
 			children = (
 				9688D5751E69EB7700C49CD7 /* ProjectsController.storyboard */,
 				9688D5831E69ED8400C49CD7 /* ProjectsController.swift */,
+				11DBE9181E775CC800C9575C /* Cell */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -652,9 +674,11 @@
 				11B167271E7206380057D697 /* FavoritesCell.swift in Sources */,
 				9688D58B1E69F10400C49CD7 /* UIColor.swift in Sources */,
 				9688D5491E69DA7B00C49CD7 /* UIAlertController.swift in Sources */,
+				11DBE9171E775CA200C9575C /* ProjectsCell.swift in Sources */,
 				9688D5471E69DA7B00C49CD7 /* CommonViewController.swift in Sources */,
 				9688D54C1E69DA7B00C49CD7 /* UITableView.swift in Sources */,
 				9688D5861E69ED9200C49CD7 /* InspectionsController.swift in Sources */,
+				11DBE9141E774DD900C9575C /* DocumentDetail.swift in Sources */,
 				9688D5801E69ED6900C49CD7 /* SettingsController.swift in Sources */,
 				9688D5881E69EDA300C49CD7 /* MapController.swift in Sources */,
 				9688D54A1E69DA7B00C49CD7 /* UIImage.swift in Sources */,
