@@ -17,6 +17,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="w5n-pV-ZkU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="Roq-Hq-gxl" kind="relationship" relationship="viewControllers" id="OOO-It-Gfm"/>

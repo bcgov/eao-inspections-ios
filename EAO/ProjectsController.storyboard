@@ -14,11 +14,12 @@
         <scene sceneID="FoZ-2L-8TQ">
             <objects>
                 <navigationController id="Slj-cs-T0f" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="Projects" id="DUA-Lw-5JU"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Projects" image="icon_tab_projects" id="DUA-Lw-5JU"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gYU-1l-kse">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -178,4 +179,7 @@
             <point key="canvasLocation" x="548" y="151.57421289355324"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_tab_projects" width="30" height="30"/>
+    </resources>
 </document>

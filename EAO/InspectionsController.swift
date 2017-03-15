@@ -34,6 +34,8 @@ class InspectionsController: CommonViewController {
     }
 }
 
+
+
 //MARK: - Setup
 extension InspectionsController {
     

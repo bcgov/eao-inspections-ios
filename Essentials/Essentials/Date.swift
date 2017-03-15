@@ -8,10 +8,5 @@
 
 extension Date{
    
-   
-   func invitationFormat() -> String{
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "EEEE, MMM dd"
-      return dateFormatter.string(from: self)
-   }
+ 
 }

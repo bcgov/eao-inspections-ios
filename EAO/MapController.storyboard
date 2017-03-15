@@ -13,7 +13,7 @@
         <scene sceneID="LKj-N3-4oK">
             <objects>
                 <navigationController id="vvw-t6-RsM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="vmX-we-c1O"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="icon_tab_map" id="vmX-we-c1O"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vUL-0L-gXa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -47,4 +47,7 @@
             <point key="canvasLocation" x="444" y="152"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_tab_map" width="120" height="120"/>
+    </resources>
 </document>

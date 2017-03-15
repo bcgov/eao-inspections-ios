@@ -13,11 +13,12 @@
         <scene sceneID="SfB-6B-ial">
             <objects>
                 <navigationController id="VdM-ka-v3D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" id="mfb-Z2-laN"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="icon_tab_favorites" id="mfb-Z2-laN"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2kX-cd-zMe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -87,7 +88,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VtT-SG-4CV" id="OPI-yn-ymw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMp-aQ-BmT">
@@ -182,5 +183,6 @@
     </scenes>
     <resources>
         <image name="icon_arrow_right" width="270" height="270"/>
+        <image name="icon_tab_favorites" width="30" height="30"/>
     </resources>
 </document>

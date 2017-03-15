@@ -26,16 +26,21 @@ extension UIViewController{
    }
  
    ///Adds tap gesture recognizer to root view that dismissess keyboard on tap
-   public func addDismissKeyboardOnTapRecognizer(){
-      let tapRec = UITapGestureRecognizer()
-      tapRec.cancelsTouchesInView = false
-      tapRec.addTarget(self, action: #selector(dismissKeyboard))
-      view.addGestureRecognizer(tapRec)
-   }
+    public func addDismissKeyboardOnTapRecognizer(on view: UIView){
+        let tapRec = UITapGestureRecognizer()
+        tapRec.cancelsTouchesInView = false
+        tapRec.addTarget(self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapRec)
+    }
    
    public func dismissKeyboard(){
       view.endEditing(true)
    }
+    
+    public func push(controller: UIViewController?){
+        guard let controller = controller else { return }
+        navigationController?.pushViewController(controller, animated: true)
+    }
    
 }
 

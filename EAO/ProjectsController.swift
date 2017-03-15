@@ -31,6 +31,12 @@ class ProjectsController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let formController = InspectionFormController.storyboardInstance()!
+        push(controller: formController)
+        
+    }
+    
     
  
 }
@@ -59,3 +65,10 @@ extension ProjectsController: UITableViewDelegate, UITableViewDataSource{
     
     
 }
+
+
+
+
+
+
+

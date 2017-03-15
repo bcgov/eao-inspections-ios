@@ -9,7 +9,7 @@
 import  MapKit
 
 extension MKMapView{
-   func setCurrentRegion(_ location: CLLocation?){
+   public func setCurrentRegion(_ location: CLLocation?){
       guard let coordinate = location?.coordinate else{
          return
       }
@@ -23,7 +23,7 @@ extension MKMapView{
       setRegion(region, animated: true)
    }
    
-   func regionWithRange(range: Double) -> MKCoordinateRegion{
+   public func regionWithRange(range: Double) -> MKCoordinateRegion{
       let coordinate = self.userLocation.coordinate
     
       let span = MKCoordinateSpanMake(range, range)
@@ -32,4 +32,10 @@ extension MKMapView{
       return region
       
    }
+    
+    public func coordinate(from: CGPoint) -> CLLocation {
+        let coordinate2D = convert(CGPoint.zero, toCoordinateFrom: self)
+        let location = coordinate2D.toCLLocation()
+        return location
+    }
 }

@@ -13,7 +13,7 @@
         <scene sceneID="rGf-tb-sRq">
             <objects>
                 <navigationController id="Xwl-Cu-CCi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Inspections" id="v0s-ni-MGw"/>
+                    <tabBarItem key="tabBarItem" title="Inspections" image="icon_tab_inspections" id="v0s-ni-MGw"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Ks-4U-uhr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -90,4 +90,7 @@
             <point key="canvasLocation" x="446" y="152"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_tab_inspections" width="30" height="30"/>
+    </resources>
 </document>
