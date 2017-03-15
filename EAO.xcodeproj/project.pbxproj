@@ -23,7 +23,7 @@
 		11CEADEA1E79E6E800E2242C /* MapPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CEADE91E79E6E800E2242C /* MapPreviewController.swift */; };
 		11CEADED1E79E71000E2242C /* MapPreviewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CEADEC1E79E71000E2242C /* MapPreviewController.storyboard */; };
 		11CEADF21E79E7EB00E2242C /* DismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CEADF11E79E7EB00E2242C /* DismissButton.swift */; };
-		11DBE9141E774DD900C9575C /* DocumentPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBE9131E774DD900C9575C /* DocumentPreviewController.swift */; };
+		11CEADFB1E7A047200E2242C /* samplePDF.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 11CEADFA1E7A047200E2242C /* samplePDF.pdf */; };
 		11DBE9171E775CA200C9575C /* ProjectsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBE9161E775CA200C9575C /* ProjectsCell.swift */; };
 		9688D51C1E69DA4300C49CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9688D51B1E69DA4300C49CD7 /* AppDelegate.swift */; };
 		9688D5211E69DA4300C49CD7 /* TabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9688D51F1E69DA4300C49CD7 /* TabBarController.storyboard */; };
@@ -116,7 +116,7 @@
 		11CEADE91E79E6E800E2242C /* MapPreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPreviewController.swift; sourceTree = "<group>"; };
 		11CEADEC1E79E71000E2242C /* MapPreviewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MapPreviewController.storyboard; sourceTree = "<group>"; };
 		11CEADF11E79E7EB00E2242C /* DismissButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissButton.swift; sourceTree = "<group>"; };
-		11DBE9131E774DD900C9575C /* DocumentPreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentPreviewController.swift; sourceTree = "<group>"; };
+		11CEADFA1E7A047200E2242C /* samplePDF.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = samplePDF.pdf; sourceTree = "<group>"; };
 		11DBE9161E775CA200C9575C /* ProjectsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsCell.swift; sourceTree = "<group>"; };
 		9688D5181E69DA4300C49CD7 /* EAO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EAO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9688D51B1E69DA4300C49CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -248,14 +248,6 @@
 				11CEADE91E79E6E800E2242C /* MapPreviewController.swift */,
 			);
 			name = MapPreview;
-			sourceTree = "<group>";
-		};
-		11DBE9151E774DE800C9575C /* DocumentPreview */ = {
-			isa = PBXGroup;
-			children = (
-				11DBE9131E774DD900C9575C /* DocumentPreviewController.swift */,
-			);
-			name = DocumentPreview;
 			sourceTree = "<group>";
 		};
 		11DBE9181E775CC800C9575C /* Cell */ = {
@@ -396,6 +388,7 @@
 		9688D5591E69DD8A00C49CD7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				11CEADFA1E7A047200E2242C /* samplePDF.pdf */,
 				9688D5221E69DA4300C49CD7 /* Assets.xcassets */,
 				9688D5241E69DA4300C49CD7 /* LaunchScreen.storyboard */,
 				9688D5271E69DA4300C49CD7 /* Info.plist */,
@@ -409,7 +402,6 @@
 			children = (
 				9688D55D1E69E3B500C49CD7 /* Login */,
 				9688D5631E69EA2A00C49CD7 /* TabBar */,
-				11DBE9151E774DE800C9575C /* DocumentPreview */,
 				11CEADAA1E799B4000E2242C /* InspectionForm */,
 				11CEADDD1E79C4BA00E2242C /* UploadPhoto */,
 				11CEADEB1E79E6F000E2242C /* MapPreview */,
@@ -724,6 +716,7 @@
 				9688D56C1E69EADC00C49CD7 /* LoginController.storyboard in Resources */,
 				11CEADAC1E799B5200E2242C /* InspectionFormController.storyboard in Resources */,
 				9688D5721E69EB5500C49CD7 /* MapController.storyboard in Resources */,
+				11CEADFB1E7A047200E2242C /* samplePDF.pdf in Resources */,
 				9688D5261E69DA4300C49CD7 /* LaunchScreen.storyboard in Resources */,
 				11CEADDA1E79C4A700E2242C /* UploadPhotoController.storyboard in Resources */,
 				BD3B05911E6A3797005E2C19 /* InspectionsCell.xib in Resources */,
@@ -779,7 +772,6 @@
 				9688D54C1E69DA7B00C49CD7 /* UITableView.swift in Sources */,
 				9688D5861E69ED9200C49CD7 /* InspectionsController.swift in Sources */,
 				11CEADDC1E79C4B600E2242C /* UploadPhotoController.swift in Sources */,
-				11DBE9141E774DD900C9575C /* DocumentPreviewController.swift in Sources */,
 				9688D5801E69ED6900C49CD7 /* SettingsController.swift in Sources */,
 				9688D5881E69EDA300C49CD7 /* MapController.swift in Sources */,
 				9688D54A1E69DA7B00C49CD7 /* UIImage.swift in Sources */,

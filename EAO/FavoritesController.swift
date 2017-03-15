@@ -6,8 +6,9 @@
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
 
-import UIKit
-//h
+import QuickLook
+
+
 class FavoritesController: CommonViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableView: UITableView!
@@ -45,8 +46,34 @@ class FavoritesController: CommonViewController, UITableViewDataSource, UITableV
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let preview = QLPreviewController()
+        preview.dataSource = self
+        present(controller: preview)
+    }
    
     
 }
 
- 
+
+
+
+
+extension FavoritesController: QLPreviewControllerDataSource{
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return 1
+    }
+    
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        let path = Bundle.main.path(forResource: "samplePDF", ofType: "pdf")
+        let url = NSURL.fileURL(withPath: path!)
+        return url as QLPreviewItem
+    }
+}
+
+
+
+
+
