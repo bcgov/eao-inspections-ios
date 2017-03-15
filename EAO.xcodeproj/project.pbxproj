@@ -12,6 +12,8 @@
 		11B167271E7206380057D697 /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B167261E7206380057D697 /* FavoritesCell.swift */; };
 		11CEADA91E799B3B00E2242C /* InspectionFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CEADA81E799B3B00E2242C /* InspectionFormController.swift */; };
 		11CEADAC1E799B5200E2242C /* InspectionFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11CEADAB1E799B5200E2242C /* InspectionFormController.storyboard */; };
+		11CEADC31E79A47300E2242C /* TextViewWithPlaceholder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CEADBF1E79A38800E2242C /* TextViewWithPlaceholder.framework */; };
+		11CEADC41E79A47300E2242C /* TextViewWithPlaceholder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11CEADBF1E79A38800E2242C /* TextViewWithPlaceholder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11DBE9141E774DD900C9575C /* DocumentPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBE9131E774DD900C9575C /* DocumentPreviewController.swift */; };
 		11DBE9171E775CA200C9575C /* ProjectsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBE9161E775CA200C9575C /* ProjectsCell.swift */; };
 		9688D51C1E69DA4300C49CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9688D51B1E69DA4300C49CD7 /* AppDelegate.swift */; };
@@ -72,6 +74,13 @@
 			remoteGlobalIDString = 1117BA2C1E50D498007B8AAC;
 			remoteInfo = TextViewWithPlaceholder;
 		};
+		11CEADC51E79A47300E2242C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 11CEADBA1E79A38800E2242C /* TextViewWithPlaceholder.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1117BA2B1E50D498007B8AAC;
+			remoteInfo = TextViewWithPlaceholder;
+		};
 		9688D52D1E69DA4300C49CD7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9688D5101E69DA4300C49CD7 /* Project object */;
@@ -88,6 +97,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				11CEADC41E79A47300E2242C /* TextViewWithPlaceholder.framework in Embed Frameworks */,
 				11B167201E71E9700057D697 /* Essentials.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -149,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11CEADC31E79A47300E2242C /* TextViewWithPlaceholder.framework in Frameworks */,
 				BD3B058C1E6A3737005E2C19 /* MapKit.framework in Frameworks */,
 				11B1671F1E71E9700057D697 /* Essentials.framework in Frameworks */,
 			);
@@ -576,6 +587,7 @@
 			);
 			dependencies = (
 				11B167221E71E9700057D697 /* PBXTargetDependency */,
+				11CEADC61E79A47300E2242C /* PBXTargetDependency */,
 			);
 			name = EAO;
 			productName = EAO;
@@ -747,6 +759,11 @@
 			isa = PBXTargetDependency;
 			name = Essentials;
 			targetProxy = 11B167211E71E9700057D697 /* PBXContainerItemProxy */;
+		};
+		11CEADC61E79A47300E2242C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TextViewWithPlaceholder;
+			targetProxy = 11CEADC51E79A47300E2242C /* PBXContainerItemProxy */;
 		};
 		9688D52E1E69DA4300C49CD7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
