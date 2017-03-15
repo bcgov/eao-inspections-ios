@@ -65,6 +65,13 @@
 			remoteGlobalIDString = 110B7FA31E56375300650A9D;
 			remoteInfo = Essentials;
 		};
+		11CEADBE1E79A38800E2242C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 11CEADBA1E79A38800E2242C /* TextViewWithPlaceholder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1117BA2C1E50D498007B8AAC;
+			remoteInfo = TextViewWithPlaceholder;
+		};
 		9688D52D1E69DA4300C49CD7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9688D5101E69DA4300C49CD7 /* Project object */;
@@ -94,6 +101,7 @@
 		11B167291E72069F0057D697 /* EAO-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EAO-Bridging-Header.h"; sourceTree = "<group>"; };
 		11CEADA81E799B3B00E2242C /* InspectionFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionFormController.swift; sourceTree = "<group>"; };
 		11CEADAB1E799B5200E2242C /* InspectionFormController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InspectionFormController.storyboard; sourceTree = "<group>"; };
+		11CEADBA1E79A38800E2242C /* TextViewWithPlaceholder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TextViewWithPlaceholder.xcodeproj; path = TextViewWithPlaceholder/TextViewWithPlaceholder.xcodeproj; sourceTree = "<group>"; };
 		11DBE9131E774DD900C9575C /* DocumentPreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentPreviewController.swift; sourceTree = "<group>"; };
 		11DBE9161E775CA200C9575C /* ProjectsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsCell.swift; sourceTree = "<group>"; };
 		9688D5181E69DA4300C49CD7 /* EAO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EAO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +189,14 @@
 			name = InspectionForm;
 			sourceTree = "<group>";
 		};
+		11CEADBB1E79A38800E2242C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				11CEADBF1E79A38800E2242C /* TextViewWithPlaceholder.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		11DBE9151E774DE800C9575C /* DocumentPreview */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +216,7 @@
 		9688D50F1E69DA4300C49CD7 = {
 			isa = PBXGroup;
 			children = (
+				11CEADBA1E79A38800E2242C /* TextViewWithPlaceholder.xcodeproj */,
 				11B167191E71E9380057D697 /* Essentials.xcodeproj */,
 				9688D51A1E69DA4300C49CD7 /* EAO */,
 				9688D52F1E69DA4300C49CD7 /* EAOTests */,
@@ -623,6 +640,10 @@
 					ProductGroup = 11B1671A1E71E9380057D697 /* Products */;
 					ProjectRef = 11B167191E71E9380057D697 /* Essentials.xcodeproj */;
 				},
+				{
+					ProductGroup = 11CEADBB1E79A38800E2242C /* Products */;
+					ProjectRef = 11CEADBA1E79A38800E2242C /* TextViewWithPlaceholder.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -638,6 +659,13 @@
 			fileType = wrapper.framework;
 			path = Essentials.framework;
 			remoteRef = 11B1671D1E71E9390057D697 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		11CEADBF1E79A38800E2242C /* TextViewWithPlaceholder.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TextViewWithPlaceholder.framework;
+			remoteRef = 11CEADBE1E79A38800E2242C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
