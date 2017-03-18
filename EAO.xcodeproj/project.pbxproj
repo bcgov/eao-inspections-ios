@@ -59,6 +59,10 @@
 		BD3B05901E6A3797005E2C19 /* InspectionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3B058E1E6A3797005E2C19 /* InspectionsCell.swift */; };
 		BD3B05911E6A3797005E2C19 /* InspectionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3B058F1E6A3797005E2C19 /* InspectionsCell.xib */; };
 		BD3B05951E6A3B6E005E2C19 /* MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3B05941E6A3B6E005E2C19 /* MKMapView.swift */; };
+		BDA2DA0F1E7C89E600A9E3AC /* ProjectPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2DA0E1E7C89E600A9E3AC /* ProjectPreviewController.swift */; };
+		BDA2DA111E7C8A1F00A9E3AC /* ProjectPreviewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDA2DA101E7C8A1F00A9E3AC /* ProjectPreviewController.storyboard */; };
+		BDA2DA131E7C969B00A9E3AC /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA2DA121E7C969B00A9E3AC /* CircularButton.swift */; };
+		BDA2DA151E7C96AF00A9E3AC /* CircularButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA2DA141E7C96AF00A9E3AC /* CircularButton.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +160,10 @@
 		BD3B058E1E6A3797005E2C19 /* InspectionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionsCell.swift; sourceTree = "<group>"; };
 		BD3B058F1E6A3797005E2C19 /* InspectionsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectionsCell.xib; sourceTree = "<group>"; };
 		BD3B05941E6A3B6E005E2C19 /* MKMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMapView.swift; sourceTree = "<group>"; };
+		BDA2DA0E1E7C89E600A9E3AC /* ProjectPreviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectPreviewController.swift; sourceTree = "<group>"; };
+		BDA2DA101E7C8A1F00A9E3AC /* ProjectPreviewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProjectPreviewController.storyboard; sourceTree = "<group>"; };
+		BDA2DA121E7C969B00A9E3AC /* CircularButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
+		BDA2DA141E7C96AF00A9E3AC /* CircularButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircularButton.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +217,7 @@
 				11CEADF11E79E7EB00E2242C /* DismissButton.swift */,
 				11CEADD01E79BF1900E2242C /* PlusShape.swift */,
 				11CEADD11E79BF1900E2242C /* ArrowRightShape.swift */,
+				BDA2DA171E7C96C800A9E3AC /* CircularButton */,
 			);
 			name = Shapes;
 			sourceTree = "<group>";
@@ -405,6 +414,7 @@
 				11CEADAA1E799B4000E2242C /* InspectionForm */,
 				11CEADDD1E79C4BA00E2242C /* UploadPhoto */,
 				11CEADEB1E79E6F000E2242C /* MapPreview */,
+				BDA2DA0D1E7C898D00A9E3AC /* ProjectsPreview */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -609,6 +619,24 @@
 			name = MKMapView;
 			sourceTree = "<group>";
 		};
+		BDA2DA0D1E7C898D00A9E3AC /* ProjectsPreview */ = {
+			isa = PBXGroup;
+			children = (
+				BDA2DA0E1E7C89E600A9E3AC /* ProjectPreviewController.swift */,
+				BDA2DA101E7C8A1F00A9E3AC /* ProjectPreviewController.storyboard */,
+			);
+			name = ProjectsPreview;
+			sourceTree = "<group>";
+		};
+		BDA2DA171E7C96C800A9E3AC /* CircularButton */ = {
+			isa = PBXGroup;
+			children = (
+				BDA2DA121E7C969B00A9E3AC /* CircularButton.swift */,
+				BDA2DA141E7C96AF00A9E3AC /* CircularButton.xib */,
+			);
+			name = CircularButton;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -728,6 +756,8 @@
 				9688D5211E69DA4300C49CD7 /* TabBarController.storyboard in Resources */,
 				9688D5761E69EB7700C49CD7 /* ProjectsController.storyboard in Resources */,
 				9688D56E1E69EAEA00C49CD7 /* SettingsController.storyboard in Resources */,
+				BDA2DA151E7C96AF00A9E3AC /* CircularButton.xib in Resources */,
+				BDA2DA111E7C8A1F00A9E3AC /* ProjectPreviewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +783,7 @@
 				11CEADE41E79C64F00E2242C /* TextViewWithPlaceholder.swift in Sources */,
 				9688D54B1E69DA7B00C49CD7 /* UINavigationItem.swift in Sources */,
 				11CEADD21E79BF1900E2242C /* PlusShape.swift in Sources */,
+				BDA2DA0F1E7C89E600A9E3AC /* ProjectPreviewController.swift in Sources */,
 				9688D5481E69DA7B00C49CD7 /* Constant.swift in Sources */,
 				9688D5821E69ED7600C49CD7 /* FavoritesController.swift in Sources */,
 				11CEADE61E79C64F00E2242C /* TextViewWithPlaceholderDelegate.swift in Sources */,
@@ -778,6 +809,7 @@
 				9688D51C1E69DA4300C49CD7 /* AppDelegate.swift in Sources */,
 				9688D57E1E69ED5900C49CD7 /* LoginController.swift in Sources */,
 				9688D5461E69DA7B00C49CD7 /* CommonTableViewCell.swift in Sources */,
+				BDA2DA131E7C969B00A9E3AC /* CircularButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

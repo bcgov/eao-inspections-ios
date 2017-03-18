@@ -31,6 +31,7 @@ class InspectionsController: CommonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        tableView.delegate = self
     }
 }
 
@@ -56,7 +57,14 @@ extension InspectionsController {
 }
 
 //MARK: Actions
-extension InspectionsController {
+extension InspectionsController:UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let previewController = ProjectPreviewController.storyboardInstance() as! ProjectPreviewController
+        navigationController?.pushViewController(previewController, animated: true)
+        
+    }
     
     fileprivate func progressA(){
         
@@ -114,6 +122,4 @@ extension InspectionsController {
         }
     }
 }
-
-
 
