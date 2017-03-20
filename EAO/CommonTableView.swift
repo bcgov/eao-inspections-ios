@@ -66,34 +66,12 @@ extension CommonTableView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch tableViewType {
-        case .inspections:
-            
-            let cell: InspectionCell! = tableView.dequeueReusableCell(withIdentifier: "InspectionsCell", for: indexPath) as! InspectionCell
-            
-            let labels:NSMutableArray! = dataArray.object(at: indexPath.row) as! NSMutableArray
-            let topTitle = labels.object(at: 0)
-            let midTitle = labels.object(at: 1)
-            let dateText = labels.object(at: 2)
-            
-            cell.setLabels(WithTitle:topTitle as! String,
-                           title2:midTitle as! String,
-                           date:dateText as! String)
-            
-            return cell;
-
-        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        switch tableViewType {
-            
-        case .inspections:
-            
-            return 75
-            
-        }
+       return 44
         
     }
     

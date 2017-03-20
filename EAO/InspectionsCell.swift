@@ -8,43 +8,16 @@
 
 import UIKit
 
-class InspectionCell: CommonTableViewCell {
-
-    @IBOutlet fileprivate var titleL: UILabel!
-    @IBOutlet fileprivate var titleL2: UILabel!
-    @IBOutlet fileprivate var dateL: UILabel!
-    @IBOutlet fileprivate var backgroundImage: UIImageView!
+class InspectionCell: UITableViewCell {
+    @IBOutlet fileprivate var titleLabel : UILabel!
+    @IBOutlet fileprivate var codeLabel  : UILabel!
+    @IBOutlet fileprivate var dateLabel  : UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setup()
-        
-    }
-    
-}
-
-extension InspectionCell{
-    
-    fileprivate func setup(){
-        
-        titleL.textColor = UIColor.tableWordColor2
-        titleL2.textColor = UIColor.tableWordColor
-        dateL.textColor = UIColor.tableWordColor2
-        backgroundImage.backgroundColor = UIColor.tableBackgroundCell
-        
-        layer.masksToBounds = false
-        backgroundImage.setShadow()
-        
+    func setData(title: String?, code: String?, date: String?){
+        titleLabel.text = title
+        codeLabel.text  = code
+        dateLabel.text  = date
     }
 }
 
-extension InspectionCell{
-    func setLabels(WithTitle title: String, title2: String, date: String){
-        
-        titleL.text = title
-        titleL2.text = title2
-        dateL.text = date
-        
-    }
-    
-}
+ 

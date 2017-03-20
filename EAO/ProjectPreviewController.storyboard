@@ -17,7 +17,7 @@
                         <viewControllerLayoutGuide type="top" id="huS-Yc-4Q9"/>
                         <viewControllerLayoutGuide type="bottom" id="Jxa-6a-htA"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="KLI-7m-HGq">
+                    <view key="view" contentMode="scaleToFill" id="KLI-7m-HGq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="701"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -303,6 +303,9 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="startInspecionTapped:" destination="jjn-ru-wZj" eventType="touchUpInside" id="wy9-nH-mPS"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

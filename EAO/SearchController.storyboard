@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kub-F2-2Xh">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search-->
+        <scene sceneID="c7c-1x-UwO">
+            <objects>
+                <viewController id="kub-F2-2Xh" customClass="SearchController" customModule="EAO" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WbJ-NT-xgu"/>
+                        <viewControllerLayoutGuide type="bottom" id="wbo-i2-f7y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tzd-kn-Rrm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" barStyle="black" placeholder="Search" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GT8-Sb-XrN">
+                                <rect key="frame" x="0.0" y="64" width="375" height="88"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Inspections</string>
+                                    <string>Projects</string>
+                                </scopeButtonTitles>
+                            </searchBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" image="icon_tap_to_search" translatesAutoresizingMaskIntoConstraints="NO" id="RlC-5R-VXk">
+                                <rect key="frame" x="67.5" y="269.5" width="240" height="128"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RlC-5R-VXk" firstAttribute="centerY" secondItem="Tzd-kn-Rrm" secondAttribute="centerY" id="8ff-cp-Q3Q"/>
+                            <constraint firstItem="GT8-Sb-XrN" firstAttribute="top" secondItem="WbJ-NT-xgu" secondAttribute="bottom" id="EbV-Ms-GNe"/>
+                            <constraint firstItem="RlC-5R-VXk" firstAttribute="centerX" secondItem="Tzd-kn-Rrm" secondAttribute="centerX" id="R71-Br-2v4"/>
+                            <constraint firstItem="GT8-Sb-XrN" firstAttribute="leading" secondItem="Tzd-kn-Rrm" secondAttribute="leading" id="RwD-Qo-OIc"/>
+                            <constraint firstAttribute="trailing" secondItem="GT8-Sb-XrN" secondAttribute="trailing" id="wDl-cn-hmp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search" id="ZYR-AF-eWs"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cp3-84-jRX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="196" y="139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_tap_to_search" width="200" height="200"/>
+    </resources>
+</document>

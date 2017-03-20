@@ -9,7 +9,7 @@
 import QuickLook
 
 
-class FavoritesController: CommonViewController, UITableViewDataSource, UITableViewDelegate {
+class FavoritesController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableView: UITableView!
     
@@ -18,17 +18,8 @@ class FavoritesController: CommonViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for i in 1...100{
-            
-            var text = ""
-            
-            for j in 0...i{
-                text += "\(j)"
-            }
-            
-            favorites.append(text)
-            tableView.insertRows(at: [IndexPath(row: i, section: 0)], with: .none)
-        }
+        favorites.append("Schedule A: Certified Project Description")
+        tableView.reloadData()
         
     }
     
@@ -42,7 +33,7 @@ class FavoritesController: CommonViewController, UITableViewDataSource, UITableV
         
         let str = favorites[indexPath.row]
         
-        cell.setData(title: str, date: str)
+        cell.setData(title: str, date: "Mar 26, 2015")
         
         return cell
     }

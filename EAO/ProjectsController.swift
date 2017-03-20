@@ -12,58 +12,33 @@ class ProjectsController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
    
-    
     var projects = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        for i in 1...100{
-            
-            var text = ""
-            
-            for j in 0...i{
-                text += "\(j)"
-            }
-            
-            projects.append(text)
-            tableView.insertRows(at: [IndexPath(row: i, section: 0)], with: .none)
-        }
+        projects.append("Brucejack Gold Mine")
+        tableView.reloadData()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        let formController = InspectionFormController.storyboardInstance()!
-        push(controller: formController)
-        
-    }
-    
-    
- 
 }
 
-extension ProjectsController{
-    
-}
 
 extension ProjectsController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let previewController = ProjectPreviewController.storyboardInstance() as! ProjectPreviewController
+        navigationController?.pushViewController(previewController, animated: true)
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(identifier: "ProjectsCell") as! ProjectsCell
-        
         let project = projects[indexPath.row]
-        
-        
-        cell.setData(title: project, name: project, date: project)
-        
+        cell.setData(title: "M15-01", name: project, date: "July 5, 2017 - July 8, 2017")
         return cell
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return projects.count
     }
-    
-    
 }
 
 

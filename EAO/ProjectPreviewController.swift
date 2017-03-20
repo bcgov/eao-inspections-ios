@@ -12,6 +12,10 @@ import UIKit
 
 class ProjectPreviewController: UIViewController {
 
+    @IBAction func startInspecionTapped(_ sender: UIButton) {
+        let formController = InspectionFormController.storyboardInstance()!
+        push(controller: formController)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
