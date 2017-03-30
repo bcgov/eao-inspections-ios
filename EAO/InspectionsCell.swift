@@ -6,7 +6,7 @@
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
 
-class MainCell: UITableViewCell{
+class InspectionsCell: UITableViewCell{
 	@IBOutlet var titleLabel : UILabel!
 	@IBOutlet var timeLabel  : UILabel!
 	@IBOutlet var editButton : UIButton!
