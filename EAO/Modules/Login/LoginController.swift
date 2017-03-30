@@ -14,8 +14,7 @@ class LoginController: UIViewController {
     @IBOutlet var passwordT: UITextField!
     
     @IBAction func login(){
-    
-        checkLoginCreds()
+     
         
     }
     
@@ -26,19 +25,6 @@ class LoginController: UIViewController {
 
 extension LoginController {
     
-    fileprivate func checkLoginCreds(){
-        
-        if usernameT.text != "" && passwordT.text != ""{
-            
-           
-            
-        }else{
-            
-			
-            //UIAlertController.simpleAlert(title: "Wrong input", msg: "fix your username or password")
-            
-        }
-        
-    }
+ 
     
 }

@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>EAO copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>EAO.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>110FF1101E8C4835000DB1A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>110FF14E1E8C4AB4000DB1A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9688D5171E69DA4300C49CD7</key>
 		<dict>
 			<key>primary</key>
