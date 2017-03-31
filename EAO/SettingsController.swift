@@ -1,16 +1,9 @@
 //
-//  SettingsViewController.swift
+//  SettingsController.swift
 //  EAO
 //
-//  Created by Work on 2017-03-03.
+//  Created by Micha Volin on 2017-03-30.
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
 
-import UIKit
-
-class SettingsController: CommonViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-}
+import Foundation

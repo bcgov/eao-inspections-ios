@@ -34,6 +34,11 @@
 		110B7FE31E56383F00650A9D /* UIViewWithXibAndIBDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110B7FE21E56383F00650A9D /* UIViewWithXibAndIBDesignable.swift */; };
 		110B7FE71E5638E700650A9D /* UIEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110B7FE61E5638E700650A9D /* UIEvent.swift */; };
 		110B7FE91E56390100650A9D /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110B7FE81E56390100650A9D /* UIScreen.swift */; };
+		110FF0FC1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110FF0F91E8C2E2B000DB1A5 /* TextViewWithPlaceholder.swift */; };
+		110FF0FD1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.xib in Resources */ = {isa = PBXBuildFile; fileRef = 110FF0FA1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.xib */; };
+		110FF0FE1E8C2E2B000DB1A5 /* TextViewWithPlaceholderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110FF0FB1E8C2E2B000DB1A5 /* TextViewWithPlaceholderDelegate.swift */; };
+		110FF1011E8C34F1000DB1A5 /* RingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110FF0FF1E8C34F1000DB1A5 /* RingButton.swift */; };
+		110FF1021E8C34F1000DB1A5 /* RingButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 110FF1001E8C34F1000DB1A5 /* RingButton.xib */; };
 		116A90511E5E554F00195433 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116A90501E5E554F00195433 /* UIButton.swift */; };
 		118140851E6E34B4009A39BC /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118140841E6E34B4009A39BC /* UINavigationController.swift */; };
 		11D70B9D1E60DB5300167F36 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70B9C1E60DB5300167F36 /* UIAlertController.swift */; };
@@ -71,6 +76,11 @@
 		110B7FE21E56383F00650A9D /* UIViewWithXibAndIBDesignable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewWithXibAndIBDesignable.swift; sourceTree = "<group>"; };
 		110B7FE61E5638E700650A9D /* UIEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEvent.swift; sourceTree = "<group>"; };
 		110B7FE81E56390100650A9D /* UIScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		110FF0F91E8C2E2B000DB1A5 /* TextViewWithPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholder.swift; sourceTree = "<group>"; };
+		110FF0FA1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewWithPlaceholder.xib; sourceTree = "<group>"; };
+		110FF0FB1E8C2E2B000DB1A5 /* TextViewWithPlaceholderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholderDelegate.swift; sourceTree = "<group>"; };
+		110FF0FF1E8C34F1000DB1A5 /* RingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingButton.swift; sourceTree = "<group>"; };
+		110FF1001E8C34F1000DB1A5 /* RingButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RingButton.xib; sourceTree = "<group>"; };
 		116A90501E5E554F00195433 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		118140841E6E34B4009A39BC /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		11D70B9C1E60DB5300167F36 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
@@ -108,6 +118,7 @@
 		110B7FA61E56375300650A9D /* Essentials */ = {
 			isa = PBXGroup;
 			children = (
+				110FF0F81E8C2E2B000DB1A5 /* TextViewWithPlaceholder */,
 				11BE71041E733E63000BF9C4 /* Shapes */,
 				110B7FE41E56384500650A9D /* Views */,
 				110B7FE51E56384C00650A9D /* Table */,
@@ -170,9 +181,29 @@
 			name = Table;
 			sourceTree = "<group>";
 		};
+		110FF0F81E8C2E2B000DB1A5 /* TextViewWithPlaceholder */ = {
+			isa = PBXGroup;
+			children = (
+				110FF0F91E8C2E2B000DB1A5 /* TextViewWithPlaceholder.swift */,
+				110FF0FA1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.xib */,
+				110FF0FB1E8C2E2B000DB1A5 /* TextViewWithPlaceholderDelegate.swift */,
+			);
+			path = TextViewWithPlaceholder;
+			sourceTree = "<group>";
+		};
+		110FF1031E8C34F9000DB1A5 /* RingButton */ = {
+			isa = PBXGroup;
+			children = (
+				110FF0FF1E8C34F1000DB1A5 /* RingButton.swift */,
+				110FF1001E8C34F1000DB1A5 /* RingButton.xib */,
+			);
+			name = RingButton;
+			sourceTree = "<group>";
+		};
 		11BE71041E733E63000BF9C4 /* Shapes */ = {
 			isa = PBXGroup;
 			children = (
+				110FF1031E8C34F9000DB1A5 /* RingButton */,
 			);
 			name = Shapes;
 			sourceTree = "<group>";
@@ -248,6 +279,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				110FF1021E8C34F1000DB1A5 /* RingButton.xib in Resources */,
+				110FF0FD1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,8 +296,10 @@
 				110B7FD21E56377300650A9D /* CGRect.swift in Sources */,
 				110B7FDF1E5637F400650A9D /* GradientView.swift in Sources */,
 				110B7FD91E56377300650A9D /* UIViewController.swift in Sources */,
+				110FF0FE1E8C2E2B000DB1A5 /* TextViewWithPlaceholderDelegate.swift in Sources */,
 				110B7FD61E56377300650A9D /* UITableView.swift in Sources */,
 				110B7FCC1E56377300650A9D /* CollectionView.swift in Sources */,
+				110FF1011E8C34F1000DB1A5 /* RingButton.swift in Sources */,
 				110B7FD01E56377300650A9D /* CLLocationManager.swift in Sources */,
 				110B7FD71E56377300650A9D /* UIColor.swift in Sources */,
 				110B7FCB1E56377300650A9D /* Bool.swift in Sources */,
@@ -281,6 +316,7 @@
 				110B7FCE1E56377300650A9D /* Double.swift in Sources */,
 				110B7FDA1E56377300650A9D /* UIImage.swift in Sources */,
 				110B7FDC1E56377300650A9D /* UIFont.swift in Sources */,
+				110FF0FC1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.swift in Sources */,
 				110B7FD31E56377300650A9D /* UITabBar.swift in Sources */,
 				110B7FE31E56383F00650A9D /* UIViewWithXibAndIBDesignable.swift in Sources */,
 				11D70B9D1E60DB5300167F36 /* UIAlertController.swift in Sources */,
