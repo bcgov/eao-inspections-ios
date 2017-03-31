@@ -5,8 +5,11 @@
 //  Created by Micha Volin on 2017-03-30.
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
+import MapKit
 
-class InspectionsController: UIViewController{
+class InspectionsController: UIViewController, CLLocationManagerDelegate{
+	
+	let locationManager = CLLocationManager()
 	
 	@IBOutlet var tableView: UITableView!
 	
@@ -22,6 +25,16 @@ class InspectionsController: UIViewController{
 	override func viewDidLoad() {
 		tableView.contentInset.top = 50
 		tableView.contentInset.bottom = 70
+		locationManager.delegate = self
+		locationManager.requestWhenInUseAuthorization()
+	}
+	
+ 
+	
+	internal func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+		
+		print("Failed to initialize GPS: ", error.localizedDescription)
+		
 	}
 	
 }

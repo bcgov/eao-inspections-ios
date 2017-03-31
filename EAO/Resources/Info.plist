@@ -23,7 +23,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Please allow Camera Access to take a picture</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Show your location of testing</string>
+	<string>Please allow Location Access</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Please allow Photo Library Access to select a photo</string>
 	<key>UILaunchStoryboardName</key>
