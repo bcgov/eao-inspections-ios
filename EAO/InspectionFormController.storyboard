@@ -121,8 +121,13 @@
                             <constraint firstItem="Mv8-L4-QA8" firstAttribute="top" secondItem="lPq-NL-8B5" secondAttribute="bottom" constant="20" id="w84-ZO-p3B"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Inspection Form" id="1rD-tD-oaL"/>
+                    <navigationItem key="navigationItem" title="Inspection Form" id="1rD-tD-oaL">
+                        <barButtonItem key="backBarButtonItem" title=" " id="AsF-2H-Owu"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="g5p-eu-LJ9" id="k5U-bm-9QQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XcH-q8-ySb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

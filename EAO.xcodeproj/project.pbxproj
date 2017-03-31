@@ -45,6 +45,9 @@
 		11D70ED51E8DA02000CBF92C /* InspectionFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70ED41E8DA02000CBF92C /* InspectionFormCell.swift */; };
 		11D70ED91E8DA36800CBF92C /* ObservationElementController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D70ED81E8DA36800CBF92C /* ObservationElementController.storyboard */; };
 		11D70EDC1E8DA83D00CBF92C /* ObservationElementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70EDB1E8DA83D00CBF92C /* ObservationElementController.swift */; };
+		11D70EE21E8DD5D600CBF92C /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70EE11E8DD5D600CBF92C /* SettingsController.swift */; };
+		11D70EE41E8DD5EA00CBF92C /* SettingsController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D70EE31E8DD5EA00CBF92C /* SettingsController.storyboard */; };
+		11D70EE71E8DD66100CBF92C /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70EE61E8DD66100CBF92C /* SettingsCell.swift */; };
 		9688D51C1E69DA4300C49CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9688D51B1E69DA4300C49CD7 /* AppDelegate.swift */; };
 		9688D5311E69DA4300C49CD7 /* EAOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9688D5301E69DA4300C49CD7 /* EAOTests.swift */; };
 		BD3B058C1E6A3737005E2C19 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3B058B1E6A3737005E2C19 /* MapKit.framework */; };
@@ -127,6 +130,9 @@
 		11D70ED41E8DA02000CBF92C /* InspectionFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionFormCell.swift; sourceTree = "<group>"; };
 		11D70ED81E8DA36800CBF92C /* ObservationElementController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ObservationElementController.storyboard; sourceTree = "<group>"; };
 		11D70EDB1E8DA83D00CBF92C /* ObservationElementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationElementController.swift; sourceTree = "<group>"; };
+		11D70EE11E8DD5D600CBF92C /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		11D70EE31E8DD5EA00CBF92C /* SettingsController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsController.storyboard; sourceTree = "<group>"; };
+		11D70EE61E8DD66100CBF92C /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		9688D5181E69DA4300C49CD7 /* EAO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EAO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9688D51B1E69DA4300C49CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9688D52C1E69DA4300C49CD7 /* EAOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EAOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +191,7 @@
 				11CEADEB1E79E6F000E2242C /* MapPreview */,
 				BDA2DA0D1E7C898D00A9E3AC /* ProjectsPreview */,
 				11BBFB641E804C9700DEF7B4 /* SearchController */,
+				11D70EE51E8DD5F900CBF92C /* Settings */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -293,6 +300,16 @@
 				11D70EDB1E8DA83D00CBF92C /* ObservationElementController.swift */,
 			);
 			name = ObservationElement;
+			sourceTree = "<group>";
+		};
+		11D70EE51E8DD5F900CBF92C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				11D70EE31E8DD5EA00CBF92C /* SettingsController.storyboard */,
+				11D70EE11E8DD5D600CBF92C /* SettingsController.swift */,
+				11D70EE61E8DD66100CBF92C /* SettingsCell.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		9688D50F1E69DA4300C49CD7 = {
@@ -504,6 +521,7 @@
 				110FF0E41E8C2CB2000DB1A5 /* MapPreviewController.storyboard in Resources */,
 				11D70EBE1E8D8E0000CBF92C /* ProjectListController.storyboard in Resources */,
 				110FF0B51E8C2833000DB1A5 /* samplePDF.pdf in Resources */,
+				11D70EE41E8DD5EA00CBF92C /* SettingsController.storyboard in Resources */,
 				110FF0E01E8C2CA7000DB1A5 /* UploadPhotoController.storyboard in Resources */,
 				110FF14D1E8C4A50000DB1A5 /* InspectionsController.storyboard in Resources */,
 				110FF0E81E8C2CC1000DB1A5 /* ProjectPreviewController.storyboard in Resources */,
@@ -535,8 +553,10 @@
 				11D70EC61E8D90B600CBF92C /* ProjectListCell.swift in Sources */,
 				110FF0AA1E8C25C5000DB1A5 /* UITableView.swift in Sources */,
 				11D70EDC1E8DA83D00CBF92C /* ObservationElementController.swift in Sources */,
+				11D70EE71E8DD66100CBF92C /* SettingsCell.swift in Sources */,
 				110FF0E11E8C2CA7000DB1A5 /* UploadPhotoController.swift in Sources */,
 				110FF0EF1E8C2CDF000DB1A5 /* Constant.swift in Sources */,
+				11D70EE21E8DD5D600CBF92C /* SettingsController.swift in Sources */,
 				110FF0ED1E8C2CD0000DB1A5 /* SearchController.swift in Sources */,
 				110FF0E91E8C2CC1000DB1A5 /* ProjectPreviewController.swift in Sources */,
 				110FF0A21E8C25C5000DB1A5 /* Date.swift in Sources */,
