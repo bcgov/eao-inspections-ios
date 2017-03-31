@@ -53,28 +53,29 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mfL-wJ-oEj">
-                                                            <rect key="frame" x="60" y="20.5" width="232.5" height="38.5"/>
+                                                            <rect key="frame" x="60" y="20.5" width="267" height="38.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwK-c0-DeC">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="232.5" height="21.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="267" height="21.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                     <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ci0-cs-9DY">
-                                                                    <rect key="frame" x="0.0" y="21.5" width="232.5" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="21.5" width="267" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaZ-eh-hI9">
-                                                            <rect key="frame" x="302.5" y="8" width="64.5" height="63.5"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaZ-eh-hI9">
+                                                            <rect key="frame" x="337" y="25.5" width="30" height="29"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="UaZ-eh-hI9" secondAttribute="height" multiplier="1:1" constant="1" id="4fv-BP-tv1"/>
+                                                                <constraint firstAttribute="width" constant="30" id="ULp-ZU-4XP"/>
                                                             </constraints>
-                                                            <state key="normal" title="Edit"/>
+                                                            <state key="normal" image="icon_edit"/>
                                                         </button>
                                                     </subviews>
                                                     <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
@@ -136,5 +137,6 @@
     </scenes>
     <resources>
         <image name="icon_add_grey" width="315" height="315"/>
+        <image name="icon_edit" width="67" height="67"/>
     </resources>
 </document>

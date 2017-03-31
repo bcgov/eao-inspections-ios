@@ -5,11 +5,15 @@
 //  Created by Micha Volin on 2017-03-30.
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
-
+import MapKit
 class ObservationElementController: UIViewController{
+	
+	var locationManager = CLLocationManager()
 	
 	@IBOutlet var scrollView : UIScrollView!
 	@IBOutlet var stackView  : UIStackView!
+	
+	@IBOutlet var GPSLabel: UIButton!
 	
 	var saveAction: (()->Void)?
 	
@@ -39,6 +43,8 @@ class ObservationElementController: UIViewController{
 	
 	override func viewDidLoad() {
 		addDismissKeyboardOnTapRecognizer(on: scrollView)
+		
+		GPSLabel.setTitle("GPS: \(locationManager.coordinateAsString() ?? "")", for: .normal)
 	}
 	
 }

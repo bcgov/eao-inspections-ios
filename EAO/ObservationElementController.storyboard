@@ -291,6 +291,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="GPSLabel" destination="hxJ-iE-uRp" id="0RK-vV-pdR"/>
                         <outlet property="scrollView" destination="lth-sO-X8t" id="fxT-dm-6fD"/>
                         <outlet property="stackView" destination="27e-ic-OG2" id="xjo-jn-po5"/>
                     </connections>
