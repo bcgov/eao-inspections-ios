@@ -170,20 +170,20 @@
 			name = LaunchScreen;
 			sourceTree = "<group>";
 		};
-		110FF18E1E8C5B6E000DB1A5 /* EAOInspections */ = {
+		110FF18E1E8C5B6E000DB1A5 /* Inspections */ = {
 			isa = PBXGroup;
 			children = (
 				110FF14C1E8C4A50000DB1A5 /* InspectionsController.storyboard */,
 				11D70EAF1E8D7A9800CBF92C /* InspectionsController.swift */,
 				110FF1921E8C5C39000DB1A5 /* Cell */,
 			);
-			name = EAOInspections;
+			name = Inspections;
 			sourceTree = "<group>";
 		};
 		110FF1911E8C5C25000DB1A5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				110FF18E1E8C5B6E000DB1A5 /* EAOInspections */,
+				110FF18E1E8C5B6E000DB1A5 /* Inspections */,
 				11D70EB81E8D856900CBF92C /* InspectionSetup */,
 				11D70ED31E8D9BF300CBF92C /* InspectionForm */,
 				11D70EDE1E8DA84700CBF92C /* ObservationElement */,

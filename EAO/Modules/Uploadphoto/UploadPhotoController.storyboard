@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Wu6-Uf-QB5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Wu6-Uf-QB5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -49,41 +49,18 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWU-mz-Wbm" customClass="TextViewWithPlaceholder" customModule="EAO" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="290" width="355" height="50"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qKG-0J-XCw">
+                                        <rect key="frame" x="10" y="299.5" width="355" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="smd-iY-zPb"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="57R-yC-W11"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Caption..."/>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                <color key="value" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="counter" value="NO"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="top">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="left">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="bottom">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="right">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="charLimit">
-                                                <integer key="value" value="400"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetX">
                                                 <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
                                                 <real key="value" value="1"/>
@@ -94,13 +71,10 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="font">
-                                                <integer key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                    </view>
+                                    </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zvy-mg-5W7">
-                                        <rect key="frame" x="10" y="380" width="355" height="50"/>
+                                        <rect key="frame" x="10" y="369.5" width="355" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="T4i-YI-1uv">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
@@ -159,7 +133,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ob7-GE-FdD">
-                                        <rect key="frame" x="10" y="450" width="355" height="50"/>
+                                        <rect key="frame" x="10" y="439.5" width="355" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NDE-5s-GnW">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
@@ -217,6 +191,12 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHE-iV-fus">
+                                        <rect key="frame" x="10" y="280" width="56" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                        <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
@@ -227,16 +207,18 @@
                                     <constraint firstItem="ob7-GE-FdD" firstAttribute="leading" secondItem="KdW-uM-Rxg" secondAttribute="leading" constant="10" id="5ih-K9-PRg"/>
                                     <constraint firstItem="2Rz-zL-95u" firstAttribute="leading" secondItem="GbB-tC-jlG" secondAttribute="leading" id="7Qy-I4-hJm"/>
                                     <constraint firstItem="34s-0C-e5W" firstAttribute="centerX" secondItem="GbB-tC-jlG" secondAttribute="centerX" id="8js-x7-umw"/>
+                                    <constraint firstAttribute="trailing" secondItem="qKG-0J-XCw" secondAttribute="trailing" constant="10" id="AIg-gE-5s5"/>
                                     <constraint firstItem="GbB-tC-jlG" firstAttribute="top" secondItem="KdW-uM-Rxg" secondAttribute="top" constant="20" id="E0V-Bd-1P8"/>
                                     <constraint firstItem="34s-0C-e5W" firstAttribute="bottom" secondItem="GbB-tC-jlG" secondAttribute="bottom" constant="-10" id="E4t-CD-Zs1"/>
-                                    <constraint firstAttribute="trailing" secondItem="mWU-mz-Wbm" secondAttribute="trailing" constant="10" id="EiK-f3-gy1"/>
+                                    <constraint firstItem="qKG-0J-XCw" firstAttribute="leading" secondItem="KdW-uM-Rxg" secondAttribute="leading" constant="10" id="G77-5v-gwe"/>
+                                    <constraint firstItem="Zvy-mg-5W7" firstAttribute="top" secondItem="qKG-0J-XCw" secondAttribute="bottom" constant="10" id="IPQ-5f-4HN"/>
+                                    <constraint firstItem="zHE-iV-fus" firstAttribute="top" secondItem="2Rz-zL-95u" secondAttribute="bottom" constant="10" id="Mks-df-qcl"/>
                                     <constraint firstItem="2Rz-zL-95u" firstAttribute="bottom" secondItem="GbB-tC-jlG" secondAttribute="bottom" id="Oxb-wM-brW"/>
                                     <constraint firstAttribute="bottom" secondItem="ob7-GE-FdD" secondAttribute="bottom" constant="60" id="WRw-2x-BLn"/>
+                                    <constraint firstItem="zHE-iV-fus" firstAttribute="leading" secondItem="KdW-uM-Rxg" secondAttribute="leading" constant="10" id="bD9-dm-img"/>
+                                    <constraint firstItem="qKG-0J-XCw" firstAttribute="top" secondItem="zHE-iV-fus" secondAttribute="bottom" id="d4B-b8-GwI"/>
                                     <constraint firstAttribute="trailing" secondItem="ob7-GE-FdD" secondAttribute="trailing" constant="10" id="eiL-VH-cfv"/>
                                     <constraint firstAttribute="trailing" secondItem="GbB-tC-jlG" secondAttribute="trailing" constant="10" id="jWj-C4-7Uf"/>
-                                    <constraint firstItem="mWU-mz-Wbm" firstAttribute="top" secondItem="GbB-tC-jlG" secondAttribute="bottom" constant="20" id="n3W-z3-3MU"/>
-                                    <constraint firstItem="mWU-mz-Wbm" firstAttribute="leading" secondItem="KdW-uM-Rxg" secondAttribute="leading" constant="10" id="nCu-US-hch"/>
-                                    <constraint firstItem="Zvy-mg-5W7" firstAttribute="top" secondItem="mWU-mz-Wbm" secondAttribute="bottom" constant="40" id="ptG-eh-GEZ"/>
                                     <constraint firstItem="Zvy-mg-5W7" firstAttribute="leading" secondItem="KdW-uM-Rxg" secondAttribute="leading" constant="10" id="sIl-AO-Gsp"/>
                                     <constraint firstItem="GbB-tC-jlG" firstAttribute="leading" secondItem="KdW-uM-Rxg" secondAttribute="leading" constant="10" id="sd3-T8-xJa"/>
                                     <constraint firstItem="ob7-GE-FdD" firstAttribute="top" secondItem="Zvy-mg-5W7" secondAttribute="bottom" constant="20" id="yKm-RZ-1oh"/>
@@ -275,7 +257,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5l-25-n8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405.60000000000002" y="-158.77061469265368"/>
+            <point key="canvasLocation" x="405.60000000000002" y="-159.22038980509745"/>
         </scene>
     </scenes>
     <resources>

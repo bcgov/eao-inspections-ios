@@ -15,7 +15,8 @@ class InspectionsController: UIViewController{
 	}
 	
 	@IBAction func editTapped(_ sender: UIButton) {
-		
+		let inspectionFormController = InspectionFormController.storyboardInstance() as! InspectionFormController
+		push(controller: inspectionFormController)
 	}
 	
 	override func viewDidLoad() {
