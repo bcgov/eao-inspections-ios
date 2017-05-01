@@ -8,8 +8,6 @@
 
 extension UIEvent{
     func point(in view: UIView) -> CGPoint?{
-        
         return allTouches?.first?.location(in: view)
-        
     }
 }

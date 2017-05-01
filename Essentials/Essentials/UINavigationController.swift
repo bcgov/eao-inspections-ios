@@ -7,6 +7,7 @@
 //
 
 extension UINavigationController{
- 
-    
+	public var top: UIViewController?{
+		return topViewController
+	}
 }

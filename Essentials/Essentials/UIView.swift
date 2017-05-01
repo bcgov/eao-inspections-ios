@@ -58,86 +58,95 @@ extension UIView {
         return instance
     }
     
-    
-    
+	///makes self a circle
+	public func circle(){
+		layer.cornerRadius = frame.width/2
+	}
+	
+	public var parent: UIViewController? {
+		var responder: UIResponder? = self
+		while responder != nil {
+			responder = responder!.next
+			if let viewController = responder as? UIViewController {
+				return viewController
+			}
+		}
+		return nil
+	}
+	
 }
 
 
 extension UIView{
-    
-    @IBInspectable public var masksToBounds: Bool{
-        get { return false }
-        set {
-            
-            layer.masksToBounds = newValue
-        }
-    }
-    
-    @IBInspectable public var shadowColor: UIColor{
-        get { return UIColor.black }
-        set {
-
-            layer.shadowColor = newValue.cgColor
-        }
-    }
-    
-    @IBInspectable public var shadowOffsetX: CGFloat{
-        get { return 0 }
-        set {
- 
-            layer.shadowOffset.width = newValue
-        }
-    }
-    
-    @IBInspectable public var shadowOffsetY: CGFloat{
-        get { return 0 }
-        set {
-            
-            layer.shadowOffset.height = newValue
-        }
-    }
-    
-    
-    @IBInspectable public var shadowOpacity: Float{
-        get { return 0 }
-        set {
- 
-            layer.shadowOpacity = newValue
-        }
-    }
-    
-    @IBInspectable public var shadowRadius: CGFloat{
-        get { return 0 }
-        set {
- 
-            layer.shadowRadius = newValue
-        }
-    }
-    
-    @IBInspectable public var cornerRadius: CGFloat {
-        get { return layer.cornerRadius}
-        set {
-            
-            layer.cornerRadius  = newValue
-        }
-    }
-    
-    @IBInspectable public var borderWidth: CGFloat {
-        get { return layer.borderWidth}
-        set {
-            
-            self.layer.borderWidth = newValue
-        }
-    }
-    
-    @IBInspectable public var borderColor: UIColor? {
-        get { return nil }
-        set {
-            
-            self.layer.borderColor = newValue?.cgColor
-        }
-    }
-   
+	
+	@IBInspectable public var masksToBounds: Bool{
+		get { return layer.masksToBounds }
+		set {
+			layer.masksToBounds = newValue
+		}
+	}
+	
+	@IBInspectable public var shadowColor: UIColor?{
+		get {
+			if let color = layer.shadowColor{
+				return UIColor(cgColor: color)
+			}
+			return nil
+		}
+		set {
+			layer.shadowColor = newValue?.cgColor
+		}
+	}
+	
+	@IBInspectable public var shadowOffsetX: CGFloat{
+		get { return layer.shadowOffset.width }
+		set {
+			layer.shadowOffset.width = newValue
+		}
+	}
+	
+	@IBInspectable public var shadowOffsetY: CGFloat{
+		get { return layer.shadowOffset.height }
+		set {
+			layer.shadowOffset.height = newValue
+		}
+	}
+	
+	
+	@IBInspectable public var shadowOpacity: Float{
+		get { return layer.shadowOpacity }
+		set {
+			layer.shadowOpacity = newValue
+		}
+	}
+	
+	@IBInspectable public var shadowRadius: CGFloat{
+		get { return layer.shadowRadius }
+		set {
+			layer.shadowRadius = newValue
+		}
+	}
+	
+	@IBInspectable public var cornerRadius: CGFloat {
+		get { return layer.cornerRadius}
+		set {
+			layer.cornerRadius = newValue
+		}
+	}
+	
+	@IBInspectable public var borderWidth: CGFloat {
+		get { return layer.borderWidth}
+		set {
+			self.layer.borderWidth = newValue
+		}
+	}
+	
+	@IBInspectable public var borderColor: UIColor? {
+		get { return UIColor(cgColor:layer.borderColor ?? UIColor.clear.cgColor) }
+		set {
+			layer.borderColor = newValue?.cgColor
+		}
+	}
 }
 
 

@@ -36,15 +36,7 @@ public class Table: UITableView, UITableViewDelegate, UITableViewDataSource{
         delegate = self
         dataSource = self
     }
-    
-    func getIndexPathFromEvent(event: UIEvent) -> IndexPath?{
-        
-        guard let point = event.point(in: self) else{
-            return nil
-        }
-        
-        return self.indexPathForRow(at: point)
-    }
+ 
     
     func scrollToBottom(completion: (()->Void)?){
 

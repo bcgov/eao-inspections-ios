@@ -1,9 +1,21 @@
 //
-//  SettingsController.swift
+//  SettingsViewController.swift
 //  EAO
 //
-//  Created by Micha Volin on 2017-03-30.
+//  Created by Work on 2017-03-03.
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class SettingsController: UITableViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+	
+	@IBAction func logoutTapped(_ sender: UIButton) {
+		self.dismiss(animated: true, completion: nil)
+	}
+	
+}

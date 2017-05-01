@@ -17,5 +17,11 @@ extension UITableView{
    public func dequeue(identifier: String) -> UITableViewCell?{
       return dequeueReusableCell(withIdentifier: identifier)
    }
-   
+	
+	public func getIndexPathFromEvent(event: UIEvent) -> IndexPath?{
+		guard let point = event.point(in: self) else{
+			return nil
+		}
+		return self.indexPathForRow(at: point)
+	}
 }

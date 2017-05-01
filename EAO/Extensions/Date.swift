@@ -13,4 +13,16 @@ extension Date{
         dateFormatter.dateFormat = "EEE MMM d, H:m:s, y"
         return dateFormatter.string(from: self)
     }
+	
+	public func datePickerFormat() -> String{
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "EEEE MMM dd, YYYY"
+		return dateFormatter.string(from: self)
+	}
+	
+	public func inspectionFormat() -> String{
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "MMM dd, YYYY"
+		return dateFormatter.string(from: self)
+	}
 }

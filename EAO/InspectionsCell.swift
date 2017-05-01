@@ -11,8 +11,9 @@ class InspectionsCell: UITableViewCell{
 	@IBOutlet var timeLabel  : UILabel!
 	@IBOutlet var editButton : UIButton!
 	
-	func setData(title: String?, time: String?){
+	func setData(title: String?, time: String?, isReadOnly: Bool){
 		titleLabel.text = title
 		timeLabel.text  = time
+		editButton.isEnabled = !isReadOnly
 	}
 }
