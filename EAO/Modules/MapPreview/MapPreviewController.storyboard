@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MYk-Os-DoD">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Project Map-->
+        <scene sceneID="rAT-bR-Rrm">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="MYk-Os-DoD" customClass="MapPreviewController" customModule="EAO" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kmP-Oa-DcE"/>
+                        <viewControllerLayoutGuide type="bottom" id="9a5-Fe-UQE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wwT-E2-f1B">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vTW-P3-3mJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <connections>
+                                    <outlet property="delegate" destination="MYk-Os-DoD" id="F3x-Dj-ocu"/>
+                                </connections>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nc-nU-6KH">
+                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="LLc-4a-G7x"/>
+                                    <constraint firstAttribute="width" constant="20" id="Rje-0h-tPU"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rg9-N0-nu2">
+                                <rect key="frame" x="137" y="607" width="100" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5Hx-ZR-qi4"/>
+                                    <constraint firstAttribute="width" constant="100" id="qqM-8q-ZfD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <state key="normal" title="Drop pin">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="dropPin:" destination="MYk-Os-DoD" eventType="touchUpInside" id="Ykm-XU-DCb"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZUd-0L-F9b">
+                                <rect key="frame" x="139" y="84" width="98" height="52"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZy-YK-bUB">
+                                        <rect key="frame" x="0.0" y="0.0" width="98" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xbm-3G-f8O">
+                                        <rect key="frame" x="0.0" y="28.5" width="98" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1gH-yz-1r1">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="VxT-rI-iF2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vTW-P3-3mJ" secondAttribute="trailing" id="BZz-rX-q9f"/>
+                            <constraint firstItem="vTW-P3-3mJ" firstAttribute="top" secondItem="kmP-Oa-DcE" secondAttribute="bottom" id="BvV-IA-SLf"/>
+                            <constraint firstItem="Rg9-N0-nu2" firstAttribute="centerX" secondItem="wwT-E2-f1B" secondAttribute="centerX" id="DI3-k4-fuj"/>
+                            <constraint firstItem="1gH-yz-1r1" firstAttribute="bottom" secondItem="vTW-P3-3mJ" secondAttribute="bottom" id="OCI-1z-S4O"/>
+                            <constraint firstItem="1gH-yz-1r1" firstAttribute="trailing" secondItem="vTW-P3-3mJ" secondAttribute="trailing" id="Wru-Nm-bAt"/>
+                            <constraint firstItem="ZUd-0L-F9b" firstAttribute="centerX" secondItem="wwT-E2-f1B" secondAttribute="centerX" id="ZZX-OD-BvH"/>
+                            <constraint firstAttribute="bottom" secondItem="vTW-P3-3mJ" secondAttribute="bottom" id="ZwS-s2-4md"/>
+                            <constraint firstItem="ZUd-0L-F9b" firstAttribute="top" secondItem="kmP-Oa-DcE" secondAttribute="bottom" constant="20" id="fdu-AU-XV5"/>
+                            <constraint firstItem="1gH-yz-1r1" firstAttribute="top" secondItem="vTW-P3-3mJ" secondAttribute="top" id="nNO-QO-kkv"/>
+                            <constraint firstItem="1gH-yz-1r1" firstAttribute="leading" secondItem="vTW-P3-3mJ" secondAttribute="leading" id="ne9-km-HXz"/>
+                            <constraint firstItem="1nc-nU-6KH" firstAttribute="centerX" secondItem="wwT-E2-f1B" secondAttribute="centerX" id="rWb-xI-kJr"/>
+                            <constraint firstItem="vTW-P3-3mJ" firstAttribute="leading" secondItem="wwT-E2-f1B" secondAttribute="leading" id="vVL-DN-SJR"/>
+                            <constraint firstItem="1nc-nU-6KH" firstAttribute="centerY" secondItem="wwT-E2-f1B" secondAttribute="centerY" id="ydh-wY-i6A"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Rg9-N0-nu2" secondAttribute="bottom" constant="20" id="ykF-Iv-36J"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Project Map" id="9qu-Hv-vPD">
+                        <barButtonItem key="backBarButtonItem" title=" " id="E33-cH-dyz"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addLocationView" destination="3c9-xz-spW" id="KeH-PT-D5i"/>
+                        <outlet property="centerPin" destination="1nc-nU-6KH" id="2ae-a0-JJF"/>
+                        <outlet property="latitudeLabel" destination="pZy-YK-bUB" id="pmV-0V-SLG"/>
+                        <outlet property="longitudeLabel" destination="Xbm-3G-f8O" id="CEf-VB-0W0"/>
+                        <outlet property="mapView" destination="vTW-P3-3mJ" id="imV-Kb-xte"/>
+                        <outlet property="visualEffect" destination="1gH-yz-1r1" id="POu-yY-z4n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DdJ-DX-4Sd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="3c9-xz-spW">
+                    <rect key="frame" x="0.0" y="0.0" width="353" height="288"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFP-P9-Iwq" customClass="TextViewWithPlaceholder" customModule="EAO" customModuleProvider="target">
+                            <rect key="frame" x="10" y="10" width="333" height="226"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="top">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="left">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="bottom">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="right">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="charLimit">
+                                    <integer key="value" value="400"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Start typing..."/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                    <color key="value" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="scrollLimit">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="font">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="counter" value="YES"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <button opaque="NO" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5d-s0-yqV">
+                            <rect key="frame" x="129" y="246" width="95" height="32"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                            <state key="normal" title="Add Location">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="addLocation:" destination="MYk-Os-DoD" eventType="touchUpInside" id="515-MA-wDk"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aoc-IB-4Z9">
+                            <rect key="frame" x="129" y="278" width="95" height="1"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="bIe-yh-KGJ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="kFP-P9-Iwq" firstAttribute="top" secondItem="3c9-xz-spW" secondAttribute="top" constant="10" id="2Kf-sx-Foz"/>
+                        <constraint firstItem="p5d-s0-yqV" firstAttribute="centerX" secondItem="3c9-xz-spW" secondAttribute="centerX" id="2c1-Aw-QP9"/>
+                        <constraint firstItem="Aoc-IB-4Z9" firstAttribute="top" secondItem="p5d-s0-yqV" secondAttribute="bottom" id="4Za-Vs-9GR"/>
+                        <constraint firstItem="p5d-s0-yqV" firstAttribute="top" secondItem="kFP-P9-Iwq" secondAttribute="bottom" constant="10" id="E6C-1q-neu"/>
+                        <constraint firstAttribute="trailing" secondItem="kFP-P9-Iwq" secondAttribute="trailing" constant="10" id="Fk5-Xe-vBq"/>
+                        <constraint firstItem="kFP-P9-Iwq" firstAttribute="leading" secondItem="3c9-xz-spW" secondAttribute="leading" constant="10" id="Pzg-9x-sln"/>
+                        <constraint firstItem="p5d-s0-yqV" firstAttribute="trailing" secondItem="Aoc-IB-4Z9" secondAttribute="trailing" id="Xnl-LZ-ZXS"/>
+                        <constraint firstItem="p5d-s0-yqV" firstAttribute="leading" secondItem="Aoc-IB-4Z9" secondAttribute="leading" id="ois-oq-EPV"/>
+                        <constraint firstAttribute="bottom" secondItem="p5d-s0-yqV" secondAttribute="bottom" constant="10" id="yUb-cp-jMX"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </objects>
+            <point key="canvasLocation" x="448.80000000000001" y="-245.12743628185908"/>
+        </scene>
+    </scenes>
+</document>

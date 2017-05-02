@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gL0-0A-G6s">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Inspection Setup Controller-->
+        <scene sceneID="1qw-A5-xNd">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="gL0-0A-G6s" customClass="InspectionSetupController" customModule="EAO" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oeF-L2-Zc0"/>
+                        <viewControllerLayoutGuide type="bottom" id="FFd-im-Kn0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p3j-b9-F4s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34O-gF-fK3">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wet-Te-DXx">
+                                        <rect key="frame" x="0.0" y="10" width="375" height="540"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2x-Qo-kOd">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="WNV-mF-T0b"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                                <state key="normal" title="Select project">
+                                                    <color key="titleColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="left">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="projectTapped:" destination="gL0-0A-G6s" eventType="touchUpInside" id="KEj-Jo-nTc"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sUw-1U-UU6">
+                                                <rect key="frame" x="0.0" y="80" width="375" height="60"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="left">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="gL0-0A-G6s" id="mvh-iF-wgo"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subtitle..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lNA-Zp-nmH">
+                                                <rect key="frame" x="0.0" y="160" width="375" height="60"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="left">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="gL0-0A-G6s" id="83M-xt-rZi"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subtext..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Obn-kq-sf3">
+                                                <rect key="frame" x="0.0" y="240" width="375" height="60"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="left">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="gL0-0A-G6s" id="UW0-Zb-rQJ"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Inspection number..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C33-00-dkE">
+                                                <rect key="frame" x="0.0" y="320" width="375" height="60"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="left">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="gL0-0A-G6s" id="5Kh-eZ-saV"/>
+                                                </connections>
+                                            </textField>
+                                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BcM-DL-OSc">
+                                                <rect key="frame" x="0.0" y="400" width="375" height="60"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <state key="normal" title="Start Date">
+                                                    <color key="titleColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="icon_add_grey"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                        <color key="value" red="1" green="0.75899006552590098" blue="0.76177386025611293" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="left">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="pickDate:" destination="gL0-0A-G6s" eventType="touchUpInside" id="m41-Nj-EyI"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1B-N6-sjl">
+                                                <rect key="frame" x="0.0" y="480" width="375" height="60"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <state key="normal" title="End Date">
+                                                    <color key="titleColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="left">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="pickDate:" destination="gL0-0A-G6s" eventType="touchUpInside" id="Dwq-jn-5ge"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="wet-Te-DXx" secondAttribute="bottom" constant="80" id="RY0-U3-rOq"/>
+                                    <constraint firstAttribute="trailing" secondItem="wet-Te-DXx" secondAttribute="trailing" id="XN9-YG-xcc"/>
+                                    <constraint firstItem="wet-Te-DXx" firstAttribute="leading" secondItem="34O-gF-fK3" secondAttribute="leading" id="c0S-Me-UHw"/>
+                                    <constraint firstItem="wet-Te-DXx" firstAttribute="top" secondItem="34O-gF-fK3" secondAttribute="top" constant="10" id="sv6-IY-H34"/>
+                                </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMn-kJ-jCr">
+                                <rect key="frame" x="10" y="607" width="355" height="50"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="wnh-mE-1R4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <state key="normal" title="Create">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="createTapped:" destination="gL0-0A-G6s" eventType="touchUpInside" id="Udv-Jx-D7J"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="34O-gF-fK3" firstAttribute="leading" secondItem="p3j-b9-F4s" secondAttribute="leading" id="1OJ-hI-NjZ"/>
+                            <constraint firstItem="tMn-kJ-jCr" firstAttribute="leading" secondItem="p3j-b9-F4s" secondAttribute="leading" constant="10" id="CZL-nT-jSm"/>
+                            <constraint firstItem="34O-gF-fK3" firstAttribute="top" secondItem="oeF-L2-Zc0" secondAttribute="bottom" id="Ca4-dK-Py9"/>
+                            <constraint firstItem="wet-Te-DXx" firstAttribute="width" secondItem="p3j-b9-F4s" secondAttribute="width" id="ILv-GC-g15"/>
+                            <constraint firstAttribute="trailing" secondItem="34O-gF-fK3" secondAttribute="trailing" id="TO9-kb-0FX"/>
+                            <constraint firstAttribute="trailing" secondItem="tMn-kJ-jCr" secondAttribute="trailing" constant="10" id="V7o-6b-ZNV"/>
+                            <constraint firstItem="FFd-im-Kn0" firstAttribute="top" secondItem="tMn-kJ-jCr" secondAttribute="bottom" constant="10" id="sHM-hQ-hTh"/>
+                            <constraint firstItem="FFd-im-Kn0" firstAttribute="top" secondItem="34O-gF-fK3" secondAttribute="bottom" id="tka-XO-y78"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ybm-6L-ULn">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="R0f-9R-AqM">
+                            <rect key="frame" x="113" y="6" width="150" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="zKK-E4-zpb">
+                                    <rect key="frame" x="152" y="6" width="20" height="20"/>
+                                    <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </activityIndicatorView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inspection Set Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a08-5v-Czx">
+                                    <rect key="frame" x="3" y="6" width="144" height="22"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="a08-5v-Czx" firstAttribute="centerX" secondItem="R0f-9R-AqM" secondAttribute="centerX" id="5Lv-vo-v4l"/>
+                                <constraint firstItem="a08-5v-Czx" firstAttribute="centerY" secondItem="R0f-9R-AqM" secondAttribute="centerY" id="KwV-Z5-ing"/>
+                                <constraint firstItem="zKK-E4-zpb" firstAttribute="leading" secondItem="a08-5v-Czx" secondAttribute="trailing" constant="5" id="b3L-Va-Bf0"/>
+                                <constraint firstItem="zKK-E4-zpb" firstAttribute="centerY" secondItem="R0f-9R-AqM" secondAttribute="centerY" id="mrN-we-PC8"/>
+                            </constraints>
+                        </view>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="button" destination="tMn-kJ-jCr" id="WCA-aA-F9m"/>
+                        <outlet property="indicator" destination="zKK-E4-zpb" id="r5O-mf-xTQ"/>
+                        <outlet property="scrollView" destination="34O-gF-fK3" id="pWi-Gx-Ku1"/>
+                        <outletCollection property="fields" destination="sUw-1U-UU6" collectionClass="NSMutableArray" id="2vc-Xj-H8Z"/>
+                        <outletCollection property="fields" destination="lNA-Zp-nmH" collectionClass="NSMutableArray" id="CQb-En-Ksu"/>
+                        <outletCollection property="fields" destination="Obn-kq-sf3" collectionClass="NSMutableArray" id="J0E-e1-GDM"/>
+                        <outletCollection property="buttons" destination="B2x-Qo-kOd" collectionClass="NSMutableArray" id="ryk-k2-HNk"/>
+                        <outletCollection property="buttons" destination="BcM-DL-OSc" collectionClass="NSMutableArray" id="ul9-tI-I3p"/>
+                        <outletCollection property="buttons" destination="C1B-N6-sjl" collectionClass="NSMutableArray" id="MXl-9I-aw9"/>
+                        <outletCollection property="fields" destination="C33-00-dkE" collectionClass="NSMutableArray" id="lvI-H9-XRp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z2b-zW-gJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23" y="100"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_add_grey" width="315" height="315"/>
+    </resources>
+</document>
