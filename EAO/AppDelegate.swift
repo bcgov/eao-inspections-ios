@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-		LaunchScreen.show()
+		
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-		LaunchScreen.hide()
+		
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

@@ -1,0 +1,6 @@
+framework module Pods_EAOTests {
+  umbrella header "Pods-EAOTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
