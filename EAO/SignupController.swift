@@ -7,9 +7,7 @@
 //
 
 class SignupController: UIViewController{
-	
 	@IBAction func loginTapped(_ sender: UIButton) {
 		dismiss(animated: true, completion: nil)
 	}
-	
 }

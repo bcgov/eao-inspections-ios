@@ -34,7 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			$0.isLocalDatastoreEnabled = true
 		}
 		Parse.initialize(with: configuration)
-		 
+		UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.blue
+		UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         return true
     }
 

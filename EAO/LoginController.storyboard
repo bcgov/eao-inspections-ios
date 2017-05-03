@@ -35,24 +35,30 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="left">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="G1Q-iD-kVC" id="XUe-gE-jT6"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZQd-v6-hxX">
                                                 <rect key="frame" x="0.0" y="70" width="335" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="left">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <outlet property="delegate" destination="G1Q-iD-kVC" id="tFa-vV-jgS"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -72,7 +78,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="KoO-03-m5Y" kind="show" id="4Z4-AT-fFb"/>
+                                            <action selector="loginTapped:" destination="G1Q-iD-kVC" eventType="touchUpInside" id="vqv-7e-MUa"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEG-Vv-R66">
@@ -147,20 +153,13 @@
                     </view>
                     <connections>
                         <outlet property="passwordField" destination="ZQd-v6-hxX" id="wRe-n7-YGH"/>
+                        <outlet property="scrollView" destination="0Sm-ix-1LE" id="amu-UI-lDG"/>
                         <outlet property="usernameField" destination="6Jv-om-wKV" id="bMJ-fd-xM9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evX-LU-gsd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="212" y="220.83958020989508"/>
-        </scene>
-        <!--InspectionsController-->
-        <scene sceneID="dAu-up-3Xk">
-            <objects>
-                <viewControllerPlaceholder storyboardName="InspectionsController" id="KoO-03-m5Y" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s2c-pC-kYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="925" y="220"/>
         </scene>
     </scenes>
     <resources>

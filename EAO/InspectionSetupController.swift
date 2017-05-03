@@ -7,11 +7,9 @@
 //
 
 final class InspectionSetupController: UIViewController, KeyboardDelegate{
-	public var inspection: PFInspection?
+	var inspection: PFInspection?
 	fileprivate var inputs = [String : Any?]()
-	
 	//MARK: -
-	
 	@IBOutlet var button	 : UIButton!
 	@IBOutlet var indicator  : UIActivityIndicatorView!
 	@IBOutlet var scrollView : UIScrollView!
@@ -20,6 +18,7 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 	//[selectProject, start date, end date]
 	@IBOutlet var buttons : [UIButton]!
  
+	//MARK: -
 	@IBAction func projectTapped(_ sender: UIButton) {
 		let projectListController = ProjectListController.storyboardInstance() as! ProjectListController
 		projectListController.result = { (title) in
@@ -218,12 +217,4 @@ extension InspectionSetupController{
 		static let error = UIAlertController(title: "ERROR!", message: "Inspection failed to be saved,\nPlease try again")
 	}
 }
-
-
-
-
-
-
-
-
 
