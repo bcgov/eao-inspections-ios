@@ -45,6 +45,7 @@
 		1159B3A51EB11FD700F72750 /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1159B3A41EB11FD700F72750 /* KeyboardDelegate.swift */; };
 		116A90511E5E554F00195433 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116A90501E5E554F00195433 /* UIButton.swift */; };
 		116E3C501EBA51B800AE52D3 /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E3C4F1EBA51B800AE52D3 /* UISearchBar.swift */; };
+		117FEC061EBB975D00D5CD8D /* NSString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117FEC051EBB975D00D5CD8D /* NSString.swift */; };
 		118140851E6E34B4009A39BC /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118140841E6E34B4009A39BC /* UINavigationController.swift */; };
 		11D70B9D1E60DB5300167F36 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70B9C1E60DB5300167F36 /* UIAlertController.swift */; };
 		11EC1FCD1E64AC46008FE4CD /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC1FCC1E64AC46008FE4CD /* UserDefaults.swift */; };
@@ -92,6 +93,7 @@
 		1159B3A41EB11FD700F72750 /* KeyboardDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
 		116A90501E5E554F00195433 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		116E3C4F1EBA51B800AE52D3 /* UISearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
+		117FEC051EBB975D00D5CD8D /* NSString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSString.swift; sourceTree = "<group>"; };
 		118140841E6E34B4009A39BC /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		11D70B9C1E60DB5300167F36 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		11EC1FCC1E64AC46008FE4CD /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				116E3C4F1EBA51B800AE52D3 /* UISearchBar.swift */,
 				110B7FE61E5638E700650A9D /* UIEvent.swift */,
 				110B7FB31E56377300650A9D /* String.swift */,
+				117FEC051EBB975D00D5CD8D /* NSString.swift */,
 				11EC1FCE1E64AC53008FE4CD /* Int.swift */,
 				110B7FB41E56377300650A9D /* Date.swift */,
 				110B7FB51E56377300650A9D /* Data.swift */,
@@ -358,6 +361,7 @@
 				110B7FE11E56382B00650A9D /* Table.swift in Sources */,
 				110B7FCF1E56377300650A9D /* CLLocationCoordinate.swift in Sources */,
 				110B7FC91E56377300650A9D /* Date.swift in Sources */,
+				117FEC061EBB975D00D5CD8D /* NSString.swift in Sources */,
 				1159B39B1EB107C300F72750 /* DatePickerController.swift in Sources */,
 				110B7FD11E56377300650A9D /* CGPoint.swift in Sources */,
 				110B7FD81E56377300650A9D /* UIView.swift in Sources */,

@@ -9,7 +9,7 @@
 class ProjectListCell: UITableViewCell{
 	@IBOutlet var titleLabel: UILabel!
 	
-	func setData(title: String?){
-		self.titleLabel.text = title
+	func setData(title: NSAttributedString?){
+		self.titleLabel.attributedText = title
 	}
 }

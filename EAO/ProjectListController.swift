@@ -11,7 +11,7 @@ final class ProjectListController: UIViewController{
 	var result : ((_: String?)->Void)?
 
 	fileprivate var projects : [String]?
-	fileprivate var filtered : [String]?
+	fileprivate var filtered : [NSMutableAttributedString]?
 	
 	//MARK:-
 	@IBOutlet fileprivate var indicator: UIActivityIndicatorView!
@@ -20,8 +20,8 @@ final class ProjectListController: UIViewController{
 	
 	//MARK:-
 	override func viewDidLoad() {
-		load()
 		searchBar.returnKeyType = .default
+		load()
 	}
 	
 	deinit {
@@ -29,12 +29,26 @@ final class ProjectListController: UIViewController{
 	}
 	
 	//MARK:-
-	fileprivate func filter(with text: String?) -> [String]?{
-		guard let text = text else { return nil }
+	fileprivate func filter(by search: String?) -> [NSMutableAttributedString]?{
+		guard let text = search?.lowercased() else { return nil }
 		let filtered = projects?.filter({ (name) -> Bool in
-			name.lowercased().hasPrefix(text.lowercased())
+			name.lowercased().contains(text)
 		})
-		return filtered
+		let sorted = filtered?.sorted(by: { (left, right) -> Bool in
+			left.map(to: text) > right.map(to: text)
+		})
+		var array = [NSMutableAttributedString]()
+		sorted?.forEach({ (string) in
+			let attributed = NSMutableAttributedString(string: string)
+			if let range = attributed.string.range(of: text, options: String.CompareOptions.caseInsensitive, range: nil, locale: nil){
+				let location = string.distance(from: string.startIndex, to: range.lowerBound)
+				let lenght = string.distance(from: range.lowerBound, to: range.upperBound)
+				let ns_range = NSRange.init(location: location, length: lenght)
+				attributed.addAttribute(NSBackgroundColorAttributeName, value: UIColor.yellow, range: ns_range)
+			}
+			array.append(attributed)
+		})
+		return array
 	}
 	
 	fileprivate func load(){
@@ -47,14 +61,14 @@ final class ProjectListController: UIViewController{
 			}
 			var projects = [String?]()
 			for case let object as [String: Any] in objects  {
-				projects.append(object["name"] as? String)
+				guard let title = object["name"] as? String else { continue }
+				projects.append(title)
 			}
 			self.projects = projects.flatMap({$0})
 			self.tableView.reloadData()
 			self.indicator.stopAnimating()
 		}
 	}
-	
 }
 
 //MARK: -
@@ -66,13 +80,34 @@ extension ProjectListController: UISearchBarDelegate{
 	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
 		filtered = nil
 		tableView.reloadData()
+		searchBar.text = ""
 		searchBar.resignFirstResponder()
 	}
 	
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-  		if searchBar.text?.isEmpty() == true { return }
-		filtered = filter(with: searchBar.text)
-		tableView.reloadData()
+		if searchText.isEmpty() == true{
+			self.filtered?.removeAll()
+			self.filtered = nil
+		} else{
+			self.filtered = self.filter(by: searchBar.text)
+		}
+		
+		self.indicator.stopAnimating()
+		self.tableView.reloadData()
+		
+//		indicator.startAnimating()
+//		DispatchQueue.global(qos: .background).async {
+//			if searchText.isEmpty() == true{
+//				self.filtered?.removeAll()
+//				self.filtered = nil
+//			} else{
+//				self.filtered = self.filter(by: searchBar.text)
+//			}
+//			DispatchQueue.main.async {
+//				self.indicator.stopAnimating()
+//				self.tableView.reloadData()
+//			}
+//		}
 	}
 }
 
@@ -84,12 +119,16 @@ extension ProjectListController: UITableViewDelegate, UITableViewDataSource{
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeue(identifier: "ProjectListCell") as! ProjectListCell
-		cell.setData(title: filtered?[indexPath.row] ?? projects?[indexPath.row])
+		if filtered == nil{
+			cell.titleLabel.text = projects?[indexPath.row]
+		} else{
+			cell.titleLabel.attributedText = filtered?[indexPath.row]
+		}
 		return cell
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		result?(filtered?[indexPath.row] ?? projects?[indexPath.row])
+		result?(filtered?[indexPath.row].string ?? projects?[indexPath.row])
 		pop()
 	}
 }

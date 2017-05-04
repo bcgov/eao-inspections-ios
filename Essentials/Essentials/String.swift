@@ -48,8 +48,84 @@ extension String {
       }
       return Bool.init(NSNumber(integerLiteral: int))
    }
-   
+	
+	///Bigger score indicates better result
+	public func map(to search: String) -> Int{
+		var scrore = 0
+		let search = Array(search.lowercased().characters)
+		let str = Array(self.lowercased().characters)
+		for (index, char) in str.enumerated(){
+			if search.count > index{
+				if search[index] == char{
+					scrore += 1
+				}
+			}
+		}
+		return scrore
+	}
+	
+	///Returns number of edits required to make both strings same
+	public func compare(to string: String) -> Int? {
+		if self == "" || string == ""{
+			return nil
+		}
+		let a = Array(self.lowercased().characters)
+		let b = Array(string.lowercased().characters)
+		
+		var dist = [[Int]]()
+		
+		for _ in 0...a.count {
+			dist.append([Int](repeating: 0, count: b.count + 1))
+		}
+		
+		for i in 1...a.count {
+			dist[i][0] = i
+		}
+		
+		for j in 1...b.count {
+			dist[0][j] = j
+		}
+		
+		for i in 1...a.count {
+			for j in 1...b.count {
+				if a[i-1] == b[j-1] {
+					dist[i][j] = dist[i-1][j-1]
+				} else {
+					dist[i][j] = min(
+						dist[i-1][j] + 1,
+						dist[i][j-1] + 1,
+						dist[i-1][j-1] + 1
+					)
+				}
+			}
+		}
+		return dist[a.count][b.count]
+	}
+	
+	public func ranges(of substring: String) -> [NSRange] {
+		var result: [NSRange] = []
+		var start = startIndex
+		print("string: \(self)")
+		while let range = range(of: substring, options: .caseInsensitive, range: start..<endIndex) {
+			let location = distance(from: start, to: range.lowerBound)
+			let lenght = distance(from: range.lowerBound, to: range.upperBound)
+			print("loc: \(location)")
+			print("lenght: \(lenght)\n")
+			result.append(NSRange.init(location: location, length: lenght))
+			start = range.upperBound
+			
+		}
+		return result
+	}
+	
 }
+
+
+
+
+
+
+
 
 
 
