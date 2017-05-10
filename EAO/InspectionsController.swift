@@ -56,7 +56,7 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 	///Use this method to prepend an inspection to the 'In Progress' tab
 	public func prepend(inspection: PFInspection?){
 		if let inspection = inspection{
-			print("prepenfin inspection")
+			print("prepending inspection")
 			if self.inspections[0] == nil{
 				self.inspections[0] = []
 			}

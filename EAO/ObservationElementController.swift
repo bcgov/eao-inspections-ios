@@ -26,6 +26,7 @@ class ObservationElementController: UIViewController{
 	
 	//MARK: -
 	@IBAction fileprivate func saveTapped(_ sender: UIBarButtonItem) {
+		if !validate() { return }
 		indicator.startAnimating()
 		saveAction?(self.observation)
 		observation.title = titleTextField.text
@@ -105,16 +106,13 @@ class ObservationElementController: UIViewController{
 		query.fromLocalDatastore()
 		query.whereKey("observation", equalTo: observation)
 		query.findObjectsInBackground(block: { (photos, error) in
-			print("2")
 			guard let photos = photos as? [PFPhoto], error == nil else {
 				self.indicator.stopAnimating()
 				AlertView.present(on: self, with: "Couldn't retrieve observation images")
 				return
 			}
-			print("3:\(photos.count)")
 			for photo in photos{
 				if let id = photo.id{
-					print("id:\(id)")
 					let url = URL(fileURLWithPath: FileManager.directory.absoluteString).appendingPathComponent(id, isDirectory: true)
 					(self.stackView.subviews[self.photoCounter] as? UIImageView)?.image = UIImage(contentsOfFile: url.path)
 					self.photoCounter += 1
@@ -147,7 +145,31 @@ extension ObservationElementController: UITextFieldDelegate{
 	}
 }
 
+extension ObservationElementController{
+	fileprivate func validate() ->Bool{
+		if titleTextField.text?.isEmpty() == true{
+			present(controller: Alerts.fields)
+			return false
+		}
+		
+		if requirementTextField.text?.isEmpty() == true {
+			present(controller: Alerts.fields)
+			return false
+		}
+		
+		if descriptionTextView.text.isEmpty() == true{
+			present(controller: Alerts.fields)
+			return false
+		}
+		return true
+	}
+}
 
+extension ObservationElementController{
+	struct Alerts{
+		static let fields = UIAlertController(title: "All Fields Required", message: "Please fill out 'Title', 'Requirement', and 'Description' fields")
+	}
+}
 
 
 

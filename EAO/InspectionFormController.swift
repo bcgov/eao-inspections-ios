@@ -17,11 +17,12 @@ class InspectionFormController: UIViewController{
 	
 	//MARK: -
 	@IBAction func submitTapped(_ sender: UIBarButtonItem) {
-		//sender.isEnabled = false
+		sender.isEnabled = false
 		let alert = UIAlertController(title: "Are You Sure?", message: "You will NOT be able to edit this inspection after submission", yes: {
 			self.setElements(enabled: false)
 			self.inspection.isSubmitted = true
 			self.inspection.saveEventually()
+			print("A")
 			InspectionsController.reference?.moveToSubmitted(inspection: self.inspection)
 			self.navigationController?.popToRootViewController(animated: true)
 			
@@ -30,7 +31,7 @@ class InspectionFormController: UIViewController{
 	}
 	
 	@IBAction func saveTapped(_ sender: UIButton) {
-		present(controller: UIAlertController(title: "Tip", message: "You may save this inspection and edit it later before submission", handler: { 
+		present(controller: UIAlertController(title: "Tip", message: "You may save this inspection and edit it later before submission", handler: {
 			self.navigationController?.popToRootViewController(animated: true)
 		}))
 	}
@@ -62,7 +63,7 @@ class InspectionFormController: UIViewController{
 		let query = PFObservation.query()
 		query?.fromLocalDatastore()
 		query?.whereKey("inspection", equalTo: inspection)
-		query?.order(byAscending: "pinnedAt")
+		query?.order(byDescending: "pinnedAt")
 		query?.findObjectsInBackground(block: { (objects, error) in
 			guard let objects = objects as? [PFObservation] else{
 				AlertView.present(on: self, with: "Error occured while retrieving inspections from local storage")
