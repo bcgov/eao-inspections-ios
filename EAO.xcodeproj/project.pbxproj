@@ -38,10 +38,10 @@
 		112F74811E980F6A0076926A /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F74801E980F6A0076926A /* UITextField.swift */; };
 		112F74F11E9815A70076926A /* SettingsController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 112F74EF1E9815A70076926A /* SettingsController.storyboard */; };
 		112F74F21E9815A70076926A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F74F01E9815A70076926A /* SettingsController.swift */; };
+		113B203F1EC0F8A200F04811 /* PFPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113B203E1EC0F8A200F04811 /* PFPhoto.swift */; };
+		113B20411EC11B8A00F04811 /* PFGeoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113B20401EC11B8A00F04811 /* PFGeoPoint.swift */; };
 		1159B3361EB102C000F72750 /* PFObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1159B3351EB102C000F72750 /* PFObservation.swift */; };
 		1159B3A71EB1236700F72750 /* PFInspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1159B3A61EB1236700F72750 /* PFInspection.swift */; };
-		11823BEE1EB24FF80028719B /* EProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11823BED1EB24FF80028719B /* EProject.swift */; };
-		11823BF11EB25A1A0028719B /* PFProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11823BF01EB25A1A0028719B /* PFProject.swift */; };
 		11B1671F1E71E9700057D697 /* Essentials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B1671E1E71E9390057D697 /* Essentials.framework */; };
 		11B167201E71E9700057D697 /* Essentials.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11B1671E1E71E9390057D697 /* Essentials.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11D70EB01E8D7A9800CBF92C /* InspectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70EAF1E8D7A9800CBF92C /* InspectionsController.swift */; };
@@ -135,10 +135,10 @@
 		112F74801E980F6A0076926A /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		112F74EF1E9815A70076926A /* SettingsController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsController.storyboard; sourceTree = "<group>"; };
 		112F74F01E9815A70076926A /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		113B203E1EC0F8A200F04811 /* PFPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFPhoto.swift; sourceTree = "<group>"; };
+		113B20401EC11B8A00F04811 /* PFGeoPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFGeoPoint.swift; sourceTree = "<group>"; };
 		1159B3351EB102C000F72750 /* PFObservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFObservation.swift; sourceTree = "<group>"; };
 		1159B3A61EB1236700F72750 /* PFInspection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFInspection.swift; sourceTree = "<group>"; };
-		11823BED1EB24FF80028719B /* EProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EProject.swift; sourceTree = "<group>"; };
-		11823BF01EB25A1A0028719B /* PFProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFProject.swift; sourceTree = "<group>"; };
 		11B167191E71E9380057D697 /* Essentials.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Essentials.xcodeproj; path = Essentials/Essentials.xcodeproj; sourceTree = "<group>"; };
 		11D70EAF1E8D7A9800CBF92C /* InspectionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionsController.swift; sourceTree = "<group>"; };
 		11D70EB21E8D852800CBF92C /* InspectionSetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionSetupController.swift; sourceTree = "<group>"; };
@@ -214,8 +214,8 @@
 				11D70ED31E8D9BF300CBF92C /* InspectionForm */,
 				11D70EDE1E8DA84700CBF92C /* ObservationElement */,
 				11CEADDD1E79C4BA00E2242C /* UploadPhoto */,
-				11CEADEB1E79E6F000E2242C /* MapPreview */,
 				BDA2DA0D1E7C898D00A9E3AC /* ProjectsPreview */,
+				11CEADEB1E79E6F000E2242C /* MapPreview */,
 				11BBFB641E804C9700DEF7B4 /* SearchController */,
 			);
 			name = Inspections;
@@ -266,6 +266,22 @@
 			name = SignupController;
 			sourceTree = "<group>";
 		};
+		113B20421EC11BFD00F04811 /* PFExtension */ = {
+			isa = PBXGroup;
+			children = (
+				113B20401EC11B8A00F04811 /* PFGeoPoint.swift */,
+			);
+			name = PFExtension;
+			sourceTree = "<group>";
+		};
+		113B204A1EC120A200F04811 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				9688D51B1E69DA4300C49CD7 /* AppDelegate.swift */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
 		1159B3311EB101E500F72750 /* Inspections */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,7 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				11823BEC1EB24FE80028719B /* PFObjects */,
-				11823BED1EB24FF80028719B /* EProject.swift */,
+				113B20421EC11BFD00F04811 /* PFExtension */,
 			);
 			name = DataModels;
 			sourceTree = "<group>";
@@ -288,9 +304,9 @@
 		11823BEC1EB24FE80028719B /* PFObjects */ = {
 			isa = PBXGroup;
 			children = (
-				1159B3351EB102C000F72750 /* PFObservation.swift */,
 				1159B3A61EB1236700F72750 /* PFInspection.swift */,
-				11823BF01EB25A1A0028719B /* PFProject.swift */,
+				1159B3351EB102C000F72750 /* PFObservation.swift */,
+				113B203E1EC0F8A200F04811 /* PFPhoto.swift */,
 			);
 			name = PFObjects;
 			sourceTree = "<group>";
@@ -426,7 +442,7 @@
 		9688D51A1E69DA4300C49CD7 /* EAO */ = {
 			isa = PBXGroup;
 			children = (
-				9688D51B1E69DA4300C49CD7 /* AppDelegate.swift */,
+				113B204A1EC120A200F04811 /* AppDelegate */,
 				1159B3341EB1029900F72750 /* DataModels */,
 				110FF1911E8C5C25000DB1A5 /* Modules */,
 				9688D5501E69DAD800C49CD7 /* Source */,
@@ -760,10 +776,11 @@
 			files = (
 				110FF0A51E8C25C5000DB1A5 /* UIApplication.swift in Sources */,
 				11D70EC61E8D90B600CBF92C /* ProjectListCell.swift in Sources */,
+				113B20411EC11B8A00F04811 /* PFGeoPoint.swift in Sources */,
 				110FF0AA1E8C25C5000DB1A5 /* UITableView.swift in Sources */,
 				11D70EDC1E8DA83D00CBF92C /* ObservationElementController.swift in Sources */,
-				11823BEE1EB24FF80028719B /* EProject.swift in Sources */,
 				112F74721E97FDC80076926A /* LoginController.swift in Sources */,
+				113B203F1EC0F8A200F04811 /* PFPhoto.swift in Sources */,
 				110FF0E11E8C2CA7000DB1A5 /* UploadPhotoController.swift in Sources */,
 				110FF0EF1E8C2CDF000DB1A5 /* Constant.swift in Sources */,
 				110FF0ED1E8C2CD0000DB1A5 /* SearchController.swift in Sources */,
@@ -781,7 +798,6 @@
 				110FF0A91E8C25C5000DB1A5 /* UINavigationItem.swift in Sources */,
 				9688D51C1E69DA4300C49CD7 /* AppDelegate.swift in Sources */,
 				11D70EB01E8D7A9800CBF92C /* InspectionsController.swift in Sources */,
-				11823BF11EB25A1A0028719B /* PFProject.swift in Sources */,
 				112F74741E97FDD90076926A /* SignupController.swift in Sources */,
 				110FF0E51E8C2CB2000DB1A5 /* MapPreviewController.swift in Sources */,
 				112F74F21E9815A70076926A /* SettingsController.swift in Sources */,

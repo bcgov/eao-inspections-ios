@@ -39,6 +39,10 @@
 		110FF0FE1E8C2E2B000DB1A5 /* TextViewWithPlaceholderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110FF0FB1E8C2E2B000DB1A5 /* TextViewWithPlaceholderDelegate.swift */; };
 		110FF1011E8C34F1000DB1A5 /* RingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110FF0FF1E8C34F1000DB1A5 /* RingButton.swift */; };
 		110FF1021E8C34F1000DB1A5 /* RingButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 110FF1001E8C34F1000DB1A5 /* RingButton.xib */; };
+		113B20451EC11D6900F04811 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113B20431EC11D6900F04811 /* AlertView.swift */; };
+		113B20461EC11D6900F04811 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 113B20441EC11D6900F04811 /* AlertView.xib */; };
+		113B20491EC11DC400F04811 /* UIViewWithXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113B20481EC11DC400F04811 /* UIViewWithXib.swift */; };
+		114011C91EC25AAD009755EF /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114011C81EC25AAD009755EF /* FileManager.swift */; };
 		1159B39B1EB107C300F72750 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1159B3991EB107C300F72750 /* DatePickerController.swift */; };
 		1159B39C1EB107C300F72750 /* DatePickerController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1159B39A1EB107C300F72750 /* DatePickerController.storyboard */; };
 		1159B3A21EB1092F00F72750 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1159B3A11EB1092F00F72750 /* Button.swift */; };
@@ -87,6 +91,10 @@
 		110FF0FB1E8C2E2B000DB1A5 /* TextViewWithPlaceholderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholderDelegate.swift; sourceTree = "<group>"; };
 		110FF0FF1E8C34F1000DB1A5 /* RingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingButton.swift; sourceTree = "<group>"; };
 		110FF1001E8C34F1000DB1A5 /* RingButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RingButton.xib; sourceTree = "<group>"; };
+		113B20431EC11D6900F04811 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		113B20441EC11D6900F04811 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		113B20481EC11DC400F04811 /* UIViewWithXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewWithXib.swift; sourceTree = "<group>"; };
+		114011C81EC25AAD009755EF /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1159B3991EB107C300F72750 /* DatePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		1159B39A1EB107C300F72750 /* DatePickerController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DatePickerController.storyboard; sourceTree = "<group>"; };
 		1159B3A11EB1092F00F72750 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -146,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				11EC1FCC1E64AC46008FE4CD /* UserDefaults.swift */,
+				114011C81EC25AAD009755EF /* FileManager.swift */,
 				116E3C4F1EBA51B800AE52D3 /* UISearchBar.swift */,
 				110B7FE61E5638E700650A9D /* UIEvent.swift */,
 				110B7FB31E56377300650A9D /* String.swift */,
@@ -182,6 +191,7 @@
 		110B7FE41E56384500650A9D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				113B20471EC11D9200F04811 /* AlertView */,
 				110B7FE21E56383F00650A9D /* UIViewWithXibAndIBDesignable.swift */,
 				110B7FDE1E5637F400650A9D /* GradientView.swift */,
 			);
@@ -213,6 +223,16 @@
 				110FF1001E8C34F1000DB1A5 /* RingButton.xib */,
 			);
 			name = RingButton;
+			sourceTree = "<group>";
+		};
+		113B20471EC11D9200F04811 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				113B20481EC11DC400F04811 /* UIViewWithXib.swift */,
+				113B20431EC11D6900F04811 /* AlertView.swift */,
+				113B20441EC11D6900F04811 /* AlertView.xib */,
+			);
+			name = AlertView;
 			sourceTree = "<group>";
 		};
 		1159B39D1EB107C700F72750 /* DatePicker */ = {
@@ -330,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				110FF1021E8C34F1000DB1A5 /* RingButton.xib in Resources */,
+				113B20461EC11D6900F04811 /* AlertView.xib in Resources */,
 				110FF0FD1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.xib in Resources */,
 				1159B39C1EB107C300F72750 /* DatePickerController.storyboard in Resources */,
 			);
@@ -345,8 +366,10 @@
 				11EC1FCD1E64AC46008FE4CD /* UserDefaults.swift in Sources */,
 				110B7FC81E56377300650A9D /* String.swift in Sources */,
 				110B7FD21E56377300650A9D /* CGRect.swift in Sources */,
+				114011C91EC25AAD009755EF /* FileManager.swift in Sources */,
 				110B7FDF1E5637F400650A9D /* GradientView.swift in Sources */,
 				110B7FD91E56377300650A9D /* UIViewController.swift in Sources */,
+				113B20451EC11D6900F04811 /* AlertView.swift in Sources */,
 				110FF0FE1E8C2E2B000DB1A5 /* TextViewWithPlaceholderDelegate.swift in Sources */,
 				110B7FD61E56377300650A9D /* UITableView.swift in Sources */,
 				1159B3A21EB1092F00F72750 /* Button.swift in Sources */,
@@ -370,6 +393,7 @@
 				110B7FCE1E56377300650A9D /* Double.swift in Sources */,
 				1159B3A51EB11FD700F72750 /* KeyboardDelegate.swift in Sources */,
 				110B7FDA1E56377300650A9D /* UIImage.swift in Sources */,
+				113B20491EC11DC400F04811 /* UIViewWithXib.swift in Sources */,
 				110B7FDC1E56377300650A9D /* UIFont.swift in Sources */,
 				110FF0FC1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.swift in Sources */,
 				116E3C501EBA51B800AE52D3 /* UISearchBar.swift in Sources */,

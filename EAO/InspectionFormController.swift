@@ -7,9 +7,8 @@
 //
 
 class InspectionFormController: UIViewController{
-	
 	var inspection : PFInspection!
-	var forms = [String]()
+	var observations = [PFObservation]()
 	
 	//MARK: -
 	@IBOutlet var addButton: UIButton!
@@ -38,8 +37,9 @@ class InspectionFormController: UIViewController{
 	
 	@IBAction func addTapped(_ sender: UIButton) {
 		let observationElementController = ObservationElementController.storyboardInstance() as! ObservationElementController
-		observationElementController.saveAction = {
-			self.forms.append("new element")
+		observationElementController.inspection = inspection
+		observationElementController.saveAction = { (observation) in
+			self.observations.insert(observation, at: 0)
 			self.tableView.reloadData()
 		}
 		push(controller: observationElementController)
@@ -51,13 +51,29 @@ class InspectionFormController: UIViewController{
 			addButton.isEnabled = false
 			navigationItem.rightBarButtonItem = nil
 		}
+		load()
 	}
 	
 	deinit{
 		print("deinit Inspection Form")
 	}
 	
-	func setElements(enabled: Bool){
+	fileprivate func load(){
+		let query = PFObservation.query()
+		query?.fromLocalDatastore()
+		query?.whereKey("inspection", equalTo: inspection)
+		query?.order(byAscending: "pinnedAt")
+		query?.findObjectsInBackground(block: { (objects, error) in
+			guard let objects = objects as? [PFObservation] else{
+				AlertView.present(on: self, with: "Error occured while retrieving inspections from local storage")
+				return
+			}
+			self.observations = objects
+			self.tableView.reloadData()
+		})
+	}
+	
+	fileprivate func setElements(enabled: Bool){
 		view.isUserInteractionEnabled = enabled
 		enabled ? indicator.stopAnimating() : indicator.startAnimating()
 		navigationItem.leftBarButtonItem?.isEnabled = enabled
@@ -67,13 +83,23 @@ class InspectionFormController: UIViewController{
 //MARK: -
 extension InspectionFormController: UITableViewDataSource, UITableViewDelegate{
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return forms.count
+		return observations.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeue(identifier: "InspectionFormCell") as! InspectionFormCell
-		cell.setData(number: "\(indexPath.row+1)", title: forms[indexPath.row], time: "July 2016")
+		cell.setData(number: "\(indexPath.row+1)", title: observations[indexPath.row].title, time: observations[indexPath.row].createdAt?.inspectionFormat())
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let observationElementController = ObservationElementController.storyboardInstance() as! ObservationElementController
+		observationElementController.inspection = inspection
+		observationElementController.observation = observations[indexPath.row]
+		observationElementController.saveAction = { (_) in
+			self.tableView.reloadData()
+		}
+		push(controller: observationElementController)
 	}
 }
 

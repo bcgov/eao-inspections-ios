@@ -6,36 +6,72 @@
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
 import MapKit
-
+import Parse
 class UploadPhotoController: UIViewController{
-    
-    var locationManager = CLLocationManager()
-    
-    var uploadPhotoAction: ((_ image: UIImage?)-> Void)?
-    
-    @IBOutlet var scrollView: UIScrollView!
-    
-    @IBOutlet var timestampLabel: UILabel!
-    @IBOutlet var gpsLabel: UILabel!
-    
-    @IBOutlet var imageVIew: UIImageView!
-    @IBOutlet var uploadButton : UIButton!
-    @IBOutlet var uploadLabel  : UILabel!
-    
-    //MARK: -
-    @IBAction func refreshTimestamp(_ sender: UIButton) {
-        timestampLabel.text = Date().timeStampFormat()
+	var photo: PFPhoto?
+	var observation: PFObservation!
+	var uploadPhotoAction: ((_ image: UIImage?)-> Void)?
+    fileprivate var locationManager = CLLocationManager()
+	fileprivate var date: Date?{
+		didSet{
+			timestampLabel.text = date?.timeStampFormat()
+		}
+	}
+	fileprivate var location: CLLocation?{
+		didSet{
+			gpsLabel.text = locationManager.coordinateAsString() ?? "Unavailible"
+		}
+	}
+	//MARK: -
+	@IBOutlet fileprivate var indicator: UIActivityIndicatorView!
+    @IBOutlet fileprivate var scrollView: UIScrollView!
+    @IBOutlet fileprivate var timestampLabel: UILabel!
+    @IBOutlet fileprivate var gpsLabel: UILabel!
+    @IBOutlet fileprivate var imageView: UIImageView!
+    @IBOutlet fileprivate var uploadButton : UIButton!
+    @IBOutlet fileprivate var uploadLabel  : UILabel!
+	@IBOutlet fileprivate var captionTextView: UITextView!
+	
+	//MARK: -
+    @IBAction fileprivate func save(_ sender: UIBarButtonItem) {
+		if !validate() { return }
+		sender.isEnabled = false
+		indicator.startAnimating()
+		let photo = self.photo ?? PFPhoto()
+		if photo.observation == nil{
+			photo.observation = observation
+		}
+		if photo.id == nil{
+			photo.id = String.random()
+		}
+		photo.caption = captionTextView.text
+		photo.timestamp = date
+		photo.coordinate = PFGeoPoint(location: location)
+		if let data = imageView.image?.toData(quality: .low){
+			photo.photo = PFFile(data: data)
+			do{
+				try data.write(to: FileManager.directory.appendingPathComponent(photo.id!, isDirectory: true))
+				photo.pinInBackground { (success, error) in
+					if success && error == nil{
+						self.uploadPhotoAction?(self.imageView.image)
+						_ = self.navigationController?.popViewController(animated: true)
+					} else{
+						AlertView.present(on: self, with: "Error occured while saving image to local storage")
+					}
+					self.indicator.stopAnimating()
+					sender.isEnabled = true
+				}
+			} catch{
+				AlertView.present(on: self, with: "Error occured while saving image to local storage")
+			}
+		} else{
+			AlertView.present(on: self, with: "Error occured while compressing image")
+			self.indicator.stopAnimating()
+			sender.isEnabled = true
+		}
     }
     
-    @IBAction func refreshGPS(_ sender: UIButton) {
-        gpsLabel.text = locationManager.coordinateAsString()
-    }
-    
-    @IBAction func upload(_ sender: UIBarButtonItem) {
-        _ = navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func uploadPhoto(_ sender: UIButton) {
+    @IBAction fileprivate func photoTapped(_ sender: UIButton) {
         let alert = cameraOptionsController()
         present(controller: alert)
     }
@@ -43,27 +79,59 @@ class UploadPhotoController: UIViewController{
     //MARK: -
     override func viewDidLoad() {
         addDismissKeyboardOnTapRecognizer(on: view)
-        
-        timestampLabel.text = Date().timeStampFormat()
-        gpsLabel.text = locationManager.coordinateAsString()
+		if isReadOnly{
+			navigationItem.rightBarButtonItem = nil
+			uploadButton.isEnabled = false
+			uploadButton.alpha = 0
+			uploadLabel.alpha = 0
+		}
+		populate()
     }
-    
+	
+	//MARK: -
+	fileprivate func populate(){
+		guard let photo = photo else { return }
+		indicator.startAnimating()
+		if let id = photo.id{
+			let url = URL(fileURLWithPath: FileManager.directory.absoluteString).appendingPathComponent(id, isDirectory: true)
+			imageView.image = UIImage(contentsOfFile: url.path)
+		}
+		captionTextView.text = photo.caption
+		timestampLabel.text = photo.timestamp?.timeStampFormat()
+		gpsLabel.text = photo.coordinate?.toString()
+		indicator.stopAnimating()
+	}
 }
 
+//MARK: -
+extension UploadPhotoController{
+	fileprivate var isReadOnly: Bool{
+		 return observation.inspection?.isSubmitted?.boolValue == true
+	}
+	
+	fileprivate func validate()->Bool{
+		if imageView.image == nil{
+			present(controller: Alerts.error)
+			return false
+		}
+		return true
+	}
+}
 
 //MARK: -
 extension UploadPhotoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imageVIew.image = image
+            imageView.image = image
             uploadButton.alpha = 0.25
             uploadLabel.alpha = 0
-            uploadPhotoAction?(image)
+			date = Date()
+			location = locationManager.location
         }
         self.dismiss(animated: true, completion: nil)
     }
     
-    func media(sourceType: UIImagePickerControllerSourceType) {
+    fileprivate func media(sourceType: UIImagePickerControllerSourceType) {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = sourceType
@@ -71,8 +139,9 @@ extension UploadPhotoController: UIImagePickerControllerDelegate, UINavigationCo
     }
 }
 
+//MARK: -
 extension UploadPhotoController{
-    func cameraOptionsController() -> UIAlertController{
+    fileprivate func cameraOptionsController() -> UIAlertController{
         let alert   = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let camera = UIAlertAction(title: "Take Picture", style: .default, handler: { (_) in
             self.media(sourceType: .camera)
@@ -84,6 +153,13 @@ extension UploadPhotoController{
         alert.addActions([camera,library,cancel])
         return alert
     }
+}
+
+//MARK: -
+extension UploadPhotoController{
+	struct Alerts{
+		static let error = UIAlertController(title: "Picture Required", message: "Please provide a picture to save")
+	}
 }
 
 

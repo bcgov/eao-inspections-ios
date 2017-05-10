@@ -8,7 +8,6 @@
 
 import MapKit
 extension CLLocationManager{
-    
     public func isAuthorized() ->Bool{
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
             return true

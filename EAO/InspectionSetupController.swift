@@ -139,6 +139,7 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 	}
 }
 
+	//MARK: -
 extension InspectionSetupController: UITextFieldDelegate{
 	func textFieldDidEndEditing(_ textField: UITextField) {
 		var text = textField.text
@@ -171,6 +172,7 @@ extension InspectionSetupController: UITextFieldDelegate{
 	}
 }
 
+//MARK: -
 extension InspectionSetupController{
 	func validate(completion: @escaping (_ inspection : PFInspection?, _ isNew: Bool)->Void){
 		let inputs = self.inputs.flatMap({$0})
@@ -204,12 +206,14 @@ extension InspectionSetupController{
 	}
 }
 
+//MARK: -
 extension InspectionSetupController{
 	fileprivate var isReadOnly: Bool{
 		return inspection?.isSubmitted?.boolValue == true
 	}
 }
 
+//MARK: -
 extension InspectionSetupController{
 	struct Alerts{
 		static let fields = UIAlertController(title: "Incomplete", message: "Please fill out all fields")

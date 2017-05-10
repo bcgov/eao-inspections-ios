@@ -8,7 +8,12 @@
 
 
 extension String {
-    
+	
+	static public func random() -> String{
+		let number = arc4random_uniform(999999999)
+		return "\(number)"
+	}
+	
     public func count() -> Int{
         return self.characters.count
     }

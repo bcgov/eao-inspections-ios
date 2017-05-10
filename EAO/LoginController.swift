@@ -7,7 +7,7 @@
 //
 
 //[username: password]
-let users: [String : String] = ["justin.carlson":"dstJC836!","rumon.carter":"dstRC836!","mark.lise":"dstML836!","geoff.mcdonald":"dstGM836!","alex.mclean":"dstAM836!","chris.parks":"dstCP836!","lena.smith":"dstLS836!", "emma":"emma","rohit":"rohit","sam":"sam"]
+let users: [String : String] = ["justin.carlson":"dstJC836!","rumon.carter":"dstRC836!","mark.lise":"dstML836!","geoff.mcdonald":"dstGM836!","alex.mclean":"dstAM836!","chris.parks":"dstCP836!","lena.smith":"dstLS836!", "emma":"emma","rohit":"rohit","sam":"sam", "0":"0"]
 
 class LoginController: UIViewController{
 	@IBOutlet var usernameField: UITextField!

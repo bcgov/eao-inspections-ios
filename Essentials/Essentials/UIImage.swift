@@ -7,7 +7,6 @@
 //
 
 extension UIImage {
-    
     public enum Quality: CGFloat{
         case low    = 0.25
         case medium = 0.5
@@ -26,9 +25,7 @@ extension UIImage {
       let image = UIImage(data: data)
       return image!
    }
-   
-  
-   
+	
    public func scale(width: CGFloat) -> UIImage?{
       let scale = width / self.size.width
       let newHeight = self.size.height * scale
@@ -39,20 +36,12 @@ extension UIImage {
       
       return newImage
    }
-   
-   
-   
+
    public func prepareImageForCell(completion: @escaping (_ image: UIImage?) -> Void){
-      
       DispatchQueue.global().async {
-         
-         
          let image = self.compress(quality: .medium)
-         
          DispatchQueue.main.async {
-            
             completion(image)
-            
          }
       }
    }

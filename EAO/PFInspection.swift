@@ -7,14 +7,9 @@
 //
 
 import Parse
-
-
 class PFInspection: PFObject, PFSubclassing{
-	static func parseClassName() -> String {
-		return "Inspection"
-	}
-
-	@NSManaged var isSubmitted : NSNumber?
+	@NSManaged var observations : PFRelation<PFObservation>?
+	@NSManaged var isSubmitted  : NSNumber?
 	@NSManaged var project  : String?
 	@NSManaged var title	: String?
 	@NSManaged var subtitle : String?
@@ -22,4 +17,7 @@ class PFInspection: PFObject, PFSubclassing{
 	@NSManaged var number	: String?
 	@NSManaged var start	: Date?
 	@NSManaged var end		: Date?
+	static func parseClassName() -> String {
+		return "Inspection"
+	}
 }
