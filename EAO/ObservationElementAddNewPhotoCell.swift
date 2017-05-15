@@ -7,5 +7,5 @@
 //
 
 final class ObservationElementAddNewPhotoCell: UICollectionViewCell{
-	
+	@IBOutlet var button: UIButton!
 }

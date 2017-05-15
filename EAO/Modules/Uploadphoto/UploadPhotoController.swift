@@ -8,9 +8,9 @@
 import MapKit
 import Parse
 class UploadPhotoController: UIViewController{
-	var photo: PFPhoto?
+	var photo: PFPhoto!
 	var observation: PFObservation!
-	var uploadPhotoAction: ((_ image: UIImage?)-> Void)?
+	var uploadPhotoAction: ((_ photo: PFPhoto?)-> Void)?
     fileprivate var locationManager = CLLocationManager()
 	fileprivate var date: Date?{
 		didSet{
@@ -37,7 +37,21 @@ class UploadPhotoController: UIViewController{
 		if !validate() { return }
 		sender.isEnabled = false
 		indicator.startAnimating()
-		let photo = self.photo ?? PFPhoto()
+		if photo == nil{
+			photo = PFPhoto()
+		} else {
+			photo.caption = captionTextView.text
+			photo.pinInBackground(block: { (success, error) in
+				if success && error == nil{
+					_ = self.navigationController?.popViewController(animated: true)
+				} else{
+					AlertView.present(on: self, with: "Error occured while updating caption text")
+					self.indicator.stopAnimating()
+					sender.isEnabled = true
+				}
+			})
+			return
+		}
 		if photo.observation == nil{
 			photo.observation = observation
 		}
@@ -47,13 +61,14 @@ class UploadPhotoController: UIViewController{
 		photo.caption = captionTextView.text
 		photo.timestamp = date
 		photo.coordinate = PFGeoPoint(location: location)
-		if let data = imageView.image?.toData(quality: .low){
+		if let data = imageView.image?.toData(quality: .medium){
+			photo.image = UIImage(data: data)
 			photo.photo = PFFile(data: data)
 			do{
 				try data.write(to: FileManager.directory.appendingPathComponent(photo.id!, isDirectory: true))
 				photo.pinInBackground { (success, error) in
 					if success && error == nil{
-						self.uploadPhotoAction?(self.imageView.image)
+						self.uploadPhotoAction?(self.photo)
 						_ = self.navigationController?.popViewController(animated: true)
 					} else{
 						AlertView.present(on: self, with: "Error occured while saving image to local storage")
@@ -61,8 +76,10 @@ class UploadPhotoController: UIViewController{
 					self.indicator.stopAnimating()
 					sender.isEnabled = true
 				}
-			} catch{
+			} catch {
 				AlertView.present(on: self, with: "Error occured while saving image to local storage")
+				self.indicator.stopAnimating()
+				sender.isEnabled = true
 			}
 		} else{
 			AlertView.present(on: self, with: "Error occured while compressing image")
@@ -79,18 +96,22 @@ class UploadPhotoController: UIViewController{
     //MARK: -
     override func viewDidLoad() {
         addDismissKeyboardOnTapRecognizer(on: view)
+		populate()
 		if isReadOnly{
 			navigationItem.rightBarButtonItem = nil
 			uploadButton.isEnabled = false
 			uploadButton.alpha = 0
 			uploadLabel.alpha = 0
+			captionTextView.isUserInteractionEnabled = false
 		}
-		populate()
     }
 	
 	//MARK: -
 	fileprivate func populate(){
 		guard let photo = photo else { return }
+		uploadButton.isEnabled = false
+		uploadButton.alpha = 0
+		uploadLabel.alpha = 0
 		indicator.startAnimating()
 		if let id = photo.id{
 			let url = URL(fileURLWithPath: FileManager.directory.absoluteString).appendingPathComponent(id, isDirectory: true)
