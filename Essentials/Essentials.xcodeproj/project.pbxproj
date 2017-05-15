@@ -136,7 +136,7 @@
 		110B7FA61E56375300650A9D /* Essentials */ = {
 			isa = PBXGroup;
 			children = (
-				11823BF71EB278F30028719B /* Delegates */,
+				11823BF71EB278F30028719B /* Protocols */,
 				1159B39E1EB107D700F72750 /* Auxilary */,
 				11BE71041E733E63000BF9C4 /* Shapes */,
 				110B7FE41E56384500650A9D /* Views */,
@@ -251,12 +251,12 @@
 			name = Button;
 			sourceTree = "<group>";
 		};
-		11823BF71EB278F30028719B /* Delegates */ = {
+		11823BF71EB278F30028719B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				1159B3A41EB11FD700F72750 /* KeyboardDelegate.swift */,
 			);
-			name = Delegates;
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		11BE71041E733E63000BF9C4 /* Shapes */ = {
