@@ -7,6 +7,8 @@
 
 import Parse
 class PFPhoto: PFObject, PFSubclassing{
+	///Use this variable for image caching
+	var image : UIImage?
 	@NSManaged var photo: PFFile?
 	@NSManaged var id: String?
 	@NSManaged var caption: String?

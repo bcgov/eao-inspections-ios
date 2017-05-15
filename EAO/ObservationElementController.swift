@@ -7,13 +7,14 @@
 //
 import Parse
 import MapKit
-class ObservationElementController: UIViewController{
-	var inspection: PFInspection!
-	var observation: PFObservation!
+
+final class ObservationElementController: UIViewController{
 	fileprivate var locationManager = CLLocationManager()
-	
 	var saveAction: ((PFObservation)->Void)?
-	fileprivate var photoCounter = 0
+	var inspection  : PFInspection!
+	var observation : PFObservation!
+	var photos		: [PFPhoto]?
+	
 	//MARK: -
 	@IBOutlet fileprivate var indicator: UIActivityIndicatorView!
 	@IBOutlet fileprivate var scrollView : UIScrollView!
@@ -21,7 +22,8 @@ class ObservationElementController: UIViewController{
 	@IBOutlet fileprivate var requirementTextField: UITextField!
 	@IBOutlet fileprivate var descriptionTextView: UITextView!
 	@IBOutlet fileprivate var GPSLabel: UIButton!
-	@IBOutlet fileprivate var stackView : UIStackView!
+	@IBOutlet fileprivate var collectionViewHeightConstraint: NSLayoutConstraint!
+	@IBOutlet fileprivate var collectionView: UICollectionView!
 	@IBOutlet fileprivate var addPhotoButton: UIButton!
 	
 	//MARK: -
@@ -56,11 +58,11 @@ class ObservationElementController: UIViewController{
 		let uploadPhotoController = UploadPhotoController.storyboardInstance() as! UploadPhotoController
 		uploadPhotoController.observation = observation
 		uploadPhotoController.uploadPhotoAction = { (image) in
-			(self.stackView.subviews[self.photoCounter] as? UIImageView)?.image = image
-			self.photoCounter += 1
-			if self.photoCounter > 4{
-				self.photoCounter = 0
-			}
+//			(self.stackView.subviews[self.photoCounter] as? UIImageView)?.image = image
+//			self.photoCounter += 1
+//			if self.photoCounter > 4{
+//				self.photoCounter = 0
+//			}
 		}
 		push(controller: uploadPhotoController)
 		sender.isEnabled = true
@@ -94,35 +96,71 @@ class ObservationElementController: UIViewController{
 		titleTextField.text = observation.title
 		requirementTextField.text = observation.requirement
 		descriptionTextView.text = observation.observationDescription
-		populatePhotos()
+		loadPhotos()
 	}
 	
-	fileprivate func populatePhotos(){
+	fileprivate func loadPhotos(){
+		print("0")
 		guard let query = PFPhoto.query() else{
 			indicator.stopAnimating()
 			return
 		}
-		
+		print("1")
 		query.fromLocalDatastore()
 		query.whereKey("observation", equalTo: observation)
 		query.findObjectsInBackground(block: { (photos, error) in
 			guard let photos = photos as? [PFPhoto], error == nil else {
+				print("2")
 				self.indicator.stopAnimating()
-				AlertView.present(on: self, with: "Couldn't retrieve observation images")
+				AlertView.present(on: self, with: "Couldn't retrieve observation photos")
 				return
+			}
+			if self.photos == nil{
+				self.photos = []
 			}
 			for photo in photos{
 				if let id = photo.id{
 					let url = URL(fileURLWithPath: FileManager.directory.absoluteString).appendingPathComponent(id, isDirectory: true)
-					(self.stackView.subviews[self.photoCounter] as? UIImageView)?.image = UIImage(contentsOfFile: url.path)
-					self.photoCounter += 1
-					if self.photoCounter > 4{
-						self.photoCounter = 0
-					}
+					photo.image = UIImage(contentsOfFile: url.path)
+					self.photos?.append(photo)
 				}
 			}
+			print("3")
+			self.collectionViewHeightConstraint.constant = Constants.cellWidth
+			self.collectionView.reloadData()
 			self.indicator.stopAnimating()
 		})
+	}
+}
+
+extension ObservationElementController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+	private func photoCell(indexPath: IndexPath) -> UICollectionViewCell{
+		let cell = collectionView.dequeue(identifier: "PhotoCell", indexPath: indexPath) as! ObservationElementPhotoCell
+		
+		return cell
+	}
+	
+	private func addNewtPhotoCell(indexPath: IndexPath) -> UICollectionViewCell{
+		let cell = collectionView.dequeue(identifier: "AddNewPhotoCell", indexPath: indexPath) as! ObservationElementAddNewPhotoCell
+		
+		return cell
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return photos == nil ? 0 : photos!.count + 1
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		print("count: \(photos?.count)")
+		if indexPath.row == photos?.count{
+			return addNewtPhotoCell(indexPath: indexPath)
+		}
+		return photoCell(indexPath: indexPath)
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		
+		return CGSize(width: Constants.cellWidth, height: Constants.cellWidth)
 	}
 	
 }
@@ -166,12 +204,16 @@ extension ObservationElementController{
 }
 
 extension ObservationElementController{
-	struct Alerts{
+	enum Alerts{
 		static let fields = UIAlertController(title: "All Fields Required", message: "Please fill out 'Title', 'Requirement', and 'Description' fields")
 	}
 }
 
-
+extension ObservationElementController{
+	enum Constants{
+		static let cellWidth = (UIScreen.width-25)/4
+	}
+}
 
 
 

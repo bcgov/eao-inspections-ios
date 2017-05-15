@@ -30,7 +30,6 @@
 		110B7FDB1E56377300650A9D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110B7FC61E56377300650A9D /* Notification.swift */; };
 		110B7FDC1E56377300650A9D /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110B7FC71E56377300650A9D /* UIFont.swift */; };
 		110B7FDF1E5637F400650A9D /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110B7FDE1E5637F400650A9D /* GradientView.swift */; };
-		110B7FE11E56382B00650A9D /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110B7FE01E56382B00650A9D /* Table.swift */; };
 		110B7FE31E56383F00650A9D /* UIViewWithXibAndIBDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110B7FE21E56383F00650A9D /* UIViewWithXibAndIBDesignable.swift */; };
 		110B7FE71E5638E700650A9D /* UIEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110B7FE61E5638E700650A9D /* UIEvent.swift */; };
 		110B7FE91E56390100650A9D /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110B7FE81E56390100650A9D /* UIScreen.swift */; };
@@ -82,7 +81,6 @@
 		110B7FC61E56377300650A9D /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		110B7FC71E56377300650A9D /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		110B7FDE1E5637F400650A9D /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
-		110B7FE01E56382B00650A9D /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		110B7FE21E56383F00650A9D /* UIViewWithXibAndIBDesignable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewWithXibAndIBDesignable.swift; sourceTree = "<group>"; };
 		110B7FE61E5638E700650A9D /* UIEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEvent.swift; sourceTree = "<group>"; };
 		110B7FE81E56390100650A9D /* UIScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 				1159B39E1EB107D700F72750 /* Auxilary */,
 				11BE71041E733E63000BF9C4 /* Shapes */,
 				110B7FE41E56384500650A9D /* Views */,
-				110B7FE51E56384C00650A9D /* Table */,
 				110B7FDD1E5637A200650A9D /* Extensions */,
 				110B7FA71E56375300650A9D /* Essentials.h */,
 				110B7FA81E56375300650A9D /* Info.plist */,
@@ -196,14 +193,6 @@
 				110B7FDE1E5637F400650A9D /* GradientView.swift */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		110B7FE51E56384C00650A9D /* Table */ = {
-			isa = PBXGroup;
-			children = (
-				110B7FE01E56382B00650A9D /* Table.swift */,
-			);
-			name = Table;
 			sourceTree = "<group>";
 		};
 		110FF0F81E8C2E2B000DB1A5 /* TextViewWithPlaceholder */ = {
@@ -381,7 +370,6 @@
 				110B7FCD1E56377300650A9D /* MKMapView.swift in Sources */,
 				110B7FD41E56377300650A9D /* UITextView.swift in Sources */,
 				110B7FCA1E56377300650A9D /* Data.swift in Sources */,
-				110B7FE11E56382B00650A9D /* Table.swift in Sources */,
 				110B7FCF1E56377300650A9D /* CLLocationCoordinate.swift in Sources */,
 				110B7FC91E56377300650A9D /* Date.swift in Sources */,
 				117FEC061EBB975D00D5CD8D /* NSString.swift in Sources */,
@@ -513,6 +501,7 @@
 		110B7FAD1E56375300650A9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -534,6 +523,7 @@
 		110B7FAE1E56375300650A9D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
