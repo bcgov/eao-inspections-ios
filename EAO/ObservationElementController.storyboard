@@ -112,7 +112,7 @@
                                         </constraints>
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g54-EY-TU5">
-                                        <rect key="frame" x="0.0" y="339" width="375" height="72"/>
+                                        <rect key="frame" x="0.0" y="349.5" width="375" height="72"/>
                                         <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="72" id="SFo-fI-xfH"/>
@@ -154,11 +154,10 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="94" height="69"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StW-hH-vGx">
+                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StW-hH-vGx">
                                                             <rect key="frame" x="0.0" y="0.0" width="94" height="69"/>
                                                             <color key="backgroundColor" red="0.0" green="0.36545503800000001" blue="0.64154296879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                            <state key="normal" title="Add Photo">
+                                                            <state key="normal" image="icon_camera">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
@@ -184,7 +183,7 @@
                                         </connections>
                                     </collectionView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="qaK-dn-6Pa">
-                                        <rect key="frame" x="20" y="431.5" width="335" height="50"/>
+                                        <rect key="frame" x="20" y="442" width="335" height="50"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOb-1p-sMc">
                                                 <rect key="frame" x="0.0" y="0.0" width="147.5" height="50"/>
@@ -220,7 +219,7 @@
                                 <constraints>
                                     <constraint firstItem="hdH-Gy-bkN" firstAttribute="leading" secondItem="lth-sO-X8t" secondAttribute="leading" constant="10" id="0oa-mE-T4u"/>
                                     <constraint firstAttribute="trailing" secondItem="qaK-dn-6Pa" secondAttribute="trailing" constant="20" id="1XV-ld-EvX"/>
-                                    <constraint firstItem="g54-EY-TU5" firstAttribute="top" secondItem="Tma-Ib-iJ9" secondAttribute="bottom" constant="10" id="25N-tP-KpT"/>
+                                    <constraint firstItem="g54-EY-TU5" firstAttribute="top" secondItem="Tma-Ib-iJ9" secondAttribute="bottom" constant="20" id="25N-tP-KpT"/>
                                     <constraint firstItem="hdH-Gy-bkN" firstAttribute="top" secondItem="2oK-lY-waU" secondAttribute="bottom" constant="20" id="2w1-3V-2Qu"/>
                                     <constraint firstItem="g54-EY-TU5" firstAttribute="leading" secondItem="lth-sO-X8t" secondAttribute="leading" id="D8V-lp-13q"/>
                                     <constraint firstItem="2oK-lY-waU" firstAttribute="top" secondItem="lth-sO-X8t" secondAttribute="top" constant="20" id="HV4-3U-LPd"/>
@@ -296,4 +295,7 @@
             <point key="canvasLocation" x="480.80000000000001" y="-69.715142428785612"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_camera" width="105" height="105"/>
+    </resources>
 </document>

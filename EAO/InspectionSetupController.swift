@@ -90,7 +90,7 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 			})
 			button.setTitle("Next", for: .normal)
 		} else if inspection == nil{
-			button.setTitle("Create", for: .normal)
+			button.setTitle("Create Inspection", for: .normal)
 		} else{
 			button.setTitle("Modify", for: .normal)
 		}

@@ -65,7 +65,8 @@ class InspectionFormController: UIViewController{
 		query?.whereKey("inspection", equalTo: inspection)
 		query?.order(byDescending: "pinnedAt")
 		query?.findObjectsInBackground(block: { (objects, error) in
-			guard let objects = objects as? [PFObservation] else{
+			print(error)
+			guard let objects = objects as? [PFObservation], error == nil else{
 				AlertView.present(on: self, with: "Error occured while retrieving inspections from local storage")
 				return
 			}

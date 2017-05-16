@@ -8,7 +8,6 @@
 import Parse
 import MapKit
 
-
 final class ObservationElementController: UIViewController{
 	fileprivate var locationManager = CLLocationManager()
 	var saveAction  : ((PFObservation)->Void)?
