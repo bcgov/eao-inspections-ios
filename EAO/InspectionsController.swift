@@ -9,22 +9,35 @@ import MapKit
 import Parse
 
 class InspectionsController: UIViewController, CLLocationManagerDelegate{
-	let locationManager = CLLocationManager()
+	fileprivate let locationManager = CLLocationManager()
 	var inspections = [Int:[PFInspection]]()
-	//MARK: -
-	@IBOutlet var addNewInspectionButton: UIButton!
-	@IBOutlet var segmentedControl: UISegmentedControl!
+	//MARK: - IB Outlets
 	@IBOutlet var tableView: UITableView!
+	@IBOutlet fileprivate var addNewInspectionButton: UIButton!
+	@IBOutlet fileprivate var tableViewBottomConstraint: NSLayoutConstraint!
+	@IBOutlet fileprivate var segmentedControl: UISegmentedControl!
+	@IBOutlet fileprivate var indicator: UIActivityIndicatorView!
+	//MARK: - IB Actions
+	@IBAction func uploadTapped(_ sender: UIButton, forEvent event: UIEvent) {
+		guard let indexPath = tableView.indexPath(for: event),let inspection = inspections[0]?[indexPath.row] else{
+			AlertView.present(on: self, with: "Inspection was not found")
+			return
+		}
+		sender.isEnabled = false
+		print(inspection)
+		sender.isEnabled = true 
+	}
 	
-	//MARK: -
 	@IBAction func segmentedControlChangedValue(_ sender: UISegmentedControl) {
 		addNewInspectionButton.isHidden = selectedIndex == 0 ? false : true
+		tableViewBottomConstraint.constant = selectedIndex == 0 ? 10 : -60
+		view.layoutIfNeeded()
 		tableView.reloadData()
 	}
 	
 	//MARK: -
 	override func viewDidLoad() {
-		tableView.contentInset.bottom = 70
+		tableView.contentInset.bottom = 10
 		locationManager.delegate = self
 		locationManager.requestWhenInUseAuthorization()
 		self.load()
@@ -101,7 +114,7 @@ extension InspectionsController: UITableViewDelegate, UITableViewDataSource{
 		if let start = inspection?.start, let end = inspection?.end{
 			date = "\(start.inspectionFormat()) - \(end.inspectionFormat())"
 		}
-		cell.setData(title: inspection?.title, time: date, isReadOnly: Bool.init(NSNumber(integerLiteral: selectedIndex)))
+		cell.setData(title: inspection?.title, time: date, isReadOnly: Bool(NSNumber(integerLiteral: selectedIndex)))
 		return cell
 	}
 	

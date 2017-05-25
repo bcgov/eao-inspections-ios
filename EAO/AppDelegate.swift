@@ -25,8 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+		if ProcessInfo.processInfo.arguments.contains("UITests") {
+			UIView.setAnimationsEnabled(false)
+			window?.layer.speed = 100
+		}
 		Fabric.with([Crashlytics.self])
-		
 		let configuration = ParseClientConfiguration {
 			$0.applicationId = "XTHCaxK6sIDRsk27KOacQLYy4ZXHlf9XUi6DxSLx"
 			$0.clientKey     = "Bq8cEpJRuHW29byxt18yf1MKTmjRvbrEOkIGNCQu"

@@ -193,7 +193,6 @@ extension ObservationElementController: UICollectionViewDelegate, UICollectionVi
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		return CGSize(width: Constants.cellWidth, height: Constants.cellWidth)
 	}
-	
 }
 
 extension ObservationElementController{

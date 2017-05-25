@@ -8,18 +8,19 @@
 
 final class InspectionSetupController: UIViewController, KeyboardDelegate{
 	var inspection: PFInspection?
+	fileprivate var isNew = false
 	fileprivate var inputs = [String : Any?]()
-	//MARK: -
-	@IBOutlet var button	 : UIButton!
-	@IBOutlet var indicator  : UIActivityIndicatorView!
-	@IBOutlet var scrollView : UIScrollView!
+	//MARK: - IB Outlets
+	@IBOutlet fileprivate var button	 : UIButton!
+	@IBOutlet fileprivate var indicator  : UIActivityIndicatorView!
+	@IBOutlet fileprivate var scrollView : UIScrollView!
 	//[Title, subtitle, subtext]
-	@IBOutlet var fields  : [UITextField]!
+	@IBOutlet fileprivate var fields  : [UITextField]!
 	//[selectProject, start date, end date]
-	@IBOutlet var buttons : [UIButton]!
+	@IBOutlet fileprivate var buttons : [UIButton]!
  
-	//MARK: -
-	@IBAction func projectTapped(_ sender: UIButton) {
+	//MARK: - IB Actions
+	@IBAction fileprivate func projectTapped(_ sender: UIButton) {
 		let projectListController = ProjectListController.storyboardInstance() as! ProjectListController
 		projectListController.result = { (title) in
 			guard let title = title else { return }
@@ -30,70 +31,71 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 	}
 	
 	//sender: tag 10 is start date button, tag 11 is end date button
-	@IBAction func pickDate(_ sender: UIButton) {
+	@IBAction fileprivate func pickDate(_ sender: UIButton) {
 		DatePickerController.present(on: self, minimum: inputs["start"] as? Date) { [weak self] (date) in
 			guard let date = date else { return }
+			self?.navigationItem.rightBarButtonItem?.isEnabled = true
 			sender.setTitle(date.datePickerFormat(), for: .normal)
 			self?.inputs[sender.tag == 10 ? "start" : "end"] = date
 		}
 	}
 	
-	@IBAction func createTapped(_ sender: UIButton) {
-		sender.isEnabled = false
-		if isReadOnly{
-			let inspectionFormController = InspectionFormController.storyboardInstance() as! InspectionFormController
-			inspectionFormController.inspection = inspection
-			self.push(controller: inspectionFormController)
-			sender.isEnabled = true
-			return
-		}
+	@IBAction fileprivate func saveTapped(_ sender: UIBarButtonItem?=nil) {
+		sender?.isEnabled = false
 		indicator.startAnimating()
-		validate { (inspection, isNew) in
+		validate { (inspection) in
 			guard let inspection = inspection else {
-				sender.isEnabled = true
+				sender?.isEnabled = true
 				self.indicator.stopAnimating()
 				return
 			}
-			inspection.isSubmitted = false 
+			inspection.isSubmitted = false
 			inspection.pinInBackground(block: { (success, error) in
 				guard success, error == nil else{
 					self.indicator.stopAnimating()
-					sender.isEnabled = true
+					sender?.isEnabled = true
 					self.present(controller: UIAlertController(title: "ERROR!", message: "Inspection failed to be saved.\nError Description: \(error?.localizedDescription ?? "nil")"))
 					return
 				}
-				if isNew{
+				if self.isNew{
 					InspectionsController.reference?.prepend(inspection: inspection)
 				} else{
 					InspectionsController.reference?.tableView.reloadData()
 				}
-				let inspectionFormController = InspectionFormController.storyboardInstance() as! InspectionFormController
-				inspectionFormController.inspection = inspection
-				self.push(controller: inspectionFormController)
-				sender.setTitle("Modify", for: .normal)
-				sender.isEnabled = true
+				if self.isNew{
+					self.isNew = false
+					let inspectionFormController = InspectionFormController.storyboardInstance() as! InspectionFormController
+					inspectionFormController.inspection = inspection
+					self.push(controller: inspectionFormController)
+					self.setMode()
+				}
 				self.indicator.stopAnimating()
+				self.showSuccessImageView()
 			})
 		}
+	}
+	
+	@IBAction fileprivate func addElementTapped(_ sender: UIButton) {
+		sender.isEnabled = false
+		if isNew{
+			saveTapped()
+			sender.isEnabled = true
+			return
+		}
+		let inspectionFormController = InspectionFormController.storyboardInstance() as! InspectionFormController
+		inspectionFormController.inspection = inspection
+		self.push(controller: inspectionFormController)
+		sender.isEnabled = true
 	}
 	
 	//MARK: -
 	override func viewDidLoad() {
 		addDismissKeyboardOnTapRecognizer(on: scrollView)
-		populate()
-		if isReadOnly{
-			buttons.forEach({ (button) in
-				button.isEnabled = false
-			})
-			fields.forEach({ (field) in
-				field.isEnabled = false
-			})
-			button.setTitle("Next", for: .normal)
-		} else if inspection == nil{
-			button.setTitle("Create Inspection", for: .normal)
-		} else{
-			button.setTitle("Modify", for: .normal)
+		if inspection == nil{
+			isNew = true
 		}
+		setMode()
+		populate()
 	}
  
 	deinit {
@@ -106,6 +108,27 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		removeKeyboardObservers()
+	}
+	
+	fileprivate func setMode(){
+		if isReadOnly{
+			buttons.forEach({ (button) in
+				button.isEnabled = false
+			})
+			fields.forEach({ (field) in
+				field.isEnabled = false
+			})
+			setNavigationRightItemAsEye()
+		} else if isNew{
+			//new
+			button.setTitle("Create Inspection", for: .normal)
+			navigationItem.rightBarButtonItem = nil
+		} else{
+			//modifying
+			button.setTitle("Add Elements", for: .normal)
+			navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveTapped(_:)))
+			navigationItem.rightBarButtonItem?.isEnabled = false
+		}
 	}
 	
 	//MARK: -
@@ -160,6 +183,11 @@ extension InspectionSetupController: UITextFieldDelegate{
 		}
 	}
 	
+	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		navigationItem.rightBarButtonItem?.isEnabled = true
+		return true
+	}
+	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		if let i = fields.index(of: textField){
 			if i == 3{
@@ -174,27 +202,25 @@ extension InspectionSetupController: UITextFieldDelegate{
 
 //MARK: -
 extension InspectionSetupController{
-	func validate(completion: @escaping (_ inspection : PFInspection?, _ isNew: Bool)->Void){
+	func validate(completion: @escaping (_ inspection : PFInspection?)->Void){
 		let inputs = self.inputs.flatMap({$0})
 		if inputs.count < 7{
 			present(controller: Alerts.fields)
-			completion(nil, false)
+			completion(nil)
 			return
 		}
 		if !validateDates() {
 			present(controller: Alerts.dates)
-			completion(nil, false)
+			completion(nil)
 			return
 		}
-		var isNew = false
-		if inspection == nil {
-			isNew = true
+		if self.isNew {
 			inspection = PFInspection()
 		}
 		for (key,input) in inputs{
 			inspection?.setValue(input, forKey: key)
 		}
-		completion(inspection,isNew)
+		completion(inspection)
 	}
 	
 	func validateDates() -> Bool{

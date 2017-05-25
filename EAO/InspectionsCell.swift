@@ -6,14 +6,23 @@
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
 
-class InspectionsCell: UITableViewCell{
-	@IBOutlet var titleLabel : UILabel!
-	@IBOutlet var timeLabel  : UILabel!
-	@IBOutlet var editButton : UIButton!
+final class InspectionsCell: UITableViewCell{
+	@IBOutlet fileprivate var titleLabel : UILabel!
+	@IBOutlet fileprivate var timeLabel  : UILabel!
+	@IBOutlet fileprivate var editButton : UIButton!
+	@IBOutlet fileprivate var uploadButton: UIButton!
 	
 	func setData(title: String?, time: String?, isReadOnly: Bool){
 		titleLabel.text = title
 		timeLabel.text  = time
-		editButton.isEnabled = !isReadOnly
+		if isReadOnly{
+			editButton.isHidden = true
+			uploadButton.isUserInteractionEnabled = false
+			uploadButton.setBackgroundImage(#imageLiteral(resourceName: "icon_eye_blue"), for: .normal)
+		} else{
+			editButton.isHidden = false
+			uploadButton.isUserInteractionEnabled = true
+			uploadButton.setBackgroundImage(#imageLiteral(resourceName: "icon_upload"), for: .normal)
+		}
 	}
 }

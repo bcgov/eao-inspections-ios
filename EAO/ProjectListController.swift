@@ -77,6 +77,13 @@ extension ProjectListController: UISearchBarDelegate{
 		searchBar.resignFirstResponder()
 	}
 	
+	func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+		if projects == nil{
+			return false
+		}
+		return true
+	}
+	
 	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
 		filtered = nil
 		tableView.reloadData()
@@ -91,23 +98,8 @@ extension ProjectListController: UISearchBarDelegate{
 		} else{
 			self.filtered = self.filter(by: searchBar.text)
 		}
-		
 		self.indicator.stopAnimating()
 		self.tableView.reloadData()
-		
-//		indicator.startAnimating()
-//		DispatchQueue.global(qos: .background).async {
-//			if searchText.isEmpty() == true{
-//				self.filtered?.removeAll()
-//				self.filtered = nil
-//			} else{
-//				self.filtered = self.filter(by: searchBar.text)
-//			}
-//			DispatchQueue.main.async {
-//				self.indicator.stopAnimating()
-//				self.tableView.reloadData()
-//			}
-//		}
 	}
 }
 

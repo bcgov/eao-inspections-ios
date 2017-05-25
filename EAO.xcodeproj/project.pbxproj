@@ -41,6 +41,7 @@
 		1186B5291ECA35AC00681426 /* Essentials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1186B5281ECA35AC00681426 /* Essentials.framework */; };
 		1186B52A1ECA35AC00681426 /* Essentials.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1186B5281ECA35AC00681426 /* Essentials.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1186B52E1ECA634C00681426 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186B52D1ECA634C00681426 /* UIViewController.swift */; };
+		1186B53B1ECB699D00681426 /* EAOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186B53A1ECB699D00681426 /* EAOUITests.swift */; };
 		11D70EB01E8D7A9800CBF92C /* InspectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70EAF1E8D7A9800CBF92C /* InspectionsController.swift */; };
 		11D70EB31E8D852800CBF92C /* InspectionSetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70EB21E8D852800CBF92C /* InspectionSetupController.swift */; };
 		11D70EB61E8D856400CBF92C /* InspectionSetupController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D70EB51E8D856400CBF92C /* InspectionSetupController.storyboard */; };
@@ -55,6 +56,16 @@
 		54A450104FD83EFA9471288B /* Pods_EAO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD0E7F8FD1D452DB3152947A /* Pods_EAO.framework */; };
 		9688D51C1E69DA4300C49CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9688D51B1E69DA4300C49CD7 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1186B53D1ECB699D00681426 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9688D5101E69DA4300C49CD7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9688D5171E69DA4300C49CD7;
+			remoteInfo = EAO;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		1186B52B1ECA35AC00681426 /* Embed Frameworks */ = {
@@ -107,6 +118,9 @@
 		1186B5241ECA235900681426 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		1186B5281ECA35AC00681426 /* Essentials.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Essentials.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1186B52D1ECA634C00681426 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		1186B5381ECB699D00681426 /* EAOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EAOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1186B53A1ECB699D00681426 /* EAOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EAOUITests.swift; sourceTree = "<group>"; };
+		1186B53C1ECB699D00681426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11D70EAF1E8D7A9800CBF92C /* InspectionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionsController.swift; sourceTree = "<group>"; };
 		11D70EB21E8D852800CBF92C /* InspectionSetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionSetupController.swift; sourceTree = "<group>"; };
 		11D70EB51E8D856400CBF92C /* InspectionSetupController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InspectionSetupController.storyboard; sourceTree = "<group>"; };
@@ -127,6 +141,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1186B5351ECB699D00681426 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9688D5151E69DA4300C49CD7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -278,6 +299,15 @@
 			name = Inspections;
 			sourceTree = "<group>";
 		};
+		1186B5391ECB699D00681426 /* EAOUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1186B53A1ECB699D00681426 /* EAOUITests.swift */,
+				1186B53C1ECB699D00681426 /* Info.plist */,
+			);
+			path = EAOUITests;
+			sourceTree = "<group>";
+		};
 		11CEADDD1E79C4BA00E2242C /* UploadPhoto */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,9 +364,9 @@
 		11D70ED31E8D9BF300CBF92C /* InspectionForm */ = {
 			isa = PBXGroup;
 			children = (
-				11D70ED11E8D9BCB00CBF92C /* Cell */,
 				11D70ECB1E8D9A8B00CBF92C /* InspectionFormController.storyboard */,
 				11D70EC81E8D9A7F00CBF92C /* InspectionFormController.swift */,
+				11D70ED11E8D9BCB00CBF92C /* Cell */,
 			);
 			name = InspectionForm;
 			sourceTree = "<group>";
@@ -364,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				9688D51A1E69DA4300C49CD7 /* EAO */,
+				1186B5391ECB699D00681426 /* EAOUITests */,
 				9688D5191E69DA4300C49CD7 /* Products */,
 				BD3B058A1E6A3736005E2C19 /* Frameworks */,
 				0DAF0FAAE3A00230144E65E8 /* Pods */,
@@ -374,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				9688D5181E69DA4300C49CD7 /* EAO.app */,
+				1186B5381ECB699D00681426 /* EAOUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -433,6 +465,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1186B5371ECB699D00681426 /* EAOUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1186B53F1ECB699D00681426 /* Build configuration list for PBXNativeTarget "EAOUITests" */;
+			buildPhases = (
+				1186B5341ECB699D00681426 /* Sources */,
+				1186B5351ECB699D00681426 /* Frameworks */,
+				1186B5361ECB699D00681426 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1186B53E1ECB699D00681426 /* PBXTargetDependency */,
+			);
+			name = EAOUITests;
+			productName = EAOUITests;
+			productReference = 1186B5381ECB699D00681426 /* EAOUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		9688D5171E69DA4300C49CD7 /* EAO */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9688D5351E69DA4300C49CD7 /* Build configuration list for PBXNativeTarget "EAO" */;
@@ -461,10 +511,15 @@
 		9688D5101E69DA4300C49CD7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = FreshWorks;
 				TargetAttributes = {
+					1186B5371ECB699D00681426 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9688D5171E69DA4300C49CD7;
+					};
 					9688D5171E69DA4300C49CD7 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = TCH45SXZ69;
@@ -487,11 +542,19 @@
 			projectRoot = "";
 			targets = (
 				9688D5171E69DA4300C49CD7 /* EAO */,
+				1186B5371ECB699D00681426 /* EAOUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1186B5361ECB699D00681426 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9688D5161E69DA4300C49CD7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -575,6 +638,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1186B5341ECB699D00681426 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1186B53B1ECB699D00681426 /* EAOUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9688D5141E69DA4300C49CD7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -616,7 +687,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		1186B53E1ECB699D00681426 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9688D5171E69DA4300C49CD7 /* EAO */;
+			targetProxy = 1186B53D1ECB699D00681426 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		1186B5401ECB699D00681426 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = EAOUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.freshworks.EAOUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = EAO;
+			};
+			name = Debug;
+		};
+		1186B5411ECB699D00681426 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = EAOUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.freshworks.EAOUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = EAO;
+			};
+			name = Release;
+		};
 		9688D5331E69DA4300C49CD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -753,6 +868,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1186B53F1ECB699D00681426 /* Build configuration list for PBXNativeTarget "EAOUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1186B5401ECB699D00681426 /* Debug */,
+				1186B5411ECB699D00681426 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9688D5131E69DA4300C49CD7 /* Build configuration list for PBXProject "EAO" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

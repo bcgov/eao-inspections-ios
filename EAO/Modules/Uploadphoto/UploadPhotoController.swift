@@ -56,14 +56,13 @@ class UploadPhotoController: UIViewController{
 			photo.observation = observation
 		}
 		if photo.id == nil{
-			photo.id = String.random()
+			photo.id = UUID().uuidString
 		}
 		photo.caption = captionTextView.text
 		photo.timestamp = date
 		photo.coordinate = PFGeoPoint(location: location)
 		if let data = imageView.image?.toData(quality: .medium){
 			photo.image = UIImage(data: data)
-			photo.photo = PFFile(data: data)
 			do{
 				try data.write(to: FileManager.directory.appendingPathComponent(photo.id!, isDirectory: true))
 				photo.pinInBackground { (success, error) in

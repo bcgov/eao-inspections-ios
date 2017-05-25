@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gL0-0A-G6s">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gL0-0A-G6s">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34O-gF-fK3">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="34O-gF-fK3">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wet-Te-DXx">
@@ -34,7 +34,7 @@
                                                     <constraint firstAttribute="height" constant="60" id="WNV-mF-T0b"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
-                                                <state key="normal" title="link project">
+                                                <state key="normal" title="Link Project">
                                                     <color key="titleColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -151,7 +151,7 @@
                                             <constraint firstAttribute="height" constant="50" id="wnh-mE-1R4"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                        <state key="normal" title="Create">
+                                        <state key="normal" title="Add Elements">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -160,7 +160,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="createTapped:" destination="gL0-0A-G6s" eventType="touchUpInside" id="Udv-Jx-D7J"/>
+                                            <action selector="addElementTapped:" destination="gL0-0A-G6s" eventType="touchUpInside" id="2ME-na-p2n"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -187,6 +187,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ybm-6L-ULn">
                         <nil key="title"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="0y3-JX-N8R"/>
                         <view key="titleView" contentMode="scaleToFill" id="R0f-9R-AqM">
                             <rect key="frame" x="112.5" y="5.5" width="150" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -210,6 +211,11 @@
                                 <constraint firstItem="zKK-E4-zpb" firstAttribute="centerY" secondItem="R0f-9R-AqM" secondAttribute="centerY" id="mrN-we-PC8"/>
                             </constraints>
                         </view>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="6A1-H0-jbC">
+                            <connections>
+                                <action selector="saveTapped:" destination="gL0-0A-G6s" id="2iB-z0-t9C"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>

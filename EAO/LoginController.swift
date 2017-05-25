@@ -16,21 +16,21 @@ class LoginController: UIViewController{
 	
 	@IBAction func loginTapped(_ sender: UIButton) {
 		sender.isEnabled = false
-		guard let username = usernameField.text, !username.isEmpty() else {
-			sender.isEnabled = true
-			present(controller: Alerts.error)
-			return
-		}
-		guard let password = passwordField.text, !password.isEmpty() else {
-			sender.isEnabled = true
-			present(controller: Alerts.error)
-			return
-		}
-		if !isValid(username: username, password: password){
-			sender.isEnabled = true
-			present(controller: Alerts.error)
-			return
-		}
+//		guard let username = usernameField.text, !username.isEmpty() else {
+//			sender.isEnabled = true
+//			present(controller: Alerts.error)
+//			return
+//		}
+//		guard let password = passwordField.text, !password.isEmpty() else {
+//			sender.isEnabled = true
+//			present(controller: Alerts.error)
+//			return
+//		}
+//		if !isValid(username: username, password: password){
+//			sender.isEnabled = true
+//			present(controller: Alerts.error)
+//			return
+//		}
 		usernameField.text = ""
 		passwordField.text = ""
 		let inspectionsController = InspectionsController.storyboardInstance()
@@ -53,7 +53,7 @@ extension LoginController: UITextFieldDelegate{
 
 extension LoginController{
 	func isValid(username: String, password: String) -> Bool{
-		return users[username]?.lowercased() == password
+		return users[username.lowercased()] == password
 	}
 }
 
