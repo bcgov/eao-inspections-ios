@@ -7,14 +7,29 @@
 //
 
 import Parse
-class PFObservation: PFObject, PFSubclassing{
-	@NSManaged var title: String?
-	@NSManaged var requirement: String?
+final class PFObservation: PFObject, PFSubclassing{
+	@NSManaged var id	        : String?
+	@NSManaged var inspectionId : String?
+	@NSManaged var title        : String?
+	@NSManaged var requirement  : String?
+	@NSManaged var coordinate   : PFGeoPoint?
+	@NSManaged var pinnedAt     : Date?
 	@NSManaged var observationDescription: String?
-	@NSManaged var coordinate: PFGeoPoint?
-	@NSManaged var inspection: PFInspection?
-	@NSManaged var pinnedAt: Date?
+	
 	static func parseClassName() -> String {
 		return "Observation"
+	}
+	
+	static func load(for inspectionId: String,result: @escaping (_ observations: [PFObservation]?)->Void){
+		guard let query = PFObservation.query() else{
+			result(nil)
+			return 
+		}
+		query.fromLocalDatastore()
+		query.whereKey("inspectionId", equalTo: inspectionId)
+		query.order(byDescending: "pinnedAt")
+		query.findObjectsInBackground(block: { (objects, error) in
+			result(objects as? [PFObservation])
+		})
 	}
 }

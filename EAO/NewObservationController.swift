@@ -8,7 +8,7 @@
 import Parse
 import MapKit
 
-final class ObservationElementController: UIViewController{
+final class NewObservationController: UIViewController{
 	fileprivate var locationManager = CLLocationManager()
 	var saveAction  : ((PFObservation)->Void)?
 	var inspection  : PFInspection!
@@ -37,8 +37,11 @@ final class ObservationElementController: UIViewController{
 		if observation.coordinate == nil{
 			observation.coordinate = PFGeoPoint(location: locationManager.location)
 		}
-		if observation.inspection == nil{
-			observation.inspection = inspection
+		if observation.inspectionId == nil{
+			observation.inspectionId = inspection.id
+		}
+		if observation.id == nil{
+			observation.id = UUID().uuidString
 		}
 		observation.pinInBackground { (success, error) in
 			if success && error == nil{
@@ -55,6 +58,9 @@ final class ObservationElementController: UIViewController{
  
 	@IBAction fileprivate func addPhotoTapped(_ sender: UIButton) {
 		sender.isEnabled = false
+		if observation.id == nil{
+			observation.id = UUID().uuidString
+		}
 		let uploadPhotoController = UploadPhotoController.storyboardInstance() as! UploadPhotoController
 		uploadPhotoController.observation = observation
 		uploadPhotoController.uploadPhotoAction = { (photo) in
@@ -80,6 +86,7 @@ final class ObservationElementController: UIViewController{
 			observation = PFObservation()
 		}
 		if isReadOnly{
+			navigationItem.rightBarButtonItem = nil
 			titleTextField.isEnabled = false
 			requirementTextField.isEnabled = false
 			descriptionTextView.isEditable = false
@@ -113,7 +120,7 @@ final class ObservationElementController: UIViewController{
 			return
 		}
 		query.fromLocalDatastore()
-		query.whereKey("observation", equalTo: observation)
+		query.whereKey("observationId", equalTo: observation.id!)
 		query.findObjectsInBackground(block: { (photos, error) in
 			guard let photos = photos as? [PFPhoto], error == nil else {
 				self.indicator.stopAnimating()
@@ -123,6 +130,7 @@ final class ObservationElementController: UIViewController{
 			if self.photos == nil{
 				self.photos = []
 			}
+			
 			for photo in photos{
 				if let id = photo.id{
 					let url = URL(fileURLWithPath: FileManager.directory.absoluteString).appendingPathComponent(id, isDirectory: true)
@@ -153,7 +161,7 @@ final class ObservationElementController: UIViewController{
 }
 
 
-extension ObservationElementController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension NewObservationController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 	private func photoCell(indexPath: IndexPath) -> UICollectionViewCell{
 		let cell = collectionView.dequeue(identifier: "PhotoCell", indexPath: indexPath) as! ObservationElementPhotoCell
 		cell.setData(image: photos?[indexPath.row].image)
@@ -185,6 +193,7 @@ extension ObservationElementController: UICollectionViewDelegate, UICollectionVi
 			return
 		}
 		let uploadPhotoController = UploadPhotoController.storyboardInstance() as! UploadPhotoController
+		uploadPhotoController.isReadOnly = inspection.isSubmitted?.boolValue ?? false
 		uploadPhotoController.observation = observation
 		uploadPhotoController.photo = photos?[indexPath.row]
 		push(controller: uploadPhotoController)
@@ -195,13 +204,13 @@ extension ObservationElementController: UICollectionViewDelegate, UICollectionVi
 	}
 }
 
-extension ObservationElementController{
+extension NewObservationController{
 	var isReadOnly: Bool{
 		return inspection.isSubmitted?.boolValue == true
 	}
 }
 
-extension ObservationElementController: UITextFieldDelegate{
+extension NewObservationController: UITextFieldDelegate{
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		let tag = textField.tag
 		if tag == 1{
@@ -213,7 +222,7 @@ extension ObservationElementController: UITextFieldDelegate{
 	}
 }
 
-extension ObservationElementController{
+extension NewObservationController{
 	fileprivate func validate() ->Bool{
 		if titleTextField.text?.isEmpty() == true{
 			present(controller: Alerts.fields)
@@ -231,13 +240,13 @@ extension ObservationElementController{
 	}
 }
 
-extension ObservationElementController{
+extension NewObservationController{
 	enum Alerts{
 		static let fields = UIAlertController(title: "All Fields Required", message: "Please fill out 'Title', 'Requirement', and 'Description' fields")
 	}
 }
 
-extension ObservationElementController{
+extension NewObservationController{
 	enum Constants{
 		static let cellWidth = (UIScreen.width-25)/CGFloat(Constants.itemsPerRow)
 		static let itemsPerRow = 4

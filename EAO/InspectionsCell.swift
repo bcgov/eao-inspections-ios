@@ -11,18 +11,41 @@ final class InspectionsCell: UITableViewCell{
 	@IBOutlet fileprivate var timeLabel  : UILabel!
 	@IBOutlet fileprivate var editButton : UIButton!
 	@IBOutlet fileprivate var uploadButton: UIButton!
+	@IBOutlet fileprivate var progressBar: UIProgressView!
+	@IBOutlet fileprivate var indicator: UIActivityIndicatorView!
 	
-	func setData(title: String?, time: String?, isReadOnly: Bool){
+	func setData(title: String?, time: String?, isReadOnly: Bool, progress: Float, isBeingUploaded: Bool, isEnabled: Bool){
 		titleLabel.text = title
 		timeLabel.text  = time
+		progressBar.progress = progress
 		if isReadOnly{
+			indicator.stopAnimating()
+			progressBar.isHidden = true
 			editButton.isHidden = true
 			uploadButton.isUserInteractionEnabled = false
 			uploadButton.setBackgroundImage(#imageLiteral(resourceName: "icon_eye_blue"), for: .normal)
+			if isBeingUploaded{
+				uploadButton.isHidden = true
+			} else{
+				uploadButton.isHidden = false
+			}
 		} else{
+			if isBeingUploaded{
+				uploadButton.isHidden = true
+				progressBar.isHidden = false
+				indicator.startAnimating()
+			} else{
+				uploadButton.isHidden = false 
+				progressBar.isHidden = true
+				indicator.stopAnimating()
+			}
 			editButton.isHidden = false
-			uploadButton.isUserInteractionEnabled = true
+			uploadButton.isUserInteractionEnabled = !isEnabled
 			uploadButton.setBackgroundImage(#imageLiteral(resourceName: "icon_upload"), for: .normal)
 		}
 	}
 }
+
+
+
+

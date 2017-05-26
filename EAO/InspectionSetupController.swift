@@ -9,34 +9,39 @@
 final class InspectionSetupController: UIViewController, KeyboardDelegate{
 	var inspection: PFInspection?
 	fileprivate var isNew = false
-	fileprivate var inputs = [String : Any?]()
+	fileprivate var dates = [String: Date]()
+	
 	//MARK: - IB Outlets
 	@IBOutlet fileprivate var button	 : UIButton!
 	@IBOutlet fileprivate var indicator  : UIActivityIndicatorView!
 	@IBOutlet fileprivate var scrollView : UIScrollView!
-	//[Title, subtitle, subtext]
-	@IBOutlet fileprivate var fields  : [UITextField]!
-	//[selectProject, start date, end date]
-	@IBOutlet fileprivate var buttons : [UIButton]!
+	@IBOutlet var linkProjectButton : UIButton!
+	@IBOutlet var titleTextField	: UITextField!
+	@IBOutlet var subtitleTextField : UITextField!
+	@IBOutlet var subtextTextField  : UITextField!
+	@IBOutlet var numberTextField   : UITextField!
+	@IBOutlet var startDateButton   : UIButton!
+	@IBOutlet var endDateButton     : UIButton!
+	
  
 	//MARK: - IB Actions
-	@IBAction fileprivate func projectTapped(_ sender: UIButton) {
+	@IBAction fileprivate func linkProjectTapped(_ sender: UIButton) {
 		let projectListController = ProjectListController.storyboardInstance() as! ProjectListController
 		projectListController.result = { (title) in
 			guard let title = title else { return }
+			self.navigationItem.rightBarButtonItem?.isEnabled = true
 			sender.setTitle(title, for: .normal)
-			self.inputs["project"] = title
 		}
 		push(controller: projectListController)
 	}
 	
 	//sender: tag 10 is start date button, tag 11 is end date button
-	@IBAction fileprivate func pickDate(_ sender: UIButton) {
-		DatePickerController.present(on: self, minimum: inputs["start"] as? Date) { [weak self] (date) in
+	@IBAction fileprivate func dateTapped(_ sender: UIButton) {
+		DatePickerController.present(on: self, minimum: nil) { [weak self] (date) in
 			guard let date = date else { return }
 			self?.navigationItem.rightBarButtonItem?.isEnabled = true
 			sender.setTitle(date.datePickerFormat(), for: .normal)
-			self?.inputs[sender.tag == 10 ? "start" : "end"] = date
+			self?.dates[sender.tag == 10 ? "start" : "end"] = date
 		}
 	}
 	
@@ -54,7 +59,7 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 				guard success, error == nil else{
 					self.indicator.stopAnimating()
 					sender?.isEnabled = true
-					self.present(controller: UIAlertController(title: "ERROR!", message: "Inspection failed to be saved.\nError Description: \(error?.localizedDescription ?? "nil")"))
+					self.present(controller: UIAlertController(title: "ERROR!", message: "Inspection failed to be saved"))
 					return
 				}
 				if self.isNew{
@@ -62,12 +67,15 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 				} else{
 					InspectionsController.reference?.tableView.reloadData()
 				}
+				
 				if self.isNew{
 					self.isNew = false
 					let inspectionFormController = InspectionFormController.storyboardInstance() as! InspectionFormController
 					inspectionFormController.inspection = inspection
-					self.push(controller: inspectionFormController)
-					self.setMode()
+					if inspection.id != nil{
+						self.push(controller: inspectionFormController)
+						self.setMode()
+					}
 				}
 				self.indicator.stopAnimating()
 				self.showSuccessImageView()
@@ -84,7 +92,9 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 		}
 		let inspectionFormController = InspectionFormController.storyboardInstance() as! InspectionFormController
 		inspectionFormController.inspection = inspection
-		self.push(controller: inspectionFormController)
+		if inspection?.id != nil{
+			self.push(controller: inspectionFormController)
+		}
 		sender.isEnabled = true
 	}
 	
@@ -112,13 +122,15 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 	
 	fileprivate func setMode(){
 		if isReadOnly{
-			buttons.forEach({ (button) in
-				button.isEnabled = false
-			})
-			fields.forEach({ (field) in
-				field.isEnabled = false
-			})
+			linkProjectButton.isEnabled = false
+			titleTextField.isEnabled    = false
+			subtitleTextField.isEnabled = false
+			subtextTextField.isEnabled  = false
+			numberTextField.isEnabled   = false
+			startDateButton.isEnabled   = false
+			endDateButton.isEnabled     = false
 			setNavigationRightItemAsEye()
+			button.setTitle("View Elements", for: .normal)
 		} else if isNew{
 			//new
 			button.setTitle("Create Inspection", for: .normal)
@@ -143,59 +155,27 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 	//MARK: -
 	func populate(){
 		guard let inspection = inspection else { return }
-		buttons[0].setTitle(inspection.project, for: .normal)
-		buttons[1].setTitle(inspection.start?.datePickerFormat(), for: .normal)
-		buttons[2].setTitle(inspection.end?.datePickerFormat(), for: .normal)
-		
-		fields[0].text = inspection.title
-		fields[1].text = inspection.subtitle
-		fields[2].text = inspection.subtext
-		fields[3].text = inspection.number
-		
-		inputs["title"] = inspection.title
-		inputs["subtitle"] = inspection.subtitle
-		inputs["subtext"] = inspection.subtext
-		inputs["number"] = inspection.number
-		inputs["project"] = inspection.project
-		inputs["start"] = inspection.start
-		inputs["end"] = inspection.end
+		linkProjectButton.setTitle(inspection.project, for: .normal)
+		startDateButton.setTitle(inspection.start?.datePickerFormat(), for: .normal)
+		endDateButton.setTitle(inspection.end?.datePickerFormat(), for: .normal)
+		titleTextField.text = inspection.title
+		subtitleTextField.text = inspection.subtitle
+		subtextTextField.text = inspection.subtext
+		numberTextField.text = inspection.number
+		dates["start"] = inspection.start
+		dates["end"] = inspection.end
 	}
 }
 
 	//MARK: -
 extension InspectionSetupController: UITextFieldDelegate{
-	func textFieldDidEndEditing(_ textField: UITextField) {
-		var text = textField.text
-		if text?.isEmpty() == true{
-			text = nil
-		}
-		switch textField{
-		case fields[0]:
-			inputs["title"] = text
-		case fields[1]:
-			inputs["subtitle"] = text
-		case fields[2]:
-			inputs["subtext"] = text
-		case fields[3]:
-			inputs["number"] = text
-		default:
-			return
-		}
-	}
-	
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		navigationItem.rightBarButtonItem?.isEnabled = true
 		return true
 	}
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		if let i = fields.index(of: textField){
-			if i == 3{
-				dismissKeyboard()
-				return true
-			}
-			fields[i+1].becomeFirstResponder()
-		}
+		textField.resignFirstResponder()
 		return true
 	}
 }
@@ -203,8 +183,7 @@ extension InspectionSetupController: UITextFieldDelegate{
 //MARK: -
 extension InspectionSetupController{
 	func validate(completion: @escaping (_ inspection : PFInspection?)->Void){
-		let inputs = self.inputs.flatMap({$0})
-		if inputs.count < 7{
+		if linkProjectButton.title(for: .normal) == "Link Project" || titleTextField.text?.isEmpty() == true || subtitleTextField.text?.isEmpty() == true || subtextTextField.text?.isEmpty() == true || numberTextField.text?.isEmpty() == true || dates["start"] == nil || dates["end"] == nil{
 			present(controller: Alerts.fields)
 			completion(nil)
 			return
@@ -216,16 +195,22 @@ extension InspectionSetupController{
 		}
 		if self.isNew {
 			inspection = PFInspection()
+			inspection?.id = UUID().uuidString
 		}
-		for (key,input) in inputs{
-			inspection?.setValue(input, forKey: key)
-		}
+		inspection?.project = linkProjectButton.title(for: .normal)
+		inspection?.title = titleTextField.text
+		inspection?.subtitle = subtitleTextField.text
+		inspection?.subtext = subtextTextField.text
+		inspection?.number = numberTextField.text
+		inspection?.start = dates["start"]
+		inspection?.end = dates["end"]
 		completion(inspection)
 	}
 	
 	func validateDates() -> Bool{
-		guard let startDate = inputs["start"] as? Date,  
-			let endDate = inputs["end"] as? Date else {
+		guard let startDate = dates["start"],
+			let endDate = dates["end"] else {
+				print("****")
 			return false
 		}
 		return startDate < endDate

@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,10 +35,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zh4-y9-ynV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                                                    <rect key="frame" x="20" y="0.0" width="335" height="94.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="V0d-Ic-ajD">
-                                                            <rect key="frame" x="20" y="26.5" width="195" height="46"/>
+                                                            <rect key="frame" x="0.0" y="24.5" width="195" height="46"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGz-rz-tG5">
                                                                     <rect key="frame" x="0.0" y="0.0" width="195" height="29"/>
@@ -54,37 +55,59 @@
                                                             </subviews>
                                                         </stackView>
                                                         <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McJ-fj-UdB">
-                                                            <rect key="frame" x="225" y="19.5" width="60" height="60"/>
+                                                            <rect key="frame" x="205" y="17.5" width="60" height="60"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="McJ-fj-UdB" secondAttribute="height" multiplier="1:1" id="DLN-y6-Yaa"/>
                                                                 <constraint firstAttribute="width" constant="60" id="aIN-C1-aOb"/>
                                                             </constraints>
                                                             <state key="normal" backgroundImage="icon_document_edit"/>
                                                         </button>
-                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Yn-KP-qLQ">
-                                                            <rect key="frame" x="295" y="19.5" width="60" height="60"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jP5-8c-toC">
+                                                            <rect key="frame" x="275" y="17.5" width="60" height="60"/>
+                                                            <subviews>
+                                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Yn-KP-qLQ">
+                                                                    <rect key="frame" x="0.0" y="-0.5" width="60" height="60"/>
+                                                                    <state key="normal" backgroundImage="icon_upload"/>
+                                                                    <connections>
+                                                                        <action selector="uploadTapped:forEvent:" destination="C9T-wz-vIA" eventType="touchUpInside" id="Z4o-4M-YMH"/>
+                                                                    </connections>
+                                                                </button>
+                                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="U0y-ZD-acv">
+                                                                    <rect key="frame" x="20" y="19.5" width="20" height="20"/>
+                                                                </activityIndicatorView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="6Yn-KP-qLQ" secondAttribute="height" multiplier="1:1" id="2Pc-aq-J37"/>
-                                                                <constraint firstAttribute="width" constant="60" id="aBF-60-CQK"/>
+                                                                <constraint firstAttribute="bottom" secondItem="6Yn-KP-qLQ" secondAttribute="bottom" id="8W3-0s-HLV"/>
+                                                                <constraint firstAttribute="trailing" secondItem="6Yn-KP-qLQ" secondAttribute="trailing" id="YKQ-5F-WD0"/>
+                                                                <constraint firstItem="U0y-ZD-acv" firstAttribute="centerY" secondItem="jP5-8c-toC" secondAttribute="centerY" id="age-o2-8hb"/>
+                                                                <constraint firstItem="U0y-ZD-acv" firstAttribute="centerX" secondItem="jP5-8c-toC" secondAttribute="centerX" id="eKv-FW-OJj"/>
+                                                                <constraint firstAttribute="width" secondItem="jP5-8c-toC" secondAttribute="height" multiplier="1:1" id="fTx-ht-ucj"/>
+                                                                <constraint firstItem="6Yn-KP-qLQ" firstAttribute="top" secondItem="jP5-8c-toC" secondAttribute="top" id="jad-hf-Q5x"/>
+                                                                <constraint firstItem="6Yn-KP-qLQ" firstAttribute="leading" secondItem="jP5-8c-toC" secondAttribute="leading" id="oDB-HM-3Bg"/>
+                                                                <constraint firstAttribute="width" constant="60" id="pLL-3Y-97h"/>
                                                             </constraints>
-                                                            <state key="normal" backgroundImage="icon_upload"/>
-                                                            <connections>
-                                                                <action selector="uploadTapped:forEvent:" destination="C9T-wz-vIA" eventType="touchUpInside" id="Z4o-4M-YMH"/>
-                                                            </connections>
-                                                        </button>
+                                                        </view>
                                                     </subviews>
-                                                    <edgeInsets key="layoutMargins" top="8" left="20" bottom="8" right="20"/>
                                                 </stackView>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Khq-qP-Hcw">
+                                                    <rect key="frame" x="20" y="86.5" width="335" height="2"/>
+                                                </progressView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="zh4-y9-ynV" firstAttribute="leading" secondItem="nKq-40-xll" secondAttribute="leading" id="Q5y-56-I7s"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Khq-qP-Hcw" secondAttribute="bottom" constant="3" id="FQ7-SQ-k7h"/>
+                                                <constraint firstItem="zh4-y9-ynV" firstAttribute="leading" secondItem="nKq-40-xll" secondAttribute="leading" constant="20" id="Q5y-56-I7s"/>
+                                                <constraint firstItem="Khq-qP-Hcw" firstAttribute="leading" secondItem="nKq-40-xll" secondAttribute="leading" constant="20" id="WDO-mY-Xmu"/>
                                                 <constraint firstItem="zh4-y9-ynV" firstAttribute="top" secondItem="nKq-40-xll" secondAttribute="top" id="YdO-RI-LKV"/>
-                                                <constraint firstAttribute="bottom" secondItem="zh4-y9-ynV" secondAttribute="bottom" id="o7a-QK-iQv"/>
-                                                <constraint firstAttribute="trailing" secondItem="zh4-y9-ynV" secondAttribute="trailing" id="qCD-Le-S6G"/>
+                                                <constraint firstAttribute="trailing" secondItem="Khq-qP-Hcw" secondAttribute="trailing" constant="20" id="njM-9x-B3L"/>
+                                                <constraint firstAttribute="bottom" secondItem="zh4-y9-ynV" secondAttribute="bottom" constant="5" id="o7a-QK-iQv"/>
+                                                <constraint firstAttribute="trailing" secondItem="zh4-y9-ynV" secondAttribute="trailing" constant="20" id="qCD-Le-S6G"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="editButton" destination="McJ-fj-UdB" id="2uf-8C-0Tf"/>
+                                            <outlet property="indicator" destination="U0y-ZD-acv" id="bUx-he-Vn6"/>
+                                            <outlet property="progressBar" destination="Khq-qP-Hcw" id="48d-nF-8cY"/>
                                             <outlet property="timeLabel" destination="BAF-eR-0qN" id="8QY-KJ-TYh"/>
                                             <outlet property="titleLabel" destination="yGz-rz-tG5" id="zbQ-De-Pcc"/>
                                             <outlet property="uploadButton" destination="6Yn-KP-qLQ" id="O4Y-dX-do9"/>
@@ -233,7 +256,7 @@
                 <viewControllerPlaceholder storyboardName="SettingsController" id="Db9-MM-BGa" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eYV-Ro-S5Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1790" y="18"/>
+            <point key="canvasLocation" x="1829" y="12"/>
         </scene>
         <!--InspectionSetupController-->
         <scene sceneID="Fwx-ET-xyp">

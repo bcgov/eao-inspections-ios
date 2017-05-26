@@ -8,6 +8,7 @@
 import MapKit
 import Parse
 class UploadPhotoController: UIViewController{
+	var isReadOnly = false
 	var photo: PFPhoto!
 	var observation: PFObservation!
 	var uploadPhotoAction: ((_ photo: PFPhoto?)-> Void)?
@@ -52,8 +53,9 @@ class UploadPhotoController: UIViewController{
 			})
 			return
 		}
-		if photo.observation == nil{
-			photo.observation = observation
+		print(observation.id)
+		if photo.observationId == nil{
+			photo.observationId = observation.id 
 		}
 		if photo.id == nil{
 			photo.id = UUID().uuidString
@@ -67,6 +69,7 @@ class UploadPhotoController: UIViewController{
 				try data.write(to: FileManager.directory.appendingPathComponent(photo.id!, isDirectory: true))
 				photo.pinInBackground { (success, error) in
 					if success && error == nil{
+						print(self.photo)
 						self.uploadPhotoAction?(self.photo)
 						_ = self.navigationController?.popViewController(animated: true)
 					} else{
@@ -125,10 +128,7 @@ class UploadPhotoController: UIViewController{
 
 //MARK: -
 extension UploadPhotoController{
-	fileprivate var isReadOnly: Bool{
-		 return observation.inspection?.isSubmitted?.boolValue == true
-	}
-	
+ 
 	fileprivate func validate()->Bool{
 		if imageView.image == nil{
 			present(controller: Alerts.error)

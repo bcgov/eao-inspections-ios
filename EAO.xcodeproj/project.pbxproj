@@ -51,8 +51,8 @@
 		11D70EC91E8D9A7F00CBF92C /* InspectionFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70EC81E8D9A7F00CBF92C /* InspectionFormController.swift */; };
 		11D70ECC1E8D9A8B00CBF92C /* InspectionFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D70ECB1E8D9A8B00CBF92C /* InspectionFormController.storyboard */; };
 		11D70ED51E8DA02000CBF92C /* InspectionFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70ED41E8DA02000CBF92C /* InspectionFormCell.swift */; };
-		11D70ED91E8DA36800CBF92C /* ObservationElementController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D70ED81E8DA36800CBF92C /* ObservationElementController.storyboard */; };
-		11D70EDC1E8DA83D00CBF92C /* ObservationElementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70EDB1E8DA83D00CBF92C /* ObservationElementController.swift */; };
+		11D70ED91E8DA36800CBF92C /* NewObservationController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D70ED81E8DA36800CBF92C /* NewObservationController.storyboard */; };
+		11D70EDC1E8DA83D00CBF92C /* NewObservationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70EDB1E8DA83D00CBF92C /* NewObservationController.swift */; };
 		54A450104FD83EFA9471288B /* Pods_EAO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD0E7F8FD1D452DB3152947A /* Pods_EAO.framework */; };
 		9688D51C1E69DA4300C49CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9688D51B1E69DA4300C49CD7 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -130,8 +130,8 @@
 		11D70EC81E8D9A7F00CBF92C /* InspectionFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionFormController.swift; sourceTree = "<group>"; };
 		11D70ECB1E8D9A8B00CBF92C /* InspectionFormController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InspectionFormController.storyboard; sourceTree = "<group>"; };
 		11D70ED41E8DA02000CBF92C /* InspectionFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionFormCell.swift; sourceTree = "<group>"; };
-		11D70ED81E8DA36800CBF92C /* ObservationElementController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ObservationElementController.storyboard; sourceTree = "<group>"; };
-		11D70EDB1E8DA83D00CBF92C /* ObservationElementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationElementController.swift; sourceTree = "<group>"; };
+		11D70ED81E8DA36800CBF92C /* NewObservationController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewObservationController.storyboard; sourceTree = "<group>"; };
+		11D70EDB1E8DA83D00CBF92C /* NewObservationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewObservationController.swift; sourceTree = "<group>"; };
 		35A0BFAA52096CAB054AF015 /* Pods-EAOTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EAOTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EAOTests/Pods-EAOTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9688D5181E69DA4300C49CD7 /* EAO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EAO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9688D51B1E69DA4300C49CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 				1159B3311EB101E500F72750 /* Inspections */,
 				11D70EB81E8D856900CBF92C /* InspectionSetup */,
 				11D70ED31E8D9BF300CBF92C /* InspectionForm */,
-				11D70EDE1E8DA84700CBF92C /* Observation */,
+				11D70EDE1E8DA84700CBF92C /* NewObservation */,
 				11CEADDD1E79C4BA00E2242C /* UploadPhoto */,
 			);
 			name = Inspections;
@@ -256,7 +256,8 @@
 		1159B3311EB101E500F72750 /* Inspections */ = {
 			isa = PBXGroup;
 			children = (
-				1186B52F1ECB625F00681426 /* Inspections */,
+				110FF14C1E8C4A50000DB1A5 /* InspectionsController.storyboard */,
+				11D70EAF1E8D7A9800CBF92C /* InspectionsController.swift */,
 				110FF1921E8C5C39000DB1A5 /* Cell */,
 			);
 			name = Inspections;
@@ -288,15 +289,6 @@
 				1186B5221ECA20E700681426 /* ObservationElementAddNewPhotoCell.swift */,
 			);
 			name = Cells;
-			sourceTree = "<group>";
-		};
-		1186B52F1ECB625F00681426 /* Inspections */ = {
-			isa = PBXGroup;
-			children = (
-				110FF14C1E8C4A50000DB1A5 /* InspectionsController.storyboard */,
-				11D70EAF1E8D7A9800CBF92C /* InspectionsController.swift */,
-			);
-			name = Inspections;
 			sourceTree = "<group>";
 		};
 		1186B5391ECB699D00681426 /* EAOUITests */ = {
@@ -371,14 +363,14 @@
 			name = InspectionForm;
 			sourceTree = "<group>";
 		};
-		11D70EDE1E8DA84700CBF92C /* Observation */ = {
+		11D70EDE1E8DA84700CBF92C /* NewObservation */ = {
 			isa = PBXGroup;
 			children = (
-				11D70ED81E8DA36800CBF92C /* ObservationElementController.storyboard */,
-				11D70EDB1E8DA83D00CBF92C /* ObservationElementController.swift */,
+				11D70ED81E8DA36800CBF92C /* NewObservationController.storyboard */,
+				11D70EDB1E8DA83D00CBF92C /* NewObservationController.swift */,
 				1186B5211ECA20C600681426 /* Cells */,
 			);
-			name = Observation;
+			name = NewObservation;
 			sourceTree = "<group>";
 		};
 		11D70EE51E8DD5F900CBF92C /* Settings */ = {
@@ -570,7 +562,7 @@
 				112F747C1E9807920076926A /* SignupController.storyboard in Resources */,
 				112F747A1E97FE320076926A /* LoginController.storyboard in Resources */,
 				110FF0B31E8C2833000DB1A5 /* Assets.xcassets in Resources */,
-				11D70ED91E8DA36800CBF92C /* ObservationElementController.storyboard in Resources */,
+				11D70ED91E8DA36800CBF92C /* NewObservationController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,7 +647,7 @@
 				11D70EC61E8D90B600CBF92C /* ProjectListCell.swift in Sources */,
 				113B20411EC11B8A00F04811 /* PFGeoPoint.swift in Sources */,
 				110FF0AA1E8C25C5000DB1A5 /* UITableView.swift in Sources */,
-				11D70EDC1E8DA83D00CBF92C /* ObservationElementController.swift in Sources */,
+				11D70EDC1E8DA83D00CBF92C /* NewObservationController.swift in Sources */,
 				112F74721E97FDC80076926A /* LoginController.swift in Sources */,
 				1186B5251ECA235900681426 /* URL.swift in Sources */,
 				113B203F1EC0F8A200F04811 /* PFPhoto.swift in Sources */,

@@ -10,6 +10,7 @@ import Parse
 
 class InspectionsController: UIViewController, CLLocationManagerDelegate{
 	fileprivate let locationManager = CLLocationManager()
+	fileprivate var isBeingUploaded = false
 	var inspections = [Int:[PFInspection]]()
 	//MARK: - IB Outlets
 	@IBOutlet var tableView: UITableView!
@@ -23,9 +24,33 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 			AlertView.present(on: self, with: "Inspection was not found")
 			return
 		}
-		sender.isEnabled = false
-		print(inspection)
-		sender.isEnabled = true 
+		let alert = UIAlertController(title: "Are You Sure?", message: "You will NOT be able to edit this inspection after submission", yes: {
+			self.indicator.startAnimating()
+			self.isBeingUploaded = true
+			inspection.isBeingUploaded = true
+			self.tableView.reloadData()
+			inspection.submit(completion: { (success, error) in
+				self.indicator.stopAnimating()
+				inspection.isBeingUploaded = false
+				self.isBeingUploaded = false
+				guard success, error == nil else{
+					if error == PFInspectionError.zeroObservations{
+						AlertView.present(on: self, with: "There are no observation elements in this inspection")
+					} else{
+						AlertView.present(on: self, with: "Error occured whle uploading")
+					}
+					self.tableView.reloadData()
+					return
+				}
+				self.showSuccessImageView()
+				self.moveToSubmitted(inspection: inspection)
+				
+			}, block: { (progress) in
+				inspection.progress = progress
+				self.tableView.reloadRows(at: [indexPath], with: .none)
+			})
+		})
+		present(controller: alert)
 	}
 	
 	@IBAction func segmentedControlChangedValue(_ sender: UISegmentedControl) {
@@ -37,6 +62,7 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 	
 	//MARK: -
 	override func viewDidLoad() {
+		navigationController?.interactivePopGestureRecognizer?.isEnabled = false 
 		tableView.contentInset.bottom = 10
 		locationManager.delegate = self
 		locationManager.requestWhenInUseAuthorization()
@@ -47,7 +73,7 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 	func load(){
 		let query = PFInspection.query()
 		query?.fromLocalDatastore()
-		query?.order(byDescending: "updatedAt")
+		query?.order(byDescending: "pinnedAt")
 		query?.findObjectsInBackground(block: { (objects, error) in
 			guard let objects = objects as? [PFInspection], error == nil else{
 				return
@@ -114,7 +140,7 @@ extension InspectionsController: UITableViewDelegate, UITableViewDataSource{
 		if let start = inspection?.start, let end = inspection?.end{
 			date = "\(start.inspectionFormat()) - \(end.inspectionFormat())"
 		}
-		cell.setData(title: inspection?.title, time: date, isReadOnly: Bool(NSNumber(integerLiteral: selectedIndex)))
+		cell.setData(title: inspection?.title, time: date, isReadOnly: Bool(NSNumber(integerLiteral: selectedIndex)), progress: inspection?.progress ?? 0, isBeingUploaded: inspection?.isBeingUploaded ?? false, isEnabled: self.isBeingUploaded)
 		return cell
 	}
 	
@@ -122,6 +148,24 @@ extension InspectionsController: UITableViewDelegate, UITableViewDataSource{
 		let inspectionSetupController = InspectionSetupController.storyboardInstance() as! InspectionSetupController
 		inspectionSetupController.inspection = inspections[selectedIndex]?[indexPath.row]
 		push(controller: inspectionSetupController)
+	}
+	
+	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		if selectedIndex == 1{
+			return true
+		}
+		return false
+	}
+	
+	func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+		let action = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
+			if let inspection = self.inspections[1]?[indexPath.row]{
+				try? inspection.unpin()
+				self.inspections[1]?.remove(at: indexPath.row)
+				tableView.deleteRows(at: [indexPath], with: .none)
+			}
+		}
+		return [action]
 	}
 }
 

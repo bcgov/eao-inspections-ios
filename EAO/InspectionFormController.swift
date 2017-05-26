@@ -20,47 +20,9 @@ final class InspectionFormController: UIViewController{
 			self.navigationController?.popToRootViewController(animated: true)
 		}))
 	}
-	//MARK: -
-	@IBAction func submitTapped(_ sender: UIBarButtonItem) {
-		sender.isEnabled = false
-		let alert = UIAlertController(title: "Are You Sure?", message: "You will NOT be able to edit this inspection after submission", yes: {
-			self.indicator.startAnimating()
-			self.setElements(enabled: false)
-			self.inspection.isSubmitted = true
-			self.inspection.saveEventually()
-			var counter = 0
-			for observation in self.observations{
-				observation.saveEventually()
-				let query = PFPhoto.query()
-				query?.fromLocalDatastore()
-				query?.whereKey("observation", equalTo: observation)
-				query?.findObjectsInBackground(block: { (photos, error) in
-					for case let photo as PFPhoto in photos ?? []{
-						if let id = photo.id{
-							let url = URL(fileURLWithPath: FileManager.directory.absoluteString).appendingPathComponent(id, isDirectory: true)
-							if let data = try? Data(contentsOf: url){
-								photo.photo = PFFile(data: data)
-							}
-						}
-						photo.saveInBackground(block: { (success, error) in
-							print("\ns:\(success)\n")
-							print("\ne:\(error)\n")
-						})
-					 
-					}
-					counter += 1
-					if counter == self.observations.count{
-						InspectionsController.reference?.moveToSubmitted(inspection: self.inspection)
-						self.navigationController?.popToRootViewController(animated: true)
-					}
-				})
-			}
-		}) { sender.isEnabled = true }
-		present(controller: alert)
-	}
-	
+
 	@IBAction func addTapped(_ sender: UIButton) {
-		let observationElementController = ObservationElementController.storyboardInstance() as! ObservationElementController
+		let observationElementController = NewObservationController.storyboardInstance() as! NewObservationController
 		observationElementController.inspection = inspection
 		observationElementController.saveAction = { (observation) in
 			self.observations.insert(observation, at: 0)
@@ -71,6 +33,7 @@ final class InspectionFormController: UIViewController{
 	
 	//MARK: -
 	override func viewDidLoad() {
+		tableView.contentInset.bottom = 80
 		if isReadOnly{
 			addButton.isEnabled = false
 			navigationItem.rightBarButtonItem = nil
@@ -82,16 +45,10 @@ final class InspectionFormController: UIViewController{
 		print("deinit Inspection Form")
 	}
 	
-	
-	
-	fileprivate func getPhotos(result: @escaping (_ photos: [PFPhoto]?)->Void){
-		
-	}
-	
 	fileprivate func load(){
 		let query = PFObservation.query()
 		query?.fromLocalDatastore()
-		query?.whereKey("inspection", equalTo: inspection)
+		query?.whereKey("inspectionId", equalTo: inspection.id!)
 		query?.order(byDescending: "pinnedAt")
 		query?.findObjectsInBackground(block: { (objects, error) in
 			guard let objects = objects as? [PFObservation], error == nil else{
@@ -123,7 +80,10 @@ extension InspectionFormController: UITableViewDataSource, UITableViewDelegate{
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let observationElementController = ObservationElementController.storyboardInstance() as! ObservationElementController
+		if observations[indexPath.row].id == nil{
+			return
+		}
+		let observationElementController = NewObservationController.storyboardInstance() as! NewObservationController
 		observationElementController.inspection = inspection
 		observationElementController.observation = observations[indexPath.row]
 		observationElementController.saveAction = { (_) in
