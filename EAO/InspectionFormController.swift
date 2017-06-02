@@ -11,17 +11,43 @@ final class InspectionFormController: UIViewController{
 	var observations = [PFObservation]()
 	
 	//MARK: -
-	@IBOutlet var addButton: UIButton!
-	@IBOutlet var indicator: UIActivityIndicatorView!
-	@IBOutlet var tableView: UITableView!
+	@IBOutlet fileprivate var addButton : UIButton!
+	@IBOutlet fileprivate var indicator : UIActivityIndicatorView!
+	@IBOutlet fileprivate var tableView : UITableView!
+	@IBOutlet fileprivate var submitButton: UIButton!
 	
-	@IBAction func saveTapped(_ sender: UIBarButtonItem) {
+	
+	@IBAction fileprivate func submitTapped(_ sender: UIButton) {
+		sender.isEnabled = false
+		guard let index = InspectionsController.reference?.inspections[0]?.index(of: inspection) else{
+			sender.isEnabled = true
+			return
+		}
+		navigationController?.popToViewController(InspectionsController.reference!, animated: true)
+		InspectionsController.reference?.submit(inspection: inspection, indexPath: IndexPath(row: index, section: 0))
+		sender.isEnabled = true
+	}
+	
+	@IBAction fileprivate func editInspectionSetUpTapped(_ sender: UIButton) {
+		sender.isEnabled = false
+		pop()
+		sender.isEnabled = true
+	}
+	
+	@IBAction fileprivate func backTapped(_ sender: UIBarButtonItem) {
+		sender.isEnabled = false
+		navigationController?.popToViewController(InspectionsController.reference!, animated: true)
+		sender.isEnabled = true
+	}
+	
+	@IBAction fileprivate func saveTapped(_ sender: UIBarButtonItem) {
 		present(controller: UIAlertController(title: "Tip", message: "You may save this inspection and edit it later before submission", handler: {
 			self.navigationController?.popToRootViewController(animated: true)
 		}))
 	}
 
-	@IBAction func addTapped(_ sender: UIButton) {
+	@IBAction fileprivate func addTapped(_ sender: UIButton) {
+		sender.isEnabled = false
 		let observationElementController = NewObservationController.storyboardInstance() as! NewObservationController
 		observationElementController.inspection = inspection
 		observationElementController.saveAction = { (observation) in
@@ -29,14 +55,16 @@ final class InspectionFormController: UIViewController{
 			self.tableView.reloadData()
 		}
 		push(controller: observationElementController)
+		sender.isEnabled = true
 	}
 	
 	//MARK: -
 	override func viewDidLoad() {
 		tableView.contentInset.bottom = 80
 		if isReadOnly{
+			setNavigationRightItemAsEye()
+			submitButton.isHidden = true 
 			addButton.isEnabled = false
-			navigationItem.rightBarButtonItem = nil
 		}
 		load()
 	}
@@ -70,10 +98,26 @@ final class InspectionFormController: UIViewController{
 //MARK: -
 extension InspectionFormController: UITableViewDataSource, UITableViewDelegate{
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		if section == 0{
+			return 1
+		}
 		return observations.count
 	}
 	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 2
+	}
+	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if indexPath.section == 0 {
+			let cell = tableView.dequeue(identifier: "InspectionFormHeaderCell")!
+			if isReadOnly{
+				(cell.contentView.subviews.first as? UIButton)?.setTitle("View Inspection Set Up", for: .normal)
+			} else{
+				(cell.contentView.subviews.first as? UIButton)?.setTitle("Edit Inspection Set Up", for: .normal)
+			}
+			return cell
+		}
 		let cell = tableView.dequeue(identifier: "InspectionFormCell") as! InspectionFormCell
 		cell.setData(number: "\(indexPath.row+1)", title: observations[indexPath.row].title, time: observations[indexPath.row].createdAt?.inspectionFormat())
 		return cell
@@ -90,6 +134,13 @@ extension InspectionFormController: UITableViewDataSource, UITableViewDelegate{
 			self.tableView.reloadData()
 		}
 		push(controller: observationElementController)
+	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		if indexPath.section == 0{
+			return 70
+		}
+		return 80
 	}
 }
 

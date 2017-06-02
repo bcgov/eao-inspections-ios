@@ -16,9 +16,13 @@ public func delay(_ delay:Double, closure:@escaping ()->()) {
 		deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
 }
 
+
+var currentUsername: String?
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+	
+	internal var shouldRotate = false
 	static let reference = UIApplication.shared.delegate as? AppDelegate
 	static let root = AppDelegate.reference?.window?.rootViewController
 	
@@ -27,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		if ProcessInfo.processInfo.arguments.contains("UITests") {
 			UIView.setAnimationsEnabled(false)
-			window?.layer.speed = 100
+			window?.layer.speed = 500
 		}
 		Fabric.with([Crashlytics.self])
 		let configuration = ParseClientConfiguration {
@@ -41,6 +45,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         return true
     }
+	
+	
+	func application(_ application: UIApplication,
+	                 supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+		return shouldRotate ? .allButUpsideDown : .portrait
+	}
 
     func applicationWillResignActive(_ application: UIApplication) {
 		

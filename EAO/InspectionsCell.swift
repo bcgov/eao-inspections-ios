@@ -7,6 +7,7 @@
 //
 
 final class InspectionsCell: UITableViewCell{
+	@IBOutlet fileprivate var linkedProjectLabel: UILabel!
 	@IBOutlet fileprivate var titleLabel : UILabel!
 	@IBOutlet fileprivate var timeLabel  : UILabel!
 	@IBOutlet fileprivate var editButton : UIButton!
@@ -14,9 +15,10 @@ final class InspectionsCell: UITableViewCell{
 	@IBOutlet fileprivate var progressBar: UIProgressView!
 	@IBOutlet fileprivate var indicator: UIActivityIndicatorView!
 	
-	func setData(title: String?, time: String?, isReadOnly: Bool, progress: Float, isBeingUploaded: Bool, isEnabled: Bool){
+	func setData(title: String?, time: String?, isReadOnly: Bool, progress: Float, isBeingUploaded: Bool, isEnabled: Bool, linkedProject: String?){
 		titleLabel.text = title
 		timeLabel.text  = time
+		linkedProjectLabel.text = linkedProject
 		progressBar.progress = progress
 		if isReadOnly{
 			indicator.stopAnimating()

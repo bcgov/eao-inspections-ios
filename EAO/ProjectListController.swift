@@ -13,10 +13,26 @@ final class ProjectListController: UIViewController{
 	fileprivate var projects : [String]?
 	fileprivate var filtered : [NSMutableAttributedString]?
 	
-	//MARK:-
+	//MARK: IB Outlets
 	@IBOutlet fileprivate var indicator: UIActivityIndicatorView!
 	@IBOutlet fileprivate var tableView: UITableView!
 	@IBOutlet fileprivate var searchBar: UISearchBar!
+	//MARK: IB Actions
+	@IBAction func customTapped(_ sender: UIBarButtonItem) {
+		let alert = UIAlertController(title: "Project name", message: nil, preferredStyle: .alert)
+		alert.addTextField { (textField) in
+			textField.placeholder = "Start Typing..."
+		}
+		let select = UIAlertAction(title: "Select", style: .default) { (_) in
+			if let text = alert.textFields?.first?.text, !text.isEmpty(){
+				self.result?(text)
+				self.pop()
+			}
+		}
+		let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		alert.addActions([select,cancel])
+		present(controller: alert)
+	}
 	
 	//MARK:-
 	override func viewDidLoad() {

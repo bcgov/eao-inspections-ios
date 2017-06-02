@@ -24,78 +24,106 @@ class EAOUITests: XCTestCase {
         super.tearDown()
 		
     }
-    
-    func testExample() {
-		app.scrollViews.otherElements.textFields["Username"].tap()
-		app.scrollViews.otherElements.textFields["Username"].typeText("Emma")
-		app.scrollViews.otherElements.secureTextFields["Password"].tap()
-		app.scrollViews.otherElements.secureTextFields["Password"].typeText("emma")
+	
+
+	
+    func testAddingData() {
+		XCUIDevice.shared().orientation = .faceUp
+		XCUIDevice.shared().orientation = .faceUp
+		
+		let app = XCUIApplication()
 		app.buttons["LOGIN"].tap()
 		
-		app.buttons["   Add New Inspection   "].tap()
-		
-		app.scrollViews.buttons["Link Project"].tap()
- 
-		app.tables.staticTexts["29694 Marshall Road Extension"].tap()
-		
-		
-		
-//
-//		app.buttons["   Add New Inspection   "].tap()
-//		
-//		let scrollViewsQuery = app.scrollViews
-//	 
-//		elementsQuery.buttons["link project"].tap()
-//		
-//		let tablesQuery = app2.tables
-//		tablesQuery.staticTexts["29694 Marshall Road Extension"].tap()
-//		
-//		let titleTextField = elementsQuery.textFields["Title..."]
-//		titleTextField.tap()
-//		titleTextField.typeText("d")
-//		
-//		let subtitleTextField = elementsQuery.textFields["Subtitle..."]
-//		subtitleTextField.tap()
-//		subtitleTextField.typeText("f")
-//		
-//		let subtextTextField = elementsQuery.textFields["Subtext..."]
-//		subtextTextField.tap()
-//		subtextTextField.typeText("f")
-//		
-//		let inspectionNumberTextField = elementsQuery.textFields["Inspection number..."]
-//		inspectionNumberTextField.tap()
-//		inspectionNumberTextField.typeText(";")
-//		app2.buttons["Return"].tap()
-//		
-//		elementsQuery.buttons["Inspection Start Date"].tap()
-//		
-//		let selectButton = app.buttons["Select"]
-//		selectButton.tap()
-//		
-//		let inspectionEndDateButton = elementsQuery.buttons["Inspection End Date"]
-//		inspectionEndDateButton.tap()
-//
-//		
-//		let datePickersQuery = app.datePickers
-//		datePickersQuery.pickerWheels["16"].tap()
-//		datePickersQuery.pickerWheels["May"].tap()
-//		datePickersQuery.pickerWheels["2017"].swipeUp()
-//		selectButton.tap()
-//		app2.buttons["Create Inspection"].tap()
-//		app.buttons["icon add grey"].tap()
-//		elementsQuery.buttons["Add Voice"].tap()
-//		
-//		let titleTextField2 = elementsQuery.textFields["Title"]
-//		titleTextField2.tap()
-//		titleTextField2.typeText("f")
-//		
-//		let requirementTextField = elementsQuery.textFields["Requirement"]
-//		requirementTextField.tap()
-//		requirementTextField.typeText("g")
-		
-	 
-		
-		
+		for i in 1...2{
+			
+			app.buttons["   Add New Inspection   "].tap()
+			
+			let elementsQuery = app.scrollViews.otherElements
+			elementsQuery.buttons["Link Project"].tap()
+			app.navigationBars["EAO.ProjectList"].buttons["Custom"].tap()
+		 
+			let projectNameAlert = app.alerts["Project name"]
+			projectNameAlert.collectionViews.textFields["Start Typing..."].typeText("\(i)")
+			projectNameAlert.buttons["Select"].tap()
+			
+			
+			let titleTextField = elementsQuery.textFields["Title..."]
+			titleTextField.tap()
+			titleTextField.typeText("\(i)")
+			
+			let returnButton = app.buttons["Return"]
+			returnButton.tap()
+			
+			
+			let subtitleTextField = elementsQuery.textFields["Subtitle..."]
+			subtitleTextField.tap()
+			subtitleTextField.typeText("q")
+			returnButton.tap()
+			
+			
+			let subtextTextField = elementsQuery.textFields["Subtext..."]
+			subtextTextField.tap()
+			subtextTextField.typeText("q")
+			returnButton.tap()
+			
+			
+			let inspectionNumberTextField = elementsQuery.textFields["Inspection number..."]
+			inspectionNumberTextField.tap()
+			inspectionNumberTextField.typeText("1")
+			returnButton.tap()
+			
+			
+			elementsQuery.buttons["Inspection Start Date"].tap()
+			app.datePickers.pickerWheels["1"].adjust(toPickerWheelValue: "\(i)")
+			app.buttons["Select"].tap()
+			
+			
+			elementsQuery.buttons["Inspection End Date"].tap()
+			app.datePickers.pickerWheels["1"].adjust(toPickerWheelValue: "\(i)")
+			app.buttons["Select"].tap()
+			
+			app.buttons["Create Inspection"].tap()
+			
+			for _ in 0...2{
+				app.buttons["icon add grey"].tap()
+				
+				let titleTextField2 = elementsQuery.textFields["Title"]
+				titleTextField2.tap()
+				titleTextField2.typeText("q")
+				returnButton.tap()
+				
+				let requirementTextField = elementsQuery.textFields["Requirement"]
+				requirementTextField.tap()
+				requirementTextField.typeText("q")
+				returnButton.tap()
+				
+				app.buttons["Tap to enter description"].tap()
+				app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element.typeText(descriptionText)
+				 
+				app.navigationBars["Element Description"].buttons["Done"].tap()
+				
+				for _ in 0...2{
+					//add photos
+					app.collectionViews.buttons["icon add photo"].tap()
+					app.buttons["icon camera"].tap()
+					app.sheets.buttons["Photo Library"].tap()
+					app.tables.buttons["Moments"].tap()
+					app.collectionViews["PhotosGridView"].children(matching: .cell).matching(identifier: "Photo, Portrait, May 30, 8:18 PM").element(boundBy: 2).tap()
+					
+					let textView = app.scrollViews.children(matching: .textView).element
+					textView.tap()
+					textView.typeText("Captioin")
+					
+					app.navigationBars["EAO.UploadPhoto"].buttons["Save"].tap()
+				}
+				
+				app.navigationBars["EAO.NewObservation"].buttons["Save"].tap()
+			}
+			
+			app.navigationBars["EAO.InspectionForm"].buttons["Save"].tap()
+			app.alerts["Tip"].buttons["Okay"].tap()
+			
+		}
     }
     
 }
@@ -105,6 +133,6 @@ class EAOUITests: XCTestCase {
 
 
 
-
+let descriptionText = "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled "
 
 

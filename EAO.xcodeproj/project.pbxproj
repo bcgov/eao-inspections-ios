@@ -33,6 +33,8 @@
 		112F74F21E9815A70076926A /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F74F01E9815A70076926A /* SettingsController.swift */; };
 		113B203F1EC0F8A200F04811 /* PFPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113B203E1EC0F8A200F04811 /* PFPhoto.swift */; };
 		113B20411EC11B8A00F04811 /* PFGeoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113B20401EC11B8A00F04811 /* PFGeoPoint.swift */; };
+		1152C1F21EDB4ECF005B0E6A /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1152C1F11EDB4ECF005B0E6A /* TextViewController.swift */; };
+		1152C1F41EDB4ED9005B0E6A /* TextViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1152C1F31EDB4ED9005B0E6A /* TextViewController.storyboard */; };
 		1159B3361EB102C000F72750 /* PFObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1159B3351EB102C000F72750 /* PFObservation.swift */; };
 		1159B3A71EB1236700F72750 /* PFInspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1159B3A61EB1236700F72750 /* PFInspection.swift */; };
 		1186B5201ECA201200681426 /* ObservationElementPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186B51F1ECA201200681426 /* ObservationElementPhotoCell.swift */; };
@@ -111,6 +113,8 @@
 		112F74F01E9815A70076926A /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		113B203E1EC0F8A200F04811 /* PFPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFPhoto.swift; sourceTree = "<group>"; };
 		113B20401EC11B8A00F04811 /* PFGeoPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFGeoPoint.swift; sourceTree = "<group>"; };
+		1152C1F11EDB4ECF005B0E6A /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		1152C1F31EDB4ED9005B0E6A /* TextViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TextViewController.storyboard; sourceTree = "<group>"; };
 		1159B3351EB102C000F72750 /* PFObservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFObservation.swift; sourceTree = "<group>"; };
 		1159B3A61EB1236700F72750 /* PFInspection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFInspection.swift; sourceTree = "<group>"; };
 		1186B51F1ECA201200681426 /* ObservationElementPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationElementPhotoCell.swift; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 				112F74751E97FDDD0076926A /* Login */,
 				110FF18E1E8C5B6E000DB1A5 /* Inspections */,
 				11D70EE51E8DD5F900CBF92C /* Settings */,
+				1152C1F51EDB4F3F005B0E6A /* TextViewController */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -251,6 +256,15 @@
 				9688D51B1E69DA4300C49CD7 /* AppDelegate.swift */,
 			);
 			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		1152C1F51EDB4F3F005B0E6A /* TextViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1152C1F31EDB4ED9005B0E6A /* TextViewController.storyboard */,
+				1152C1F11EDB4ECF005B0E6A /* TextViewController.swift */,
+			);
+			name = TextViewController;
 			sourceTree = "<group>";
 		};
 		1159B3311EB101E500F72750 /* Inspections */ = {
@@ -557,6 +571,7 @@
 				110FF14D1E8C4A50000DB1A5 /* InspectionsController.storyboard in Resources */,
 				110FF10C1E8C38A6000DB1A5 /* LaunchScreen.storyboard in Resources */,
 				11D70ECC1E8D9A8B00CBF92C /* InspectionFormController.storyboard in Resources */,
+				1152C1F41EDB4ED9005B0E6A /* TextViewController.storyboard in Resources */,
 				11D70EB61E8D856400CBF92C /* InspectionSetupController.storyboard in Resources */,
 				112F74F11E9815A70076926A /* SettingsController.storyboard in Resources */,
 				112F747C1E9807920076926A /* SignupController.storyboard in Resources */,
@@ -653,6 +668,7 @@
 				113B203F1EC0F8A200F04811 /* PFPhoto.swift in Sources */,
 				110FF0E11E8C2CA7000DB1A5 /* UploadPhotoController.swift in Sources */,
 				112F74811E980F6A0076926A /* UITextField.swift in Sources */,
+				1152C1F21EDB4ECF005B0E6A /* TextViewController.swift in Sources */,
 				110FF0A21E8C25C5000DB1A5 /* Date.swift in Sources */,
 				1186B52E1ECA634C00681426 /* UIViewController.swift in Sources */,
 				110FF0A61E8C25C5000DB1A5 /* UIColor.swift in Sources */,

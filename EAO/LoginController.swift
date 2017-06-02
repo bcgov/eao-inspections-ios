@@ -31,6 +31,7 @@ class LoginController: UIViewController{
 //			present(controller: Alerts.error)
 //			return
 //		}
+		currentUsername = usernameField.text 
 		usernameField.text = ""
 		passwordField.text = ""
 		let inspectionsController = InspectionsController.storyboardInstance()

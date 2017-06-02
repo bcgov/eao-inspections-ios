@@ -32,16 +32,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9688D52B1E69DA4300C49CD7"
-               BuildableName = "EAOTests.xctest"
-               BlueprintName = "EAOTests"
-               ReferencedContainer = "container:EAO.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "1186B5371ECB699D00681426"
                BuildableName = "EAOUITests.xctest"
                BlueprintName = "EAOUITests"

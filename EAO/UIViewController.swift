@@ -28,4 +28,6 @@ extension UIViewController{
 	func setNavigationRightItemAsEye(){
 		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "icon_eye")))
 	}
+	
+	 
 }

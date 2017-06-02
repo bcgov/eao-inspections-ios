@@ -8,6 +8,9 @@
 import MapKit
 import Parse
 class UploadPhotoController: UIViewController{
+	override var shouldAutorotate: Bool{
+		return false
+	}
 	var isReadOnly = false
 	var photo: PFPhoto!
 	var observation: PFObservation!
@@ -20,7 +23,7 @@ class UploadPhotoController: UIViewController{
 	}
 	fileprivate var location: CLLocation?{
 		didSet{
-			gpsLabel.text = locationManager.coordinateAsString() ?? "Unavailible"
+			gpsLabel.text = locationManager.coordinateAsString() ?? "unavailable"
 		}
 	}
 	//MARK: -
@@ -100,7 +103,7 @@ class UploadPhotoController: UIViewController{
         addDismissKeyboardOnTapRecognizer(on: view)
 		populate()
 		if isReadOnly{
-			navigationItem.rightBarButtonItem = nil
+			setNavigationRightItemAsEye()
 			uploadButton.isEnabled = false
 			uploadButton.alpha = 0
 			uploadLabel.alpha = 0

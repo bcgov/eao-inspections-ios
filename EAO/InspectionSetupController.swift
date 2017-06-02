@@ -7,6 +7,9 @@
 //
 
 final class InspectionSetupController: UIViewController, KeyboardDelegate{
+	override var shouldAutorotate: Bool{
+		return false
+	}
 	var inspection: PFInspection?
 	fileprivate var isNew = false
 	fileprivate var dates = [String: Date]()
@@ -67,7 +70,6 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 				} else{
 					InspectionsController.reference?.tableView.reloadData()
 				}
-				
 				if self.isNew{
 					self.isNew = false
 					let inspectionFormController = InspectionFormController.storyboardInstance() as! InspectionFormController
@@ -94,6 +96,8 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 		inspectionFormController.inspection = inspection
 		if inspection?.id != nil{
 			self.push(controller: inspectionFormController)
+		} else{
+			AlertView.present(on: self, with: "Couldn't proceed because of internal error", delay: 4, offsetY: -50)
 		}
 		sender.isEnabled = true
 	}
@@ -102,6 +106,7 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 	override func viewDidLoad() {
 		addDismissKeyboardOnTapRecognizer(on: scrollView)
 		if inspection == nil{
+			subtextTextField.text = currentUsername
 			isNew = true
 		}
 		setMode()
@@ -210,7 +215,6 @@ extension InspectionSetupController{
 	func validateDates() -> Bool{
 		guard let startDate = dates["start"],
 			let endDate = dates["end"] else {
-				print("****")
 			return false
 		}
 		return startDate < endDate
@@ -232,4 +236,8 @@ extension InspectionSetupController{
 		static let error = UIAlertController(title: "ERROR!", message: "Inspection failed to be saved,\nPlease try again")
 	}
 }
+
+
+
+
 

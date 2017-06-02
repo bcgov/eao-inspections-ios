@@ -26,8 +26,40 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InspectionFormHeaderCell" rowHeight="60" id="Uj2-PX-2iC">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uj2-PX-2iC" id="L0C-ee-xNe">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAb-Vp-thv">
+                                                    <rect key="frame" x="20" y="10" width="335" height="39.5"/>
+                                                    <color key="backgroundColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
+                                                    <state key="normal" title="Edit Inspection Set Up">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="editInspectionSetUpTapped:" destination="X6w-e2-jUy" eventType="touchUpInside" id="JHe-1q-dAP"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="eAb-Vp-thv" secondAttribute="trailing" constant="20" id="6gf-EQ-AbL"/>
+                                                <constraint firstItem="eAb-Vp-thv" firstAttribute="leading" secondItem="L0C-ee-xNe" secondAttribute="leading" constant="20" id="SET-qA-7So"/>
+                                                <constraint firstItem="eAb-Vp-thv" firstAttribute="top" secondItem="L0C-ee-xNe" secondAttribute="top" constant="10" id="cPi-TB-82t"/>
+                                                <constraint firstAttribute="bottom" secondItem="eAb-Vp-thv" secondAttribute="bottom" constant="10" id="yZj-xQ-rB5"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="InspectionFormCell" id="tTj-kU-Sqo" customClass="InspectionFormCell" customModule="EAO" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="88" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tTj-kU-Sqo" id="PS9-rJ-DXc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
@@ -103,40 +135,68 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPq-NL-8B5">
                                 <rect key="frame" x="275" y="567" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="1eK-D0-bWP"/>
-                                    <constraint firstAttribute="height" constant="80" id="Nn6-0y-ggS"/>
+                                    <constraint firstAttribute="height" constant="80" id="MRK-9B-0ny"/>
+                                    <constraint firstAttribute="width" constant="80" id="f4G-Uy-8hF"/>
                                 </constraints>
                                 <state key="normal" image="icon_add_grey"/>
                                 <connections>
                                     <action selector="addTapped:" destination="X6w-e2-jUy" eventType="touchUpInside" id="ReR-fV-htW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P83-AA-040">
+                                <rect key="frame" x="20" y="567" width="80" height="80"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="sKk-1O-dM5"/>
+                                    <constraint firstAttribute="height" constant="80" id="voE-cG-eR7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submitTapped:" destination="X6w-e2-jUy" eventType="touchUpInside" id="AkL-sg-bSe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Mv8-L4-QA8" firstAttribute="top" secondItem="lPq-NL-8B5" secondAttribute="bottom" constant="20" id="5ZR-1U-vTa"/>
                             <constraint firstItem="g5p-eu-LJ9" firstAttribute="top" secondItem="cp1-x7-d0j" secondAttribute="bottom" id="60V-BA-LVZ"/>
                             <constraint firstAttribute="trailing" secondItem="g5p-eu-LJ9" secondAttribute="trailing" id="Fjm-Px-cdc"/>
                             <constraint firstItem="g5p-eu-LJ9" firstAttribute="leading" secondItem="sVj-4M-15I" secondAttribute="leading" id="GBn-3L-hwD"/>
-                            <constraint firstAttribute="trailing" secondItem="lPq-NL-8B5" secondAttribute="trailing" constant="20" id="iqP-G1-mAz"/>
+                            <constraint firstAttribute="trailing" secondItem="lPq-NL-8B5" secondAttribute="trailing" constant="20" id="QR9-7s-7g6"/>
+                            <constraint firstItem="Mv8-L4-QA8" firstAttribute="top" secondItem="P83-AA-040" secondAttribute="bottom" constant="20" id="oLM-zP-uHD"/>
                             <constraint firstItem="Mv8-L4-QA8" firstAttribute="top" secondItem="g5p-eu-LJ9" secondAttribute="bottom" id="qSz-m8-sZZ"/>
-                            <constraint firstItem="Mv8-L4-QA8" firstAttribute="top" secondItem="lPq-NL-8B5" secondAttribute="bottom" constant="20" id="w84-ZO-p3B"/>
+                            <constraint firstItem="P83-AA-040" firstAttribute="leading" secondItem="sVj-4M-15I" secondAttribute="leading" constant="20" id="ufr-jw-iIV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1rD-tD-oaL">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="AsF-2H-Owu"/>
+                        <barButtonItem key="leftBarButtonItem" image="icon_back" id="xuT-Rv-HbN">
+                            <connections>
+                                <action selector="backTapped:" destination="X6w-e2-jUy" id="1Jj-Iy-T2G"/>
+                            </connections>
+                        </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="3rN-ni-Nwm">
-                            <rect key="frame" x="112.5" y="5.5" width="150" height="33"/>
+                            <rect key="frame" x="181" y="5.5" width="13" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Observation Elements" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCf-2P-92s">
-                                    <rect key="frame" x="-12" y="6" width="175" height="22"/>
+                                    <rect key="frame" x="-81" y="6" width="175" height="22"/>
                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="RvN-tF-cqH">
-                                    <rect key="frame" x="168" y="7" width="20" height="20"/>
+                                    <rect key="frame" x="99" y="7" width="20" height="20"/>
                                     <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </activityIndicatorView>
                             </subviews>
@@ -158,6 +218,7 @@
                     <connections>
                         <outlet property="addButton" destination="lPq-NL-8B5" id="ohZ-O3-VRe"/>
                         <outlet property="indicator" destination="RvN-tF-cqH" id="Qka-hf-B8O"/>
+                        <outlet property="submitButton" destination="P83-AA-040" id="rou-AQ-4Dt"/>
                         <outlet property="tableView" destination="g5p-eu-LJ9" id="k5U-bm-9QQ"/>
                     </connections>
                 </viewController>
@@ -168,6 +229,7 @@
     </scenes>
     <resources>
         <image name="icon_add_grey" width="315" height="315"/>
+        <image name="icon_back" width="25" height="25"/>
         <image name="icon_edit" width="67" height="67"/>
     </resources>
 </document>

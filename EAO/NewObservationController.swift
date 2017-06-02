@@ -9,6 +9,9 @@ import Parse
 import MapKit
 
 final class NewObservationController: UIViewController{
+	override var shouldAutorotate: Bool{
+		return false
+	}
 	fileprivate var locationManager = CLLocationManager()
 	var saveAction  : ((PFObservation)->Void)?
 	var inspection  : PFInspection!
@@ -20,10 +23,10 @@ final class NewObservationController: UIViewController{
 	@IBOutlet fileprivate var scrollView : UIScrollView!
 	@IBOutlet fileprivate var titleTextField: UITextField!
 	@IBOutlet fileprivate var requirementTextField: UITextField!
-	@IBOutlet fileprivate var descriptionTextView: UITextView!
 	@IBOutlet fileprivate var GPSLabel: UIButton!
 	@IBOutlet fileprivate var collectionViewHeightConstraint: NSLayoutConstraint!
 	@IBOutlet fileprivate var collectionView: UICollectionView!
+	@IBOutlet fileprivate var descriptionButton: UIButton!
  
 	
 	//MARK: -
@@ -33,7 +36,7 @@ final class NewObservationController: UIViewController{
 		saveAction?(self.observation)
 		observation.title = titleTextField.text
 		observation.requirement = requirementTextField.text
-		observation.observationDescription = descriptionTextView.text
+		observation.observationDescription = descriptionButton.title(for: .normal)
 		if observation.coordinate == nil{
 			observation.coordinate = PFGeoPoint(location: locationManager.location)
 		}
@@ -56,6 +59,20 @@ final class NewObservationController: UIViewController{
 		}
 	}
  
+	@IBAction func descriptionTapped(_ sender: UIButton) {
+		let textViewController = TextViewController.storyboardInstance() as! TextViewController
+		if descriptionButton.title(for: .normal) != "Tap to enter description"{
+			textViewController.initialText = descriptionButton.title(for: .normal)
+		}
+		textViewController.title = "Element Description"
+		textViewController.result = { (text) in
+			if let text = text{
+				sender.setTitle(text, for: .normal)
+			}
+		}
+		push(controller: textViewController)
+	}
+	
 	@IBAction fileprivate func addPhotoTapped(_ sender: UIButton) {
 		sender.isEnabled = false
 		if observation.id == nil{
@@ -86,12 +103,12 @@ final class NewObservationController: UIViewController{
 			observation = PFObservation()
 		}
 		if isReadOnly{
-			navigationItem.rightBarButtonItem = nil
+			setNavigationRightItemAsEye()
 			titleTextField.isEnabled = false
 			requirementTextField.isEnabled = false
-			descriptionTextView.isEditable = false
+			descriptionButton.isEnabled = false
 		}
-		GPSLabel.setTitle("GPS: \(observation?.coordinate?.toString() ?? locationManager.coordinateAsString() ?? "Unavailible")", for: .normal)
+		GPSLabel.setTitle("GPS: \(observation?.coordinate?.toString() ?? locationManager.coordinateAsString() ?? "unavailable")", for: .normal)
 	}
 	
 	deinit {
@@ -110,7 +127,7 @@ final class NewObservationController: UIViewController{
 		indicator.startAnimating()
 		titleTextField.text = observation.title
 		requirementTextField.text = observation.requirement
-		descriptionTextView.text = observation.observationDescription
+		descriptionButton.setTitle(observation.observationDescription, for: .normal)
 		loadPhotos()
 	}
 	
@@ -212,12 +229,7 @@ extension NewObservationController{
 
 extension NewObservationController: UITextFieldDelegate{
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		let tag = textField.tag
-		if tag == 1{
-			requirementTextField.becomeFirstResponder()
-		} else {
-			descriptionTextView.becomeFirstResponder()
-		}
+		textField.resignFirstResponder()
 		return true
 	}
 }
@@ -232,7 +244,7 @@ extension NewObservationController{
 			present(controller: Alerts.fields)
 			return false
 		}
-		if descriptionTextView.text.isEmpty() == true{
+		if descriptionButton.title(for: .normal) == "Tap to enter description"{
 			present(controller: Alerts.fields)
 			return false
 		}
