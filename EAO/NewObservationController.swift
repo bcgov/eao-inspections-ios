@@ -9,9 +9,6 @@ import Parse
 import MapKit
 
 final class NewObservationController: UIViewController{
-	override var shouldAutorotate: Bool{
-		return false
-	}
 	fileprivate var locationManager = CLLocationManager()
 	var saveAction  : ((PFObservation)->Void)?
 	var inspection  : PFInspection!
@@ -27,8 +24,7 @@ final class NewObservationController: UIViewController{
 	@IBOutlet fileprivate var collectionViewHeightConstraint: NSLayoutConstraint!
 	@IBOutlet fileprivate var collectionView: UICollectionView!
 	@IBOutlet fileprivate var descriptionButton: UIButton!
- 
-	
+
 	//MARK: -
 	@IBAction fileprivate func saveTapped(_ sender: UIBarButtonItem) {
 		if !validate() { return }
@@ -114,8 +110,7 @@ final class NewObservationController: UIViewController{
 	deinit {
 		print("deinit observation")
 	}
-	
-	
+
 	//MARK: -
 	fileprivate func populate(){
 		guard let observation = observation else {

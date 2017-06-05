@@ -66,6 +66,11 @@ final class InspectionFormController: UIViewController{
 			submitButton.isHidden = true 
 			addButton.isEnabled = false
 		}
+
+		if InspectionsController.reference?.isBeingUploaded == true {
+			submitButton.isHidden = true
+		}
+
 		load()
 	}
 	

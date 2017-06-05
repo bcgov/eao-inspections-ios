@@ -11,7 +11,7 @@ import Parse
 class InspectionsController: UIViewController, CLLocationManagerDelegate{
 	//MARK: Properties
 	fileprivate let locationManager = CLLocationManager()
-	fileprivate var isBeingUploaded = false
+	var isBeingUploaded = false
 	var inspections = [Int:[PFInspection]]()
 	//MARK: IB Outlets
 	@IBOutlet var tableView: UITableView!
