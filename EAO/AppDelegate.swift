@@ -17,8 +17,6 @@ public func delay(_ delay:Double, closure:@escaping ()->()) {
 }
 
 
-var currentUsername: String?
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	

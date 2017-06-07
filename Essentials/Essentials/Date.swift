@@ -7,6 +7,7 @@
 //
 
 extension Date{
-   
- 
+	public func startOf() -> Date?{
+		return Calendar(identifier: .gregorian).startOfDay(for: self)
+	}
 }

@@ -60,13 +60,16 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McJ-fj-UdB">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McJ-fj-UdB">
                                                             <rect key="frame" x="205" y="17.5" width="60" height="60"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="McJ-fj-UdB" secondAttribute="height" multiplier="1:1" id="DLN-y6-Yaa"/>
                                                                 <constraint firstAttribute="width" constant="60" id="aIN-C1-aOb"/>
                                                             </constraints>
                                                             <state key="normal" backgroundImage="icon_document_edit"/>
+                                                            <connections>
+                                                                <action selector="editTapped:forEvent:" destination="C9T-wz-vIA" eventType="touchUpInside" id="OFV-2T-2SO"/>
+                                                            </connections>
                                                         </button>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jP5-8c-toC">
                                                             <rect key="frame" x="275" y="17.5" width="60" height="60"/>
@@ -263,7 +266,7 @@
                 <viewControllerPlaceholder storyboardName="SettingsController" id="Db9-MM-BGa" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eYV-Ro-S5Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1829" y="12"/>
+            <point key="canvasLocation" x="1843" y="141"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eI6-rd-FAg">

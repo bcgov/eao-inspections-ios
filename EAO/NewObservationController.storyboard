@@ -30,8 +30,8 @@
                                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2j7-CQ-2ov">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="left">
@@ -45,8 +45,8 @@
                                             <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Requirement" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ef-Ud-Hoa">
                                                 <rect key="frame" x="0.0" y="65" width="375" height="55"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="left">
@@ -74,6 +74,7 @@
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxJ-iE-uRp">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="GPS Coordinates">
                                                     <color key="titleColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                 </state>
@@ -172,6 +173,9 @@
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="addVoiceTapped:" destination="Stp-H9-KLN" eventType="touchUpInside" id="mTH-Si-7oY"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZn-Rw-MTz">
                                                 <rect key="frame" x="187.5" y="0.0" width="147.5" height="50"/>
@@ -184,6 +188,9 @@
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="addVideoTapped:" destination="Stp-H9-KLN" eventType="touchUpInside" id="QZS-gv-iFd"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -196,10 +203,10 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="o0c-BF-tPk"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="40" maxY="0.0"/>
                                         <state key="normal" title="Tap to enter description">
-                                            <color key="titleColor" red="0.1333333333" green="0.1215686275" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="descriptionTapped:" destination="Stp-H9-KLN" eventType="touchUpInside" id="Cgn-Q0-1vb"/>
@@ -251,18 +258,23 @@
                     <navigationItem key="navigationItem" id="t5w-ju-aEJ">
                         <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="D6H-mJ-3mv"/>
+                        <barButtonItem key="leftBarButtonItem" image="icon_back" id="maY-iA-uCk">
+                            <connections>
+                                <action selector="backTapped:" destination="Stp-H9-KLN" id="9BH-ja-Ow9"/>
+                            </connections>
+                        </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="lwn-XB-aRw">
                             <rect key="frame" x="112.5" y="5.5" width="150" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Element" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKr-he-Exc">
-                                    <rect key="frame" x="22" y="6" width="106.5" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <rect key="frame" x="23" y="6" width="105" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JfN-gL-wrK">
-                                    <rect key="frame" x="133.5" y="6.5" width="20" height="20"/>
+                                    <rect key="frame" x="133" y="6.5" width="20" height="20"/>
                                     <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </activityIndicatorView>
                             </subviews>
@@ -282,9 +294,11 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="GPSLabel" destination="hxJ-iE-uRp" id="0RK-vV-pdR"/>
+                        <outlet property="arrow_0" destination="SS6-DR-pmY" id="HND-Dx-Jjg"/>
                         <outlet property="collectionView" destination="g54-EY-TU5" id="gqE-Fn-Ekz"/>
                         <outlet property="collectionViewHeightConstraint" destination="SFo-fI-xfH" id="dNg-b9-xC4"/>
                         <outlet property="descriptionButton" destination="M9u-G6-cvt" id="ECv-49-MCn"/>
+                        <outlet property="descriptionButtonHeightConstraint" destination="o0c-BF-tPk" id="Qde-fQ-ug2"/>
                         <outlet property="indicator" destination="JfN-gL-wrK" id="kL5-jv-ZRc"/>
                         <outlet property="requirementTextField" destination="4ef-Ud-Hoa" id="LDQ-6l-EIf"/>
                         <outlet property="scrollView" destination="lth-sO-X8t" id="fxT-dm-6fD"/>
@@ -299,5 +313,6 @@
     <resources>
         <image name="icon_add_photo" width="64" height="64"/>
         <image name="icon_arrow_right_think" width="30" height="30"/>
+        <image name="icon_back" width="25" height="25"/>
     </resources>
 </document>

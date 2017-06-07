@@ -24,10 +24,4 @@ extension UIViewController{
 			})
 		}
 	}
-	///sets navigationItem right bar button as 'eye' image for read only mode.
-	func setNavigationRightItemAsEye(){
-		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "icon_eye")))
-	}
-	
-	 
 }

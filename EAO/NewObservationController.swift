@@ -9,6 +9,9 @@ import Parse
 import MapKit
 
 final class NewObservationController: UIViewController{
+
+	let maximumNumberOfPhotos = 20
+
 	fileprivate var locationManager = CLLocationManager()
 	var saveAction  : ((PFObservation)->Void)?
 	var inspection  : PFInspection!
@@ -16,6 +19,8 @@ final class NewObservationController: UIViewController{
 	var photos		: [PFPhoto]?
 
 	//MARK: -
+	@IBOutlet fileprivate var arrow_0: UIImageView!
+	@IBOutlet fileprivate var descriptionButtonHeightConstraint: NSLayoutConstraint!
 	@IBOutlet fileprivate var indicator: UIActivityIndicatorView!
 	@IBOutlet fileprivate var scrollView : UIScrollView!
 	@IBOutlet fileprivate var titleTextField: UITextField!
@@ -26,6 +31,27 @@ final class NewObservationController: UIViewController{
 	@IBOutlet fileprivate var descriptionButton: UIButton!
 
 	//MARK: -
+	@IBAction func addVoiceTapped(_ sender: UIButton) {
+		present(controller: UIAlertController(title: "This feature is coming soon", message: nil))
+	}
+
+	@IBAction func addVideoTapped(_ sender: UIButton) {
+		present(controller: UIAlertController(title: "This feature is coming soon", message: nil))
+	}
+
+	@IBAction func backTapped(_ sender: UIBarButtonItem) {
+		if isReadOnly{
+			pop()
+			return
+		}
+		present(controller: UIAlertController(title: "Would you like to save data?", message: nil, yes: {
+			self.saveTapped(sender)
+		}, cancel: { 
+			self.pop()
+		}))
+	}
+
+
 	@IBAction fileprivate func saveTapped(_ sender: UIBarButtonItem) {
 		if !validate() { return }
 		indicator.startAnimating()
@@ -57,13 +83,21 @@ final class NewObservationController: UIViewController{
  
 	@IBAction func descriptionTapped(_ sender: UIButton) {
 		let textViewController = TextViewController.storyboardInstance() as! TextViewController
-		if descriptionButton.title(for: .normal) != "Tap to enter description"{
-			textViewController.initialText = descriptionButton.title(for: .normal)
+		if sender.title(for: .normal) != "Tap to enter description"{
+			textViewController.initialText = sender.title(for: .normal)
 		}
 		textViewController.title = "Element Description"
 		textViewController.result = { (text) in
-			if let text = text{
-				sender.setTitle(text, for: .normal)
+			if sender.title(for: .normal) == "Tap to enter description"{
+				if let text = text, !text.isEmpty(){
+					sender.setTitle(text, for: .normal)
+				}
+			} else{
+				if let text = text,!text.isEmpty() {
+					sender.setTitle(text, for: .normal)
+				} else{
+					sender.setTitle("Tap to enter description", for: .normal)
+				}
 			}
 		}
 		push(controller: textViewController)
@@ -99,16 +133,15 @@ final class NewObservationController: UIViewController{
 			observation = PFObservation()
 		}
 		if isReadOnly{
-			setNavigationRightItemAsEye()
+			navigationItem.rightBarButtonItem = nil
 			titleTextField.isEnabled = false
 			requirementTextField.isEnabled = false
 			descriptionButton.isEnabled = false
+			arrow_0.isHidden = true
+			descriptionButtonHeightConstraint.constant = (observation.observationDescription ?? "").height(for: UIScreen.width, font: UIFont.systemFont(ofSize: 18, weight: UIFontWeightRegular)) + 60
+			descriptionButton.titleLabel?.numberOfLines = 0
 		}
 		GPSLabel.setTitle("GPS: \(observation?.coordinate?.toString() ?? locationManager.coordinateAsString() ?? "unavailable")", for: .normal)
-	}
-	
-	deinit {
-		print("deinit observation")
 	}
 
 	//MARK: -
@@ -142,7 +175,6 @@ final class NewObservationController: UIViewController{
 			if self.photos == nil{
 				self.photos = []
 			}
-			
 			for photo in photos{
 				if let id = photo.id{
 					let url = URL(fileURLWithPath: FileManager.directory.absoluteString).appendingPathComponent(id, isDirectory: true)
@@ -201,6 +233,10 @@ extension NewObservationController: UICollectionViewDelegate, UICollectionViewDa
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		if photos?.count == maximumNumberOfPhotos{
+			present(controller: UIAlertController(title: "You've reached maximum (\(maximumNumberOfPhotos)) number of photos", message: nil))
+			return
+		}
 		if indexPath.row == photos?.count{
 			return
 		}

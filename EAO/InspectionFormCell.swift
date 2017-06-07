@@ -10,11 +10,18 @@ class InspectionFormCell: UITableViewCell{
 	@IBOutlet var titleLabel  : UILabel!
 	@IBOutlet var numberLabel : UILabel!
 	@IBOutlet var timeLabel   : UILabel!
+	@IBOutlet var editButton: UIButton!
 	
-	func setData(number: String?, title: String?, time: String?){
+	func setData(number: String?, title: String?, time: String?, isReadOnly: Bool){
 		titleLabel.text  = title
 		numberLabel.text = number
 		timeLabel.text   = time
+
+		if isReadOnly{
+			editButton.isHidden = true
+		} else{
+			editButton.isHidden = false 
+		}
 	}
 	
 }

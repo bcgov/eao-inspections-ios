@@ -33,7 +33,6 @@ extension String {
    }
    
    public func trimBy(numberOfChar: Int) -> String{
-     
       if let to = self.characters.index(self.startIndex, offsetBy: numberOfChar, limitedBy: self.characters.endIndex){
          let trimmedString = self.substring(to: to)
          return trimmedString
@@ -110,19 +109,23 @@ extension String {
 	public func ranges(of substring: String) -> [NSRange] {
 		var result: [NSRange] = []
 		var start = startIndex
-		print("string: \(self)")
 		while let range = range(of: substring, options: .caseInsensitive, range: start..<endIndex) {
 			let location = distance(from: start, to: range.lowerBound)
 			let lenght = distance(from: range.lowerBound, to: range.upperBound)
-			print("loc: \(location)")
-			print("lenght: \(lenght)\n")
 			result.append(NSRange.init(location: location, length: lenght))
 			start = range.upperBound
 			
 		}
 		return result
 	}
-	
+}
+
+extension String {
+	public func height(for width: CGFloat, font: UIFont) -> CGFloat {
+		let maxSize = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
+		let actualSize = self.boundingRect(with: maxSize, options: [.usesLineFragmentOrigin], attributes: [NSFontAttributeName: font], context: nil)
+		return actualSize.height
+	}
 }
 
 

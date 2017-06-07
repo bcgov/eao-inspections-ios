@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G1Q-iD-kVC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G1Q-iD-kVC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -90,6 +90,9 @@
                                         <state key="normal" title="Don't have an account? Sign up">
                                             <color key="titleColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signupTapped:" destination="G1Q-iD-kVC" eventType="touchUpInside" id="0GM-89-TKi"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZjC-Ib-bIX">
                                         <rect key="frame" x="243" y="408" width="112" height="29"/>
@@ -97,6 +100,9 @@
                                         <state key="normal" title="Forgot Password">
                                             <color key="titleColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.62352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="forgotPasswordTapped:" destination="G1Q-iD-kVC" eventType="touchUpInside" id="S52-M2-WYe"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqN-Sh-sih">
                                         <rect key="frame" x="80" y="497" width="216" height="1"/>
@@ -124,6 +130,9 @@
                                     <constraint firstItem="hqN-Sh-sih" firstAttribute="trailing" secondItem="cEG-Vv-R66" secondAttribute="trailing" id="xvF-XU-AHC"/>
                                 </constraints>
                             </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="YNf-EF-cFQ">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENZ-H1-DHl">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                                 <color key="backgroundColor" red="0.10844225436449051" green="0.21206086874008179" blue="0.39345115423202515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -143,15 +152,18 @@
                             <constraint firstItem="ENZ-H1-DHl" firstAttribute="top" secondItem="k0b-ij-R9a" secondAttribute="top" id="GT7-NZ-m8d"/>
                             <constraint firstItem="vYl-zQ-xbn" firstAttribute="centerY" secondItem="ENZ-H1-DHl" secondAttribute="centerY" id="IEv-GZ-zh1"/>
                             <constraint firstAttribute="trailing" secondItem="vYl-zQ-xbn" secondAttribute="trailing" id="UWX-5f-pH7"/>
+                            <constraint firstItem="YNf-EF-cFQ" firstAttribute="centerX" secondItem="k0b-ij-R9a" secondAttribute="centerX" id="W5H-SH-C6k"/>
                             <constraint firstItem="R6h-QU-5Ii" firstAttribute="leading" secondItem="k0b-ij-R9a" secondAttribute="leading" constant="20" id="YQa-Rf-h9y"/>
                             <constraint firstAttribute="trailing" secondItem="ENZ-H1-DHl" secondAttribute="trailing" id="YqT-Rk-Qsa"/>
                             <constraint firstAttribute="trailing" secondItem="0Sm-ix-1LE" secondAttribute="trailing" id="ezB-Wa-SL9"/>
+                            <constraint firstItem="YNf-EF-cFQ" firstAttribute="centerY" secondItem="k0b-ij-R9a" secondAttribute="centerY" id="fHp-1l-VAE"/>
                             <constraint firstAttribute="trailing" secondItem="R6h-QU-5Ii" secondAttribute="trailing" constant="20" id="o5r-vA-EjN"/>
                             <constraint firstItem="ZZs-4k-PNK" firstAttribute="top" secondItem="0Sm-ix-1LE" secondAttribute="bottom" id="oNF-I4-3sK"/>
                             <constraint firstItem="0Sm-ix-1LE" firstAttribute="leading" secondItem="k0b-ij-R9a" secondAttribute="leading" id="p3h-pc-lqu"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="indicator" destination="YNf-EF-cFQ" id="ZgY-hL-K2e"/>
                         <outlet property="passwordField" destination="ZQd-v6-hxX" id="wRe-n7-YGH"/>
                         <outlet property="scrollView" destination="0Sm-ix-1LE" id="amu-UI-lDG"/>
                         <outlet property="usernameField" destination="6Jv-om-wKV" id="bMJ-fd-xM9"/>

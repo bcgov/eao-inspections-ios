@@ -15,7 +15,7 @@ final class InspectionsCell: UITableViewCell{
 	@IBOutlet fileprivate var progressBar: UIProgressView!
 	@IBOutlet fileprivate var indicator: UIActivityIndicatorView!
 	
-	func setData(title: String?, time: String?, isReadOnly: Bool, progress: Float, isBeingUploaded: Bool, isEnabled: Bool, linkedProject: String?){
+	func setData(title: String?,time: String?, isReadOnly: Bool, progress: Float, isBeingUploaded: Bool, isEnabled: Bool, linkedProject: String?){
 		titleLabel.text = title
 		timeLabel.text  = time
 		linkedProjectLabel.text = linkedProject

@@ -9,7 +9,8 @@
 final class TextViewController: UIViewController, KeyboardDelegate{
 	var result: ((_ text: String?)->Void)?
 	var initialText: String?
-	
+	var isReadOnly = false
+
 	@IBOutlet fileprivate var textView: UITextView!
 	
 	@IBAction fileprivate func doneTapped(_ sender: UIBarButtonItem) {
@@ -20,6 +21,9 @@ final class TextViewController: UIViewController, KeyboardDelegate{
 	override func viewDidLoad() {
 		textView.text = initialText
 		navigationItem.setHidesBackButton(true, animated: false)
+		if isReadOnly{
+			textView.isEditable = false
+		}
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {

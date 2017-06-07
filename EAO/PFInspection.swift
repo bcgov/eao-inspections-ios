@@ -13,14 +13,20 @@ enum PFInspectionError: Error{
 	case someObjectsFailed(Int)
 	case inspectionIdNotFound
 	case fail
+	case noConnection
 	
 	var message: String{
 		switch self {
-		case .zeroObservations: return "There are no observation elements in this inspection"
-		case .someObjectsFailed(let number):
-			return "Error: \(number) element(s) failed to upload to the server.\nDon't worry - your elements are still saved locally in your phone and you can view them in the submitted tab."
-		case .inspectionIdNotFound: return "Error occured whle uploading"
-		case .fail : return "Failed to Upload Inspection"
+		case .zeroObservations :
+			return "There are no observation elements in this inspection"
+		case .someObjectsFailed(let number) :
+			return "Error: \(number) element(s) failed to upload to the server.\nDon't worry - your elements are still saved locally in your phone and you can view them in the 'In Progress' tab."
+		case .inspectionIdNotFound :
+			return "Error occured whle uploading, please try again later"
+		case .fail :
+			return "Failed to Upload Inspection, please try again later"
+		case .noConnection:
+			return"It seems that you don't have an active internet connection. Please try uploading data again when you have cellular data or Wi-Fi connection"
 		}
 	}
 }
@@ -34,6 +40,7 @@ final class PFInspection: PFObject, PFSubclassing{
 	
 	//MARK: -
 	@NSManaged var id : String?
+	@NSManaged var userId : String?
 	@NSManaged var isSubmitted  : NSNumber?
 	@NSManaged var project  : String?
 	@NSManaged var title	: String?
@@ -51,6 +58,11 @@ final class PFInspection: PFObject, PFSubclassing{
 	func submit(completion: @escaping (_ success: Bool,_ error: PFInspectionError?)->Void, block: @escaping (_ progress : Float)->Void){
 		var objects = [PFObject]()
 		self.failed.removeAll()
+		if !Reachability.isConnectedToNetwork(){
+			block(0)
+			completion(false, .noConnection)
+			return
+		}
 		guard let id = self.id else{
 			block(0)
 			completion(false, .inspectionIdNotFound)
@@ -72,7 +84,6 @@ final class PFInspection: PFObject, PFSubclassing{
 					//also all the photos
 					counter += 1
 					if counter == observations.count{
-						print("_finished appending objects:\n\t\(objects.count)\n")
 						self.save(objects: objects, completion: {
 							var success = true
 							var _error: PFInspectionError? = .someObjectsFailed(self.failed.count)
@@ -81,6 +92,9 @@ final class PFInspection: PFObject, PFSubclassing{
 								success = false
 							} else if self.failed.isEmpty{
 								_error = nil
+							}
+							if !self.failed.isEmpty{
+								success = false
 							}
 							completion(success, _error)
 						}, block: { (progress) in
@@ -96,7 +110,6 @@ final class PFInspection: PFObject, PFSubclassing{
 					}
 					counter += 1
 					if counter == observations.count{
-						print("finished appending objects:\n\t\(objects.count)\n")
 						self.save(objects: objects, completion: {
 							var success = true
 							var _error: PFInspectionError? = .someObjectsFailed(self.failed.count)
@@ -105,6 +118,9 @@ final class PFInspection: PFObject, PFSubclassing{
 								success = false
 							} else if self.failed.isEmpty{
 								_error = nil
+							}
+							if !self.failed.isEmpty{
+								success = false
 							}
 							completion(success, _error)
 						}, block: { (progress) in
@@ -121,18 +137,16 @@ final class PFInspection: PFObject, PFSubclassing{
 		for object in objects{
 			(object as? PFInspection)?.isSubmitted = true
 			object.saveInBackground(block: { (success, error) in
-				print("error: \(String(describing: error))\n")
 				if success && error == nil{
 					
 				} else{
 					self.failed.append(object)
-					(object as? PFInspection)?.isSubmitted = false
-					object.pinInBackground()
+					self.isSubmitted = false
+					try? self.pin()
 				}
 				object_counter += 1
 				block(Float(object_counter)/Float(objects.count))
 				if object_counter == objects.count{
-					print("done uploading")
 					block(1)
 					delay(0.5, closure: {
 						completion()

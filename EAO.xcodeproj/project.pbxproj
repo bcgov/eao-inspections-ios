@@ -44,6 +44,7 @@
 		1186B52A1ECA35AC00681426 /* Essentials.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1186B5281ECA35AC00681426 /* Essentials.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1186B52E1ECA634C00681426 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186B52D1ECA634C00681426 /* UIViewController.swift */; };
 		1186B53B1ECB699D00681426 /* EAOUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186B53A1ECB699D00681426 /* EAOUITests.swift */; };
+		119A0B841EE785300077D9B5 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A0B831EE785300077D9B5 /* Reachability.swift */; };
 		11D70EB01E8D7A9800CBF92C /* InspectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70EAF1E8D7A9800CBF92C /* InspectionsController.swift */; };
 		11D70EB31E8D852800CBF92C /* InspectionSetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70EB21E8D852800CBF92C /* InspectionSetupController.swift */; };
 		11D70EB61E8D856400CBF92C /* InspectionSetupController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D70EB51E8D856400CBF92C /* InspectionSetupController.storyboard */; };
@@ -125,6 +126,7 @@
 		1186B5381ECB699D00681426 /* EAOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EAOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1186B53A1ECB699D00681426 /* EAOUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EAOUITests.swift; sourceTree = "<group>"; };
 		1186B53C1ECB699D00681426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		119A0B831EE785300077D9B5 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		11D70EAF1E8D7A9800CBF92C /* InspectionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionsController.swift; sourceTree = "<group>"; };
 		11D70EB21E8D852800CBF92C /* InspectionSetupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectionSetupController.swift; sourceTree = "<group>"; };
 		11D70EB51E8D856400CBF92C /* InspectionSetupController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InspectionSetupController.storyboard; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				110FF0B01E8C2833000DB1A5 /* EAO-Bridging-Header.h */,
 				110FF0B11E8C2833000DB1A5 /* Info.plist */,
 				110FF0B21E8C2833000DB1A5 /* samplePDF.pdf */,
+				119A0B831EE785300077D9B5 /* Reachability.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -663,6 +666,7 @@
 				113B20411EC11B8A00F04811 /* PFGeoPoint.swift in Sources */,
 				110FF0AA1E8C25C5000DB1A5 /* UITableView.swift in Sources */,
 				11D70EDC1E8DA83D00CBF92C /* NewObservationController.swift in Sources */,
+				119A0B841EE785300077D9B5 /* Reachability.swift in Sources */,
 				112F74721E97FDC80076926A /* LoginController.swift in Sources */,
 				1186B5251ECA235900681426 /* URL.swift in Sources */,
 				113B203F1EC0F8A200F04811 /* PFPhoto.swift in Sources */,

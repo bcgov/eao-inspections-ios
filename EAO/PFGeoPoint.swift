@@ -9,6 +9,8 @@
 import Parse
 extension PFGeoPoint{
 	func toString()->String?{
-		return "\(latitude) by \(longitude)"
+		let lat = "\(latitude)".trimBy(numberOfChar: 10)
+		let lon = "\(longitude)".trimBy(numberOfChar: 10)
+		return "\(lat) by \(lon)"
 	}
 }

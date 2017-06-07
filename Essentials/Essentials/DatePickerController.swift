@@ -26,14 +26,10 @@ final public class DatePickerController: UIViewController{
 	
 	@IBAction func selectTapped(_ sender: UIButton) {
 		sender.isEnabled = false
-		completion?(datePicker.date)
+		completion?(datePicker.date.startOf())
 		dismiss()
 	}
-	
-	deinit {
-		print("deinit date picker")
-	}
-	
+
 	//MARK: -
 	///
 	public static func present(on controller: UIViewController, minimum: Date? = nil ,completion: @escaping (_ date: Date?)->Void){

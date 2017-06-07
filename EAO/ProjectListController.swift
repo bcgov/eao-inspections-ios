@@ -39,11 +39,7 @@ final class ProjectListController: UIViewController{
 		searchBar.returnKeyType = .default
 		load()
 	}
-	
-	deinit {
-		print("deinit project list")
-	}
-	
+
 	//MARK:-
 	fileprivate func filter(by search: String?) -> [NSMutableAttributedString]?{
 		guard let text = search?.lowercased() else { return nil }

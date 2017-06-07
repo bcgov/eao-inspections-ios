@@ -7,7 +7,7 @@
 //
 import MapKit
 import Parse
-class UploadPhotoController: UIViewController{
+class UploadPhotoController: UIViewController, KeyboardDelegate{
 	override var shouldAutorotate: Bool{
 		return false
 	}
@@ -56,7 +56,6 @@ class UploadPhotoController: UIViewController{
 			})
 			return
 		}
-		print(observation.id)
 		if photo.observationId == nil{
 			photo.observationId = observation.id 
 		}
@@ -66,13 +65,12 @@ class UploadPhotoController: UIViewController{
 		photo.caption = captionTextView.text
 		photo.timestamp = date
 		photo.coordinate = PFGeoPoint(location: location)
-		if let data = imageView.image?.toData(quality: .medium){
+		if let data = imageView.image?.scale(width: UIScreen.width)?.toData(quality: .medium){
 			photo.image = UIImage(data: data)
 			do{
 				try data.write(to: FileManager.directory.appendingPathComponent(photo.id!, isDirectory: true))
 				photo.pinInBackground { (success, error) in
 					if success && error == nil{
-						print(self.photo)
 						self.uploadPhotoAction?(self.photo)
 						_ = self.navigationController?.popViewController(animated: true)
 					} else{
@@ -103,14 +101,30 @@ class UploadPhotoController: UIViewController{
         addDismissKeyboardOnTapRecognizer(on: view)
 		populate()
 		if isReadOnly{
-			setNavigationRightItemAsEye()
+			navigationItem.rightBarButtonItem = nil
 			uploadButton.isEnabled = false
 			uploadButton.alpha = 0
 			uploadLabel.alpha = 0
 			captionTextView.isUserInteractionEnabled = false
 		}
     }
-	
+
+	override func viewDidAppear(_ animated: Bool) {
+		addKeyboardObservers()
+	}
+
+	override func viewWillDisappear(_ animated: Bool) {
+		removeKeyboardObservers()
+	}
+
+	func keyboardWillShow(with height: NSNumber) {
+		scrollView.contentInset.bottom = CGFloat(height.intValue + 40)
+	}
+
+	func keyboardWillHide() {
+		scrollView.contentInset.bottom = 0
+	}
+
 	//MARK: -
 	fileprivate func populate(){
 		guard let photo = photo else { return }
@@ -131,7 +145,6 @@ class UploadPhotoController: UIViewController{
 
 //MARK: -
 extension UploadPhotoController{
- 
 	fileprivate func validate()->Bool{
 		if imageView.image == nil{
 			present(controller: Alerts.error)
@@ -145,13 +158,13 @@ extension UploadPhotoController{
 extension UploadPhotoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imageView.image = image
+			imageView.image = image
             uploadButton.alpha = 0.25
             uploadLabel.alpha = 0
 			date = Date()
 			location = locationManager.location
         }
-        self.dismiss(animated: true, completion: nil)
+		 self.dismiss(animated: true, completion: nil)
     }
     
     fileprivate func media(sourceType: UIImagePickerControllerSourceType) {

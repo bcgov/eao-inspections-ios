@@ -35,8 +35,6 @@ public class Button: UIButton{
 	
 	public func setAccessoryImageView(){
 		if let image = image{
-			print("aa: \(frame.width)")
-			print("1: \(UIScreen.width)")
 			accessoryImageView = UIImageView()
 			accessoryImageView?.frame.size = CGSize(width: frame.height/2, height: frame.height/2)
 			accessoryImageView?.center.y = frame.height/2

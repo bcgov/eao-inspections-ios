@@ -5,7 +5,7 @@
 //  Created by Micha Volin on 2017-03-30.
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
-
+import Parse
 final class InspectionSetupController: UIViewController, KeyboardDelegate{
 	override var shouldAutorotate: Bool{
 		return false
@@ -26,6 +26,9 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 	@IBOutlet var startDateButton   : UIButton!
 	@IBOutlet var endDateButton     : UIButton!
 	
+	@IBOutlet var arrow_1: UIImageView!
+	@IBOutlet var arrow_2: UIImageView!
+	@IBOutlet var arrow_3: UIImageView!
  
 	//MARK: - IB Actions
 	@IBAction fileprivate func linkProjectTapped(_ sender: UIButton) {
@@ -106,17 +109,13 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 	override func viewDidLoad() {
 		addDismissKeyboardOnTapRecognizer(on: scrollView)
 		if inspection == nil{
-			subtextTextField.text = currentUsername
+			subtextTextField.text = PFUser.current()?.username
 			isNew = true
 		}
 		setMode()
 		populate()
 	}
- 
-	deinit {
-		print("deinit set up inspection")
-	}
-	
+
 	override func viewWillAppear(_ animated: Bool) {
 		addKeyboardObservers()
 	}
@@ -134,8 +133,11 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 			numberTextField.isEnabled   = false
 			startDateButton.isEnabled   = false
 			endDateButton.isEnabled     = false
-			setNavigationRightItemAsEye()
+			navigationItem.rightBarButtonItem = nil
 			button.setTitle("View Elements", for: .normal)
+			arrow_1.isHidden = true
+			arrow_2.isHidden = true
+			arrow_3.isHidden = true 
 		} else if isNew{
 			//new
 			button.setTitle("Create Inspection", for: .normal)
@@ -200,6 +202,7 @@ extension InspectionSetupController{
 		}
 		if self.isNew {
 			inspection = PFInspection()
+			inspection?.userId = PFUser.current()?.objectId
 			inspection?.id = UUID().uuidString
 		}
 		inspection?.project = linkProjectButton.title(for: .normal)
@@ -217,7 +220,7 @@ extension InspectionSetupController{
 			let endDate = dates["end"] else {
 			return false
 		}
-		return startDate < endDate
+		return startDate <= endDate
 	}
 }
 

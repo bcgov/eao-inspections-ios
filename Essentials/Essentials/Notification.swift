@@ -12,7 +12,6 @@ extension Notification{
     }
     
     public static func post(name:String, _ object: AnyObject?=nil){
-        // print("\nNotification posted: \(name). with object: \(object)\n")
         NotificationCenter.default.post(name: Notification.Name(rawValue: name), object: object)
     }
 }

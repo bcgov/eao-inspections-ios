@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InspectionFormHeaderCell" rowHeight="60" id="Uj2-PX-2iC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="InspectionFormHeaderCell" rowHeight="60" id="Uj2-PX-2iC">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Uj2-PX-2iC" id="L0C-ee-xNe">
@@ -101,7 +101,7 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaZ-eh-hI9">
+                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaZ-eh-hI9">
                                                             <rect key="frame" x="325" y="25" width="30" height="29"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="UaZ-eh-hI9" secondAttribute="height" multiplier="1:1" constant="1" id="4fv-BP-tv1"/>
@@ -121,6 +121,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="editButton" destination="UaZ-eh-hI9" id="OrM-SG-xMK"/>
                                             <outlet property="numberLabel" destination="0Jc-Xh-rXW" id="3P9-gh-IpN"/>
                                             <outlet property="timeLabel" destination="Ci0-cs-9DY" id="3Ox-NA-cco"/>
                                             <outlet property="titleLabel" destination="iwK-c0-DeC" id="OzP-er-rtV"/>
@@ -132,13 +133,13 @@
                                     <outlet property="delegate" destination="X6w-e2-jUy" id="tMW-Kh-Sxd"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPq-NL-8B5">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPq-NL-8B5">
                                 <rect key="frame" x="275" y="567" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="MRK-9B-0ny"/>
                                     <constraint firstAttribute="width" constant="80" id="f4G-Uy-8hF"/>
                                 </constraints>
-                                <state key="normal" image="icon_add_grey"/>
+                                <state key="normal" image="icon_add_blue"/>
                                 <connections>
                                     <action selector="addTapped:" destination="X6w-e2-jUy" eventType="touchUpInside" id="ReR-fV-htW"/>
                                 </connections>
@@ -190,13 +191,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Observation Elements" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCf-2P-92s">
-                                    <rect key="frame" x="-81" y="6" width="175" height="22"/>
-                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                    <rect key="frame" x="-81.5" y="7" width="176" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="RvN-tF-cqH">
-                                    <rect key="frame" x="99" y="7" width="20" height="20"/>
+                                    <rect key="frame" x="99.5" y="7" width="20" height="20"/>
                                     <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </activityIndicatorView>
                             </subviews>
@@ -228,7 +229,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_add_grey" width="315" height="315"/>
+        <image name="icon_add_blue" width="100" height="100"/>
         <image name="icon_back" width="25" height="25"/>
         <image name="icon_edit" width="67" height="67"/>
     </resources>

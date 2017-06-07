@@ -60,11 +60,11 @@ final class InspectionFormController: UIViewController{
 	
 	//MARK: -
 	override func viewDidLoad() {
-		tableView.contentInset.bottom = 80
+		tableView.contentInset.bottom = 120
 		if isReadOnly{
-			setNavigationRightItemAsEye()
 			submitButton.isHidden = true 
-			addButton.isEnabled = false
+			addButton.isHidden = true 
+			navigationItem.rightBarButtonItem = nil
 		}
 
 		if InspectionsController.reference?.isBeingUploaded == true {
@@ -73,11 +73,7 @@ final class InspectionFormController: UIViewController{
 
 		load()
 	}
-	
-	deinit{
-		print("deinit Inspection Form")
-	}
-	
+ 
 	fileprivate func load(){
 		let query = PFObservation.query()
 		query?.fromLocalDatastore()
@@ -124,14 +120,18 @@ extension InspectionFormController: UITableViewDataSource, UITableViewDelegate{
 			return cell
 		}
 		let cell = tableView.dequeue(identifier: "InspectionFormCell") as! InspectionFormCell
-		cell.setData(number: "\(indexPath.row+1)", title: observations[indexPath.row].title, time: observations[indexPath.row].createdAt?.inspectionFormat())
+		cell.setData(number: "\(indexPath.row+1)", title: observations[indexPath.row].title, time: observations[indexPath.row].createdAt?.inspectionFormat(),isReadOnly: isReadOnly)
 		return cell
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		if indexPath.section == 0{
+			return
+		}
 		if observations[indexPath.row].id == nil{
 			return
 		}
+		
 		let observationElementController = NewObservationController.storyboardInstance() as! NewObservationController
 		observationElementController.inspection = inspection
 		observationElementController.observation = observations[indexPath.row]
