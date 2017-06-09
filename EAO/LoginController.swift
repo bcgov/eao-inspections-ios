@@ -32,6 +32,8 @@ class LoginController: UIViewController{
 //			present(controller: Alerts.error)
 //			return
 //		}
+		self.usernameField.text = ""
+		self.passwordField.text = ""
 		indicator.startAnimating()
 		PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
 			guard error == nil else{
@@ -40,12 +42,18 @@ class LoginController: UIViewController{
 				self.indicator.stopAnimating()
 				return
 			}
-			self.indicator.stopAnimating()
-			self.usernameField.text = ""
-			self.passwordField.text = ""
-			let inspectionsController = InspectionsController.storyboardInstance()
-			self.present(controller: inspectionsController)
-			sender.isEnabled = true
+
+			let query = PFInspection.query()
+			query?.whereKey("userId", equalTo: PFUser.current()!.objectId!)
+			query?.findObjectsInBackground(block: { (objects, error) in
+				objects?.forEach({ (inspection) in
+					try? inspection.pin()
+				})
+				self.indicator.stopAnimating()
+				let inspectionsController = InspectionsController.storyboardInstance()
+				self.present(controller: inspectionsController)
+				sender.isEnabled = true
+			})
 		}
 	}
 

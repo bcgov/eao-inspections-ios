@@ -8,9 +8,6 @@
 import MapKit
 import Parse
 class UploadPhotoController: UIViewController, KeyboardDelegate{
-	override var shouldAutorotate: Bool{
-		return false
-	}
 	var isReadOnly = false
 	var photo: PFPhoto!
 	var observation: PFObservation!
@@ -105,7 +102,7 @@ class UploadPhotoController: UIViewController, KeyboardDelegate{
 			uploadButton.isEnabled = false
 			uploadButton.alpha = 0
 			uploadLabel.alpha = 0
-			captionTextView.isUserInteractionEnabled = false
+			captionTextView.isEditable = false
 		}
     }
 
@@ -143,6 +140,7 @@ class UploadPhotoController: UIViewController, KeyboardDelegate{
 	}
 }
 
+ 
 //MARK: -
 extension UploadPhotoController{
 	fileprivate func validate()->Bool{

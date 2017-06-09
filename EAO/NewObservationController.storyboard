@@ -69,7 +69,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Tma-Ib-iJ9">
-                                        <rect key="frame" x="0.0" y="265.5" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="242" width="375" height="50"/>
                                         <subviews>
                                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxJ-iE-uRp">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -90,7 +90,7 @@
                                         </constraints>
                                     </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g54-EY-TU5">
-                                        <rect key="frame" x="0.0" y="335.5" width="375" height="72"/>
+                                        <rect key="frame" x="0.0" y="312" width="375" height="72"/>
                                         <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="72" id="SFo-fI-xfH"/>
@@ -160,7 +160,7 @@
                                         </connections>
                                     </collectionView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="qaK-dn-6Pa">
-                                        <rect key="frame" x="20" y="428" width="335" height="50"/>
+                                        <rect key="frame" x="20" y="404.5" width="335" height="50"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOb-1p-sMc">
                                                 <rect key="frame" x="0.0" y="0.0" width="147.5" height="50"/>
@@ -197,28 +197,41 @@
                                             <constraint firstAttribute="height" constant="50" id="b87-N3-Sx5"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9u-G6-cvt">
-                                        <rect key="frame" x="0.0" y="185.5" width="375" height="60"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VgZ-XH-dBt">
+                                        <rect key="frame" x="0.0" y="184.5" width="375" height="37.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="o0c-BF-tPk"/>
-                                        </constraints>
+                                        <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="40" maxY="0.0"/>
-                                        <state key="normal" title="Tap to enter description">
-                                            <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="descriptionTapped:" destination="Stp-H9-KLN" eventType="touchUpInside" id="Cgn-Q0-1vb"/>
-                                        </connections>
-                                    </button>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="right">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="top">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="left">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="bottom">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrow_right_think" translatesAutoresizingMaskIntoConstraints="NO" id="SS6-DR-pmY">
-                                        <rect key="frame" x="340" y="205" width="25" height="20"/>
+                                        <rect key="frame" x="340" y="193" width="25" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="Qn6-OY-NW4"/>
                                             <constraint firstAttribute="height" constant="20" id="hvA-fr-B4s"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3O-oe-NY9">
+                                        <rect key="frame" x="0.0" y="184.5" width="375" height="37.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="descriptionTapped:" destination="Stp-H9-KLN" eventType="touchUpInside" id="ADD-Jd-ohN"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
@@ -226,22 +239,26 @@
                                     <constraint firstAttribute="trailing" secondItem="qaK-dn-6Pa" secondAttribute="trailing" constant="20" id="1XV-ld-EvX"/>
                                     <constraint firstItem="g54-EY-TU5" firstAttribute="top" secondItem="Tma-Ib-iJ9" secondAttribute="bottom" constant="20" id="25N-tP-KpT"/>
                                     <constraint firstItem="hdH-Gy-bkN" firstAttribute="top" secondItem="2oK-lY-waU" secondAttribute="bottom" constant="20" id="2w1-3V-2Qu"/>
-                                    <constraint firstItem="Tma-Ib-iJ9" firstAttribute="top" secondItem="M9u-G6-cvt" secondAttribute="bottom" constant="20" id="3KT-1t-MgE"/>
-                                    <constraint firstItem="M9u-G6-cvt" firstAttribute="leading" secondItem="lth-sO-X8t" secondAttribute="leading" id="BBn-JV-5wZ"/>
                                     <constraint firstItem="g54-EY-TU5" firstAttribute="leading" secondItem="lth-sO-X8t" secondAttribute="leading" id="D8V-lp-13q"/>
                                     <constraint firstItem="2oK-lY-waU" firstAttribute="top" secondItem="lth-sO-X8t" secondAttribute="top" constant="20" id="HV4-3U-LPd"/>
+                                    <constraint firstItem="SS6-DR-pmY" firstAttribute="centerY" secondItem="VgZ-XH-dBt" secondAttribute="centerY" id="I5C-P1-aDB"/>
                                     <constraint firstAttribute="trailing" secondItem="Tma-Ib-iJ9" secondAttribute="trailing" id="KkL-nV-eUj"/>
                                     <constraint firstItem="Tma-Ib-iJ9" firstAttribute="leading" secondItem="lth-sO-X8t" secondAttribute="leading" id="L6h-T9-jEN"/>
                                     <constraint firstAttribute="bottom" secondItem="qaK-dn-6Pa" secondAttribute="bottom" constant="20" id="LH3-R9-f6f"/>
-                                    <constraint firstItem="SS6-DR-pmY" firstAttribute="centerY" secondItem="M9u-G6-cvt" secondAttribute="centerY" id="STL-sp-BAo"/>
-                                    <constraint firstAttribute="trailing" secondItem="M9u-G6-cvt" secondAttribute="trailing" id="SvG-l2-meS"/>
                                     <constraint firstItem="qaK-dn-6Pa" firstAttribute="top" secondItem="g54-EY-TU5" secondAttribute="bottom" constant="20" id="Ut7-eH-RrT"/>
+                                    <constraint firstItem="VgZ-XH-dBt" firstAttribute="top" secondItem="hdH-Gy-bkN" secondAttribute="bottom" constant="5" id="VlI-fA-JfE"/>
+                                    <constraint firstItem="M3O-oe-NY9" firstAttribute="top" secondItem="VgZ-XH-dBt" secondAttribute="top" id="WOH-Bz-sP0"/>
+                                    <constraint firstItem="M3O-oe-NY9" firstAttribute="leading" secondItem="lth-sO-X8t" secondAttribute="leading" id="Y3m-8w-qo0"/>
+                                    <constraint firstAttribute="trailing" secondItem="M3O-oe-NY9" secondAttribute="trailing" id="Y7y-QI-HDi"/>
                                     <constraint firstItem="qaK-dn-6Pa" firstAttribute="leading" secondItem="lth-sO-X8t" secondAttribute="leading" constant="20" id="YST-WR-yST"/>
                                     <constraint firstAttribute="trailing" secondItem="2oK-lY-waU" secondAttribute="trailing" id="d1n-HO-xSa"/>
+                                    <constraint firstAttribute="trailing" secondItem="VgZ-XH-dBt" secondAttribute="trailing" id="dGS-3P-tEg"/>
                                     <constraint firstAttribute="trailing" secondItem="SS6-DR-pmY" secondAttribute="trailing" constant="10" id="kQf-Wx-48r"/>
-                                    <constraint firstItem="M9u-G6-cvt" firstAttribute="top" secondItem="hdH-Gy-bkN" secondAttribute="bottom" constant="6" id="kpJ-QP-Ebr"/>
+                                    <constraint firstItem="Tma-Ib-iJ9" firstAttribute="top" secondItem="VgZ-XH-dBt" secondAttribute="bottom" constant="20" id="lKq-ba-ei0"/>
                                     <constraint firstAttribute="trailing" secondItem="g54-EY-TU5" secondAttribute="trailing" id="nt1-Y4-1io"/>
+                                    <constraint firstItem="M3O-oe-NY9" firstAttribute="bottom" secondItem="VgZ-XH-dBt" secondAttribute="bottom" id="sU8-1o-zVU"/>
                                     <constraint firstItem="2oK-lY-waU" firstAttribute="leading" secondItem="lth-sO-X8t" secondAttribute="leading" id="wCo-e3-pDK"/>
+                                    <constraint firstItem="VgZ-XH-dBt" firstAttribute="leading" secondItem="lth-sO-X8t" secondAttribute="leading" id="y5E-gr-YNY"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -297,8 +314,8 @@
                         <outlet property="arrow_0" destination="SS6-DR-pmY" id="HND-Dx-Jjg"/>
                         <outlet property="collectionView" destination="g54-EY-TU5" id="gqE-Fn-Ekz"/>
                         <outlet property="collectionViewHeightConstraint" destination="SFo-fI-xfH" id="dNg-b9-xC4"/>
-                        <outlet property="descriptionButton" destination="M9u-G6-cvt" id="ECv-49-MCn"/>
-                        <outlet property="descriptionButtonHeightConstraint" destination="o0c-BF-tPk" id="Qde-fQ-ug2"/>
+                        <outlet property="descriptionButton" destination="M3O-oe-NY9" id="slC-Nb-c1G"/>
+                        <outlet property="descriptionTextView" destination="VgZ-XH-dBt" id="p8l-jn-XIm"/>
                         <outlet property="indicator" destination="JfN-gL-wrK" id="kL5-jv-ZRc"/>
                         <outlet property="requirementTextField" destination="4ef-Ud-Hoa" id="LDQ-6l-EIf"/>
                         <outlet property="scrollView" destination="lth-sO-X8t" id="fxT-dm-6fD"/>

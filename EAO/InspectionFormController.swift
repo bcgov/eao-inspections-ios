@@ -31,13 +31,12 @@ final class InspectionFormController: UIViewController{
 	@IBAction fileprivate func editInspectionSetUpTapped(_ sender: UIButton) {
 		sender.isEnabled = false
 		pop()
-		sender.isEnabled = true
+
 	}
 	
 	@IBAction fileprivate func backTapped(_ sender: UIBarButtonItem) {
 		sender.isEnabled = false
 		navigationController?.popToViewController(InspectionsController.reference!, animated: true)
-		sender.isEnabled = true
 	}
 	
 	@IBAction fileprivate func saveTapped(_ sender: UIBarButtonItem) {

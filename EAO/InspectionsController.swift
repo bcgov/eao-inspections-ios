@@ -43,10 +43,6 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 	}
 
 	@IBAction func uploadTapped(_ sender: UIButton, forEvent event: UIEvent) {
-		if isBeingUploaded{
-			AlertView.present(on: self, with: "Only one inspection can be submitted at a time")
-			return
-		}
 		guard let indexPath = tableView.indexPath(for: event),let inspection = inspections[0]?[indexPath.row] else{
 			AlertView.present(on: self, with: "Inspection was not found")
 			return
@@ -59,7 +55,7 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 		tableViewBottomConstraint.constant = selectedIndex == 0 ? 10 : -60
 		view.layoutIfNeeded()
 		tableView.reloadData()
-		print("index: \(inspections[selectedIndex]?.count)")
+
 	}
 	
 	//MARK: -
@@ -70,10 +66,12 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 		locationManager.requestWhenInUseAuthorization()
 		self.load()
 	}
-	
+
+
 	func submit(inspection: PFInspection, indexPath: IndexPath){
 		let alert = UIAlertController(title: "Are You Sure?", message: "You will NOT be able to edit this inspection after submission", yes: {
 			self.indicator.startAnimating()
+			self.view.isUserInteractionEnabled = false
 			self.isBeingUploaded = true
 			inspection.isBeingUploaded = true
 			self.tableView.reloadData()
@@ -81,20 +79,17 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 				self.indicator.stopAnimating()
 				inspection.isBeingUploaded = false
 				self.isBeingUploaded = false
+				self.view.isUserInteractionEnabled = true
 				if let error = error {
 					self.present(controller: UIAlertController(title: "Error", message: error.message))
 				}
 				self.tableView.reloadData()
-				print(self.inspections)
 				guard success else{
-					
 					self.tableView.reloadData()
 					return
 				}
 				self.showSuccessImageView()
-
 				self.moveToSubmitted(inspection: inspection)
-				
 			}, block: { (progress) in
 				inspection.progress = progress
 				self.tableView.reloadRows(at: [indexPath], with: .none)
@@ -112,7 +107,6 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 		query?.order(byDescending: "start")
 		query?.findObjectsInBackground(block: { (objects, error) in
 			guard let objects = objects as? [PFInspection], error == nil else{
-				print("none")
 				return
 			}
 			var inspections = [Int:[PFInspection]]()
@@ -172,19 +166,17 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 //MARK: -
 extension InspectionsController: UITableViewDelegate, UITableViewDataSource{
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		print("count: \(inspections[selectedIndex]?.count ?? 0)")
 		return inspections[selectedIndex]?.count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeue(identifier: "InspectionsCell") as! InspectionsCell
 		let inspection = inspections[selectedIndex]?[indexPath.row]
-		print("ins -\(indexPath.row)-: \(inspection)")
 		var date = ""
 		if let start = inspection?.start, let end = inspection?.end{
 			date = "\(start.inspectionFormat()) - \(end.inspectionFormat())"
 		}
-		cell.setData(title: inspection?.title, time: date, isReadOnly: Bool(NSNumber(integerLiteral: selectedIndex)), progress: inspection?.progress ?? 0, isBeingUploaded: false, isEnabled: self.isBeingUploaded, linkedProject: inspection?.project)
+		cell.setData(title: inspection?.title, time: date, isReadOnly: Bool(NSNumber(integerLiteral: selectedIndex)), progress: inspection?.progress ?? 0, isBeingUploaded: inspection?.isBeingUploaded ?? false, isEnabled: self.isBeingUploaded, linkedProject: inspection?.project)
 		return cell
 	}
 	

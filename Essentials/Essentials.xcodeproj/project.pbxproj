@@ -33,9 +33,6 @@
 		110B7FE31E56383F00650A9D /* UIViewWithXibAndIBDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110B7FE21E56383F00650A9D /* UIViewWithXibAndIBDesignable.swift */; };
 		110B7FE71E5638E700650A9D /* UIEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110B7FE61E5638E700650A9D /* UIEvent.swift */; };
 		110B7FE91E56390100650A9D /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110B7FE81E56390100650A9D /* UIScreen.swift */; };
-		110FF0FC1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110FF0F91E8C2E2B000DB1A5 /* TextViewWithPlaceholder.swift */; };
-		110FF0FD1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.xib in Resources */ = {isa = PBXBuildFile; fileRef = 110FF0FA1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.xib */; };
-		110FF0FE1E8C2E2B000DB1A5 /* TextViewWithPlaceholderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110FF0FB1E8C2E2B000DB1A5 /* TextViewWithPlaceholderDelegate.swift */; };
 		110FF1011E8C34F1000DB1A5 /* RingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 110FF0FF1E8C34F1000DB1A5 /* RingButton.swift */; };
 		110FF1021E8C34F1000DB1A5 /* RingButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 110FF1001E8C34F1000DB1A5 /* RingButton.xib */; };
 		113B20451EC11D6900F04811 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113B20431EC11D6900F04811 /* AlertView.swift */; };
@@ -48,6 +45,8 @@
 		1159B3A51EB11FD700F72750 /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1159B3A41EB11FD700F72750 /* KeyboardDelegate.swift */; };
 		116A90511E5E554F00195433 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116A90501E5E554F00195433 /* UIButton.swift */; };
 		116E3C501EBA51B800AE52D3 /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E3C4F1EBA51B800AE52D3 /* UISearchBar.swift */; };
+		117D3BF01EE9BF0000791D07 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D3BEE1EE9BEFF00791D07 /* TextView.swift */; };
+		117D3BF11EE9BF0000791D07 /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D3BEF1EE9BF0000791D07 /* TextViewDelegate.swift */; };
 		117FEC061EBB975D00D5CD8D /* NSString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117FEC051EBB975D00D5CD8D /* NSString.swift */; };
 		118140851E6E34B4009A39BC /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118140841E6E34B4009A39BC /* UINavigationController.swift */; };
 		11D70B9D1E60DB5300167F36 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D70B9C1E60DB5300167F36 /* UIAlertController.swift */; };
@@ -84,9 +83,6 @@
 		110B7FE21E56383F00650A9D /* UIViewWithXibAndIBDesignable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewWithXibAndIBDesignable.swift; sourceTree = "<group>"; };
 		110B7FE61E5638E700650A9D /* UIEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEvent.swift; sourceTree = "<group>"; };
 		110B7FE81E56390100650A9D /* UIScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
-		110FF0F91E8C2E2B000DB1A5 /* TextViewWithPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholder.swift; sourceTree = "<group>"; };
-		110FF0FA1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewWithPlaceholder.xib; sourceTree = "<group>"; };
-		110FF0FB1E8C2E2B000DB1A5 /* TextViewWithPlaceholderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewWithPlaceholderDelegate.swift; sourceTree = "<group>"; };
 		110FF0FF1E8C34F1000DB1A5 /* RingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingButton.swift; sourceTree = "<group>"; };
 		110FF1001E8C34F1000DB1A5 /* RingButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RingButton.xib; sourceTree = "<group>"; };
 		113B20431EC11D6900F04811 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -99,6 +95,8 @@
 		1159B3A41EB11FD700F72750 /* KeyboardDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
 		116A90501E5E554F00195433 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		116E3C4F1EBA51B800AE52D3 /* UISearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
+		117D3BEE1EE9BEFF00791D07 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		117D3BEF1EE9BF0000791D07 /* TextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewDelegate.swift; sourceTree = "<group>"; };
 		117FEC051EBB975D00D5CD8D /* NSString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSString.swift; sourceTree = "<group>"; };
 		118140841E6E34B4009A39BC /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		11D70B9C1E60DB5300167F36 /* UIAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
@@ -195,16 +193,6 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		110FF0F81E8C2E2B000DB1A5 /* TextViewWithPlaceholder */ = {
-			isa = PBXGroup;
-			children = (
-				110FF0F91E8C2E2B000DB1A5 /* TextViewWithPlaceholder.swift */,
-				110FF0FA1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.xib */,
-				110FF0FB1E8C2E2B000DB1A5 /* TextViewWithPlaceholderDelegate.swift */,
-			);
-			path = TextViewWithPlaceholder;
-			sourceTree = "<group>";
-		};
 		110FF1031E8C34F9000DB1A5 /* RingButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,9 +224,9 @@
 		1159B39E1EB107D700F72750 /* Auxilary */ = {
 			isa = PBXGroup;
 			children = (
+				117D3BF21EE9BF0400791D07 /* TextView */,
 				1159B3A31EB1093900F72750 /* Button */,
 				1159B39D1EB107C700F72750 /* DatePicker */,
-				110FF0F81E8C2E2B000DB1A5 /* TextViewWithPlaceholder */,
 			);
 			name = Auxilary;
 			sourceTree = "<group>";
@@ -249,6 +237,15 @@
 				1159B3A11EB1092F00F72750 /* Button.swift */,
 			);
 			name = Button;
+			sourceTree = "<group>";
+		};
+		117D3BF21EE9BF0400791D07 /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				117D3BEE1EE9BEFF00791D07 /* TextView.swift */,
+				117D3BEF1EE9BF0000791D07 /* TextViewDelegate.swift */,
+			);
+			name = TextView;
 			sourceTree = "<group>";
 		};
 		11823BF71EB278F30028719B /* Protocols */ = {
@@ -340,7 +337,6 @@
 			files = (
 				110FF1021E8C34F1000DB1A5 /* RingButton.xib in Resources */,
 				113B20461EC11D6900F04811 /* AlertView.xib in Resources */,
-				110FF0FD1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.xib in Resources */,
 				1159B39C1EB107C300F72750 /* DatePickerController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,9 +355,9 @@
 				110B7FDF1E5637F400650A9D /* GradientView.swift in Sources */,
 				110B7FD91E56377300650A9D /* UIViewController.swift in Sources */,
 				113B20451EC11D6900F04811 /* AlertView.swift in Sources */,
-				110FF0FE1E8C2E2B000DB1A5 /* TextViewWithPlaceholderDelegate.swift in Sources */,
 				110B7FD61E56377300650A9D /* UITableView.swift in Sources */,
 				1159B3A21EB1092F00F72750 /* Button.swift in Sources */,
+				117D3BF01EE9BF0000791D07 /* TextView.swift in Sources */,
 				110B7FCC1E56377300650A9D /* CollectionView.swift in Sources */,
 				110FF1011E8C34F1000DB1A5 /* RingButton.swift in Sources */,
 				110B7FD01E56377300650A9D /* CLLocationManager.swift in Sources */,
@@ -373,6 +369,7 @@
 				110B7FCF1E56377300650A9D /* CLLocationCoordinate.swift in Sources */,
 				110B7FC91E56377300650A9D /* Date.swift in Sources */,
 				117FEC061EBB975D00D5CD8D /* NSString.swift in Sources */,
+				117D3BF11EE9BF0000791D07 /* TextViewDelegate.swift in Sources */,
 				1159B39B1EB107C300F72750 /* DatePickerController.swift in Sources */,
 				110B7FD11E56377300650A9D /* CGPoint.swift in Sources */,
 				110B7FD81E56377300650A9D /* UIView.swift in Sources */,
@@ -383,7 +380,6 @@
 				110B7FDA1E56377300650A9D /* UIImage.swift in Sources */,
 				113B20491EC11DC400F04811 /* UIViewWithXib.swift in Sources */,
 				110B7FDC1E56377300650A9D /* UIFont.swift in Sources */,
-				110FF0FC1E8C2E2B000DB1A5 /* TextViewWithPlaceholder.swift in Sources */,
 				116E3C501EBA51B800AE52D3 /* UISearchBar.swift in Sources */,
 				110B7FD31E56377300650A9D /* UITabBar.swift in Sources */,
 				110B7FE31E56383F00650A9D /* UIViewWithXibAndIBDesignable.swift in Sources */,

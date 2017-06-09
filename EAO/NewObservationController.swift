@@ -20,7 +20,7 @@ final class NewObservationController: UIViewController{
 
 	//MARK: -
 	@IBOutlet fileprivate var arrow_0: UIImageView!
-	@IBOutlet fileprivate var descriptionButtonHeightConstraint: NSLayoutConstraint!
+	@IBOutlet fileprivate var descriptionTextView: UITextView!
 	@IBOutlet fileprivate var indicator: UIActivityIndicatorView!
 	@IBOutlet fileprivate var scrollView : UIScrollView!
 	@IBOutlet fileprivate var titleTextField: UITextField!
@@ -58,7 +58,7 @@ final class NewObservationController: UIViewController{
 		saveAction?(self.observation)
 		observation.title = titleTextField.text
 		observation.requirement = requirementTextField.text
-		observation.observationDescription = descriptionButton.title(for: .normal)
+		observation.observationDescription = descriptionTextView.text
 		if observation.coordinate == nil{
 			observation.coordinate = PFGeoPoint(location: locationManager.location)
 		}
@@ -83,20 +83,22 @@ final class NewObservationController: UIViewController{
  
 	@IBAction func descriptionTapped(_ sender: UIButton) {
 		let textViewController = TextViewController.storyboardInstance() as! TextViewController
-		if sender.title(for: .normal) != "Tap to enter description"{
-			textViewController.initialText = sender.title(for: .normal)
+		if self.descriptionTextView.text != "Tap to enter description"{
+			textViewController.initialText = self.descriptionTextView.text
 		}
 		textViewController.title = "Element Description"
 		textViewController.result = { (text) in
-			if sender.title(for: .normal) == "Tap to enter description"{
+			if self.descriptionTextView.text == "Tap to enter description"{
 				if let text = text, !text.isEmpty(){
-					sender.setTitle(text, for: .normal)
+
+					self.descriptionTextView.text = text
 				}
 			} else{
 				if let text = text,!text.isEmpty() {
-					sender.setTitle(text, for: .normal)
+					self.descriptionTextView.text = text
 				} else{
-					sender.setTitle("Tap to enter description", for: .normal)
+
+					self.descriptionTextView.text = "Tap to enter description"
 				}
 			}
 		}
@@ -104,6 +106,10 @@ final class NewObservationController: UIViewController{
 	}
 	
 	@IBAction fileprivate func addPhotoTapped(_ sender: UIButton) {
+		if photos?.count == maximumNumberOfPhotos{
+			present(controller: UIAlertController(title: "You've reached maximum (\(maximumNumberOfPhotos)) number of photos per element", message: nil))
+			return
+		}
 		sender.isEnabled = false
 		if observation.id == nil{
 			observation.id = UUID().uuidString
@@ -138,9 +144,12 @@ final class NewObservationController: UIViewController{
 			requirementTextField.isEnabled = false
 			descriptionButton.isEnabled = false
 			arrow_0.isHidden = true
-			descriptionButtonHeightConstraint.constant = (observation.observationDescription ?? "").height(for: UIScreen.width, font: UIFont.systemFont(ofSize: 18, weight: UIFontWeightRegular)) + 60
-			descriptionButton.titleLabel?.numberOfLines = 0
+			view.addConstraint(NSLayoutConstraint(item: descriptionTextView, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 60))
+
+		} else{
+			view.addConstraint(NSLayoutConstraint(item: descriptionTextView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 60))
 		}
+		view.layoutIfNeeded()
 		GPSLabel.setTitle("GPS: \(observation?.coordinate?.toString() ?? locationManager.coordinateAsString() ?? "unavailable")", for: .normal)
 	}
 
@@ -155,7 +164,7 @@ final class NewObservationController: UIViewController{
 		indicator.startAnimating()
 		titleTextField.text = observation.title
 		requirementTextField.text = observation.requirement
-		descriptionButton.setTitle(observation.observationDescription, for: .normal)
+		descriptionTextView.text = observation.observationDescription
 		loadPhotos()
 	}
 	
@@ -233,10 +242,6 @@ extension NewObservationController: UICollectionViewDelegate, UICollectionViewDa
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		if photos?.count == maximumNumberOfPhotos{
-			present(controller: UIAlertController(title: "You've reached maximum (\(maximumNumberOfPhotos)) number of photos", message: nil))
-			return
-		}
 		if indexPath.row == photos?.count{
 			return
 		}
@@ -275,7 +280,7 @@ extension NewObservationController{
 			present(controller: Alerts.fields)
 			return false
 		}
-		if descriptionButton.title(for: .normal) == "Tap to enter description"{
+		if descriptionTextView.text == "Tap to enter description"{
 			present(controller: Alerts.fields)
 			return false
 		}
