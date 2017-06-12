@@ -178,9 +178,12 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 extension InspectionSetupController: UITextFieldDelegate{
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		navigationItem.rightBarButtonItem?.isEnabled = true
-		return true
+		var length = textField.text?.characters.count ?? 0
+		length += string.characters.count
+		length -= range.length
+		return length < Constants.textFieldLenght
 	}
-	
+
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		textField.resignFirstResponder()
 		return true

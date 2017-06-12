@@ -152,6 +152,15 @@ extension UploadPhotoController{
 	}
 }
 
+extension UploadPhotoController: UITextViewDelegate{
+	func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+		var length = textView.text?.characters.count ?? 0
+		length += text.characters.count
+		length -= range.length
+		return length < EAO.Constants.textViewLenght
+	}
+}
+
 //MARK: -
 extension UploadPhotoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

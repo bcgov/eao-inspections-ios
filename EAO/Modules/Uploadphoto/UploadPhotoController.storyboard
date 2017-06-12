@@ -86,6 +86,9 @@
                                                 <integer key="value" value="20000"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="Wu6-Uf-QB5" id="lZU-gR-7m7"/>
+                                        </connections>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zvy-mg-5W7">
                                         <rect key="frame" x="10" y="504.5" width="355" height="50"/>

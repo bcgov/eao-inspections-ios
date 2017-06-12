@@ -6,7 +6,7 @@
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
 
-final class TextViewController: UIViewController, KeyboardDelegate{
+final class TextViewController: UIViewController, KeyboardDelegate, UITextViewDelegate{
 	var result: ((_ text: String?)->Void)?
 	var initialText: String?
 	var isReadOnly = false
@@ -42,5 +42,12 @@ final class TextViewController: UIViewController, KeyboardDelegate{
 	
 	func keyboardWillShow(with height: NSNumber) {
 		textView.contentInset.bottom = CGFloat(height.intValue + 60)
+	}
+
+	func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+		var length = textView.text?.characters.count ?? 0
+		length += text.characters.count
+		length -= range.length
+		return length < EAO.Constants.textViewLenght
 	}
 }

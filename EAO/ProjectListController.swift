@@ -67,6 +67,10 @@ final class ProjectListController: UIViewController{
 		indicator.startAnimating()
 		Alamofire.request("https://projects.eao.gov.bc.ca/api/projects/published").responseJSON { response in
 			guard let objects = response.result.value as? [Any] else{
+				if let array = NSArray(contentsOf: FileManager.directory.appendingPathComponent("projects")) as? [String]{
+					self.projects = array
+					self.tableView.reloadData()
+				}
 				self.indicator.stopAnimating()
 				self.present(controller: Alerts.error)
 				return
@@ -79,6 +83,8 @@ final class ProjectListController: UIViewController{
 			self.projects = projects.flatMap({$0})
 			self.tableView.reloadData()
 			self.indicator.stopAnimating()
+			let array = NSArray(array: projects.flatMap({$0}))
+			array.write(to: FileManager.directory.appendingPathComponent("projects"), atomically: true)
 		}
 	}
 }
@@ -140,7 +146,7 @@ extension ProjectListController: UITableViewDelegate, UITableViewDataSource{
 //MARK: -
 extension ProjectListController{
 	fileprivate struct Alerts{
-		static let error = UIAlertController(title: "Oops...", message: "Projects were not retrieved due to an error.\n Please try again later.")
+		static let error = UIAlertController(title: "Oops...", message: "Projects were not retrieved due to an error.\n Cached projects will be displayed")
 	}
 }
 

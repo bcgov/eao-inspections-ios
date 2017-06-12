@@ -26,7 +26,7 @@ enum PFInspectionError: Error{
 		case .fail :
 			return "Failed to Upload Inspection, please try again later"
 		case .noConnection:
-			return"It seems that you don't have an active internet connection. Please try uploading data again when you have cellular data or Wi-Fi connection"
+			return "It seems that you don't have an active internet connection. Please try uploading data again when you have cellular data or Wi-Fi connection"
 		}
 	}
 }
@@ -157,6 +157,71 @@ final class PFInspection: PFObject, PFSubclassing{
 	}
 }
 
+extension PFInspection {
+	func deleteAllData(){
+		guard let id = id else{
+			return
+		}
+		PFObservation.load(for: id) { (observations) in
+			for observation in observations ?? []{
+				observation.unpinInBackground()
+				guard let observationId = observation.id else{
+					continue
+				}
+				PFPhoto.load(for: observationId, result: { (photos) in
+					for photo in photos ?? []{
+						photo.unpinInBackground()
+						guard let photoId = photo.id else{
+							continue
+						}
+						let path = FileManager.directory.appendingPathComponent(photoId)
+						try? FileManager.default.removeItem(at: path)
+					}
+				})
+			}
+		}
+	}
+}
+
+extension PFInspection {
+	static func loadAndPin(completion: @escaping ()->()){
+		let query = PFInspection.query()
+		query!.whereKey("userId", equalTo: PFUser.current()!.objectId!)
+		query!.findObjectsInBackground(block: { (inspections, error) in
+			for case let inspection as PFInspection in inspections ?? []{
+				guard let id = inspection.id else {
+					continue
+				}
+				try? inspection.pin()
+				let observationQuery = PFObservation.query()
+				observationQuery?.whereKey("inspectionId", equalTo: id)
+				observationQuery?.findObjectsInBackground(block: { (observations, error) in
+					for case let observation as PFObservation in observations ?? [] {
+						guard let observationId = observation.id else{
+							continue
+						}
+						try? observation.pin()
+						let photoQuery = PFPhoto.query()
+						photoQuery?.whereKey("observationId", equalTo: observationId)
+						photoQuery?.findObjectsInBackground(block: { (photos, error) in
+							for case let photo as PFPhoto in photos ?? []{
+								try? photo.pin()
+								photo.file?.getDataInBackground(block: { (data, error) in
+									if let data = data{
+										try? data.write(to: FileManager.directory.appendingPathComponent(photo.id!, isDirectory: true))
+									}
+								})
+							}
+						})
+					}
+				})
+
+			}
+			completion()
+		})
+	}
+}
+
 //MARK: -
 extension Array where Element == PFPhoto{
 	///Gets photo data from local file, converts it to PFFile, and sets each element's file to corresponding PFFile
@@ -168,14 +233,4 @@ extension Array where Element == PFPhoto{
 		})
 	}
 }
-
-
-
-
-
-
-
-
-
-
 

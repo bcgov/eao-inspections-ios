@@ -6,10 +6,8 @@
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
 import Parse
-//[username: password]
-let users: [String : String] = ["justin.carlson":"dstJC836!","rumon.carter":"dstRC836!","mark.lise":"dstML836!","geoff.mcdonald":"dstGM836!","alex.mclean":"dstAM836!","chris.parks":"dstCP836!","lena.smith":"dstLS836!", "emma":"emma","rohit":"rohit","sam":"sam", "0":"0", "catherine.chernoff":"dstCC836!","tammy.dekens":"dstTD836!"]
-
-class LoginController: UIViewController{
+import Alamofire
+final class LoginController: UIViewController{
 	@IBOutlet fileprivate var usernameField: UITextField!
 	@IBOutlet fileprivate var passwordField: UITextField!
 	@IBOutlet fileprivate var scrollView: UIScrollView!
@@ -27,33 +25,24 @@ class LoginController: UIViewController{
 			present(controller: Alerts.error)
 			return
 		}
-//		if !isValid(username: username, password: password){
-//			sender.isEnabled = true
-//			present(controller: Alerts.error)
-//			return
-//		}
-		self.usernameField.text = ""
-		self.passwordField.text = ""
 		indicator.startAnimating()
 		PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
+			self.usernameField.text = ""
+			self.passwordField.text = ""
 			guard error == nil else{
 				self.present(controller: UIAlertController(title: "Error", message: "Couldn't log in"))
 				sender.isEnabled = true
 				self.indicator.stopAnimating()
 				return
 			}
-
-			let query = PFInspection.query()
-			query?.whereKey("userId", equalTo: PFUser.current()!.objectId!)
-			query?.findObjectsInBackground(block: { (objects, error) in
-				objects?.forEach({ (inspection) in
-					try? inspection.pin()
+			PFInspection.loadAndPin {
+				self.load(completion: {
+					self.indicator.stopAnimating()
+					let inspectionsController = InspectionsController.storyboardInstance()
+					self.present(controller: inspectionsController)
+					sender.isEnabled = true
 				})
-				self.indicator.stopAnimating()
-				let inspectionsController = InspectionsController.storyboardInstance()
-				self.present(controller: inspectionsController)
-				sender.isEnabled = true
-			})
+			}
 		}
 	}
 
@@ -78,6 +67,23 @@ class LoginController: UIViewController{
 			self.present(controller: inspectionsController)
 		}
 	}
+
+	fileprivate func load(completion: @escaping ()->()){
+		Alamofire.request("https://projects.eao.gov.bc.ca/api/projects/published").responseJSON { response in
+			guard let objects = response.result.value as? [Any] else{
+				completion()
+				return
+			}
+			var projects = [String?]()
+			for case let object as [String: Any] in objects  {
+				guard let title = object["name"] as? String else { continue }
+				projects.append(title)
+			}
+			let array = NSArray(array: projects.flatMap({$0}))
+			array.write(to: FileManager.directory.appendingPathComponent("projects"), atomically: true)
+			completion()
+		}
+	}
 }
 
 extension LoginController: UITextFieldDelegate{
@@ -88,14 +94,10 @@ extension LoginController: UITextFieldDelegate{
 }
 
 extension LoginController{
-	func isValid(username: String, password: String) -> Bool{
-		return users[username.lowercased()] == password
-	}
-}
-
-extension LoginController{
 	struct Alerts {
 		static let error = UIAlertController(title: "Oops...", message: "Could not log in with these credentials")
 	}
 }
+
+
 

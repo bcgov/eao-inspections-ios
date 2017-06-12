@@ -16,7 +16,6 @@ public func delay(_ delay:Double, closure:@escaping ()->()) {
 		deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
 }
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	
@@ -38,13 +37,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			$0.server        = "https://parseapi.back4app.com/"
 			$0.isLocalDatastoreEnabled = true
 		}
+
 		Parse.initialize(with: configuration)
 		UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.blue
 		UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         return true
     }
-	
-	
+
+//	func addUsers(){
+//		for (username, password) in users{
+//			let user = PFUser()
+//			user.password = password
+//			user.username = username
+//
+//			do{
+//				try user.signUp()
+//			} catch{
+//				print(error)
+//			}
+//		}
+//	}
+
 	func application(_ application: UIApplication,
 	                 supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
 		return shouldRotate ? .allButUpsideDown : .portrait

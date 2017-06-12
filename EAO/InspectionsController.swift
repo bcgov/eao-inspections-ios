@@ -68,10 +68,11 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 	}
 
 
+	//MARK: - Submission
 	func submit(inspection: PFInspection, indexPath: IndexPath){
 		let alert = UIAlertController(title: "Are You Sure?", message: "You will NOT be able to edit this inspection after submission", yes: {
 			self.indicator.startAnimating()
-			self.view.isUserInteractionEnabled = false
+			self.navigationController?.view.isUserInteractionEnabled = false
 			self.isBeingUploaded = true
 			inspection.isBeingUploaded = true
 			self.tableView.reloadData()
@@ -79,7 +80,8 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 				self.indicator.stopAnimating()
 				inspection.isBeingUploaded = false
 				self.isBeingUploaded = false
-				self.view.isUserInteractionEnabled = true
+				self.navigationController?.view.isUserInteractionEnabled = true
+
 				if let error = error {
 					self.present(controller: UIAlertController(title: "Error", message: error.message))
 				}
@@ -184,10 +186,9 @@ extension InspectionsController: UITableViewDelegate, UITableViewDataSource{
 		if inspections[selectedIndex]?[indexPath.row].id != nil{
 			let inspectionSetupController = InspectionSetupController.storyboardInstance() as! InspectionSetupController
 			inspectionSetupController.inspection = inspections[selectedIndex]?[indexPath.row]
-			
+
 			let inspectionFormController = InspectionFormController.storyboardInstance() as! InspectionFormController
 			inspectionFormController.inspection = inspections[selectedIndex]?[indexPath.row]
-			
 			navigationController?.setViewControllers([self,inspectionSetupController, inspectionFormController], animated: true)
 		} else{
 			AlertView.present(on: self, with: "Couldn't proceed because of internal error", delay: 4, offsetY: -50)
@@ -207,6 +208,7 @@ extension InspectionsController: UITableViewDelegate, UITableViewDataSource{
 				try? inspection.unpin()
 				self.inspections[1]?.remove(at: indexPath.row)
 				tableView.deleteRows(at: [indexPath], with: .none)
+				inspection.deleteAllData()
 			}
 		}
 		return [action]

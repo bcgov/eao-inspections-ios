@@ -36,7 +36,8 @@ final class InspectionFormController: UIViewController{
 	
 	@IBAction fileprivate func backTapped(_ sender: UIBarButtonItem) {
 		sender.isEnabled = false
-		navigationController?.popToViewController(InspectionsController.reference!, animated: true)
+		navigationController?.popToRootViewController(animated: true)
+		//navigationController?.popToViewController(InspectionsController.reference!, animated: true)
 	}
 	
 	@IBAction fileprivate func saveTapped(_ sender: UIBarButtonItem) {

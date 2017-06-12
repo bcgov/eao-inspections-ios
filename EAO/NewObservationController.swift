@@ -268,6 +268,13 @@ extension NewObservationController: UITextFieldDelegate{
 		textField.resignFirstResponder()
 		return true
 	}
+
+	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		var length = textField.text?.characters.count ?? 0
+		length += string.characters.count
+		length -= range.length
+		return length < EAO.Constants.textFieldLenght
+	}
 }
 
 extension NewObservationController{
