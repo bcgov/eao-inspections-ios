@@ -7,53 +7,68 @@
 //
 import Parse
 import Alamofire
+///This enum represents errors that might occur during log in
+enum LoginError: Error{
+	case noUsername
+	case noPassword
+	var message: String{
+		switch self {
+		case .noUsername:
+			return "Please enter registered username"
+		case .noPassword:
+			return "Please enter password"
+		}
+	}
+}
+//MARK: -
 final class LoginController: UIViewController{
+	//MARK: IB Outleys
 	@IBOutlet fileprivate var usernameField: UITextField!
 	@IBOutlet fileprivate var passwordField: UITextField!
 	@IBOutlet fileprivate var scrollView: UIScrollView!
 	@IBOutlet fileprivate var indicator: UIActivityIndicatorView!
-	
+	//MARK: IB Actions
 	@IBAction fileprivate func loginTapped(_ sender: UIButton) {
-		sender.isEnabled = false
-		guard let username = usernameField.text?.trimWhiteSpace(), !username.isEmpty() else {
-			sender.isEnabled = true
-			present(controller: Alerts.error)
-			return
-		}
-		guard let password = passwordField.text?.trimWhiteSpace(), !password.isEmpty() else {
-			sender.isEnabled = true
-			present(controller: Alerts.error)
-			return
-		}
-		indicator.startAnimating()
-		PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
-			self.usernameField.text = ""
-			self.passwordField.text = ""
-			guard error == nil else{
-				self.present(controller: UIAlertController(title: "Error", message: "Couldn't log in"))
-				sender.isEnabled = true
-				self.indicator.stopAnimating()
-				return
-			}
-			PFInspection.loadAndPin {
-				self.load(completion: {
-					self.indicator.stopAnimating()
-					let inspectionsController = InspectionsController.storyboardInstance()
-					self.present(controller: inspectionsController)
+		do{
+			let credentials = try validateCredentials()
+			sender.isEnabled = false
+			indicator.startAnimating()
+			PFUser.logInWithUsername(inBackground: credentials.0, password: credentials.1) { (user, error) in
+				guard let _ = user, error == nil else{
+					let code = (error! as NSError).code
+					switch code{
+					case 101:
+						self.present(controller: UIAlertController(title: "Couldn't log in", message: "Entered credentials are not valid"))
+					default:
+						self.present(controller: UIAlertController(title: "Couldn't log in", message: "Error code is \(code)"))
+					}
 					sender.isEnabled = true
-				})
+					self.indicator.stopAnimating()
+					return
+				}
+				PFInspection.loadAndPin {
+					self.load(completion: {
+						self.clearTextFields()
+						self.present(controller: InspectionsController.storyboardInstance())
+						self.indicator.stopAnimating()
+						sender.isEnabled = true
+					})
+				}
 			}
+		} catch{
+			self.present(controller: UIAlertController(title: "Couldn't log in", message: (error as? LoginError)?.message))
 		}
 	}
 
 	@IBAction fileprivate func forgotPasswordTapped(_ sender: UIButton) {
-		present(controller: UIAlertController(title: "This feature is coming soon", message: nil))
+		present(controller: UIAlertController(title: "Please contact Geoff McDonald to change your user credentials.", message: nil))
 	}
 
 	@IBAction fileprivate func signupTapped(_ sender: UIButton) {
-		present(controller: UIAlertController(title: "This feature is coming soon", message: nil))
+		present(controller: UIAlertController(title: "This feature is not available yet", message: nil))
 	}
-	
+
+	//MARK: Initialization
 	override func viewDidLoad() {
 		addDismissKeyboardOnTapRecognizer(on: scrollView)
 		perform(#selector(presentMainScreen), with: nil, afterDelay: 0)
@@ -61,41 +76,57 @@ final class LoginController: UIViewController{
 
 	func presentMainScreen(){
 		if PFUser.current() != nil{
-			self.usernameField.text = ""
-			self.passwordField.text = ""
+			clearTextFields()
 			let inspectionsController = InspectionsController.storyboardInstance()
 			self.present(controller: inspectionsController)
 		}
 	}
 
+	///This function caches projects on every login
 	fileprivate func load(completion: @escaping ()->()){
-		Alamofire.request("https://projects.eao.gov.bc.ca/api/projects/published").responseJSON { response in
+		Alamofire.request(String.projects_API).responseJSON { response in
 			guard let objects = response.result.value as? [Any] else{
 				completion()
 				return
 			}
 			var projects = [String?]()
-			for case let object as [String: Any] in objects  {
-				guard let title = object["name"] as? String else { continue }
+			for case let object as [String: Any] in objects {
+				guard let title = object[.name] as? String else { continue }
 				projects.append(title)
 			}
 			let array = NSArray(array: projects.flatMap({$0}))
-			array.write(to: FileManager.directory.appendingPathComponent("projects"), atomically: true)
+			array.write(to: FileManager.directory.appendingPathComponent(.projects), atomically: true)
 			completion()
 		}
 	}
 }
 
+extension LoginController{
+	fileprivate func clearTextFields(){
+		self.usernameField.text = ""
+		self.passwordField.text = ""
+	}
+}
+
+//MARK: - Validation
+extension LoginController{
+	///Return: (Username, Password)
+	func validateCredentials() throws -> (String,String){
+		guard let username = usernameField.text?.trimWhiteSpace(), !username.isEmpty() else {
+			throw LoginError.noUsername
+		}
+		guard let password = passwordField.text?.trimWhiteSpace(), !password.isEmpty() else {
+			throw LoginError.noPassword
+		}
+		return (username, password)
+	}
+}
+
+//MARK: - UITextFieldDelegate
 extension LoginController: UITextFieldDelegate{
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		dismissKeyboard()
 		return true
-	}
-}
-
-extension LoginController{
-	struct Alerts {
-		static let error = UIAlertController(title: "Oops...", message: "Could not log in with these credentials")
 	}
 }
 

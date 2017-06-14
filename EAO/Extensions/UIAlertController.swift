@@ -9,10 +9,7 @@
 import UIKit
 
 extension UIAlertController {
-
-    class func simpleAlert(title: String? = nil, msg: String) {
-        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
-    }
+	static var noInternet: UIAlertController{
+		return UIAlertController(title: "Network Error", message: "It seems that you don't have internet connection, please try again when you establish internet connection")
+	}
 }

@@ -6,11 +6,9 @@
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
 import Parse
-final class InspectionSetupController: UIViewController, KeyboardDelegate{
-	override var shouldAutorotate: Bool{
-		return false
-	}
+final class InspectionSetupController: UIViewController{
 	var inspection: PFInspection?
+
 	fileprivate var isNew = false
 	fileprivate var dates = [String: Date]()
 	
@@ -18,17 +16,17 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 	@IBOutlet fileprivate var button	 : UIButton!
 	@IBOutlet fileprivate var indicator  : UIActivityIndicatorView!
 	@IBOutlet fileprivate var scrollView : UIScrollView!
-	@IBOutlet var linkProjectButton : UIButton!
-	@IBOutlet var titleTextField	: UITextField!
-	@IBOutlet var subtitleTextField : UITextField!
-	@IBOutlet var subtextTextField  : UITextField!
-	@IBOutlet var numberTextField   : UITextField!
-	@IBOutlet var startDateButton   : UIButton!
-	@IBOutlet var endDateButton     : UIButton!
+	@IBOutlet fileprivate var linkProjectButton : UIButton!
+	@IBOutlet fileprivate var titleTextField	: UITextField!
+	@IBOutlet fileprivate var subtitleTextField : UITextField!
+	@IBOutlet fileprivate var subtextTextField  : UITextField!
+	@IBOutlet fileprivate var numberTextField   : UITextField!
+	@IBOutlet fileprivate var startDateButton   : UIButton!
+	@IBOutlet fileprivate var endDateButton     : UIButton!
 	
-	@IBOutlet var arrow_1: UIImageView!
-	@IBOutlet var arrow_2: UIImageView!
-	@IBOutlet var arrow_3: UIImageView!
+	@IBOutlet fileprivate var arrow_1: UIImageView!
+	@IBOutlet fileprivate var arrow_2: UIImageView!
+	@IBOutlet fileprivate var arrow_3: UIImageView!
  
 	//MARK: - IB Actions
 	@IBAction fileprivate func linkProjectTapped(_ sender: UIButton) {
@@ -51,12 +49,12 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 		}
 	}
 	
-	@IBAction fileprivate func saveTapped(_ sender: UIBarButtonItem?=nil) {
-		sender?.isEnabled = false
+	@IBAction fileprivate func saveTapped(_ sender: UIControl) {
+		sender.isEnabled = false
 		indicator.startAnimating()
 		validate { (inspection) in
 			guard let inspection = inspection else {
-				sender?.isEnabled = true
+				sender.isEnabled = true
 				self.indicator.stopAnimating()
 				return
 			}
@@ -64,21 +62,27 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 			inspection.pinInBackground(block: { (success, error) in
 				guard success, error == nil else{
 					self.indicator.stopAnimating()
-					sender?.isEnabled = true
-					self.present(controller: UIAlertController(title: "ERROR!", message: "Inspection failed to be saved"))
+					sender.isEnabled = true
+					self.present(controller: UIAlertController(title: "ERROR!", message: "Inspection failed to save"))
 					return
 				}
 				if self.isNew{
-					InspectionsController.reference?.prepend(inspection: inspection)
+					Notification.post(name: .insertByDate, inspection)
 				} else{
-					InspectionsController.reference?.tableView.reloadData()
+					Notification.post(name: .reload)
 				}
 				if self.isNew{
 					self.isNew = false
 					let inspectionFormController = InspectionFormController.storyboardInstance() as! InspectionFormController
 					inspectionFormController.inspection = inspection
-					if inspection.id != nil{
+					if inspection.id != nil {
+						inspectionFormController.submit = {
+							if let index = InspectionsController.reference?.inspections[0]?.index(of: inspection){
+								InspectionsController.reference?.submit(inspection: self.inspection!, indexPath: IndexPath(row: index, section: 0))
+							}
+						}
 						self.push(controller: inspectionFormController)
+						self.navigationController?.viewControllers.remove(at: 1)
 						self.setMode()
 					}
 				}
@@ -87,36 +91,21 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 			})
 		}
 	}
-	
-	@IBAction fileprivate func addElementTapped(_ sender: UIButton) {
-		sender.isEnabled = false
-		if isNew{
-			saveTapped()
-			sender.isEnabled = true
-			return
-		}
-		let inspectionFormController = InspectionFormController.storyboardInstance() as! InspectionFormController
-		inspectionFormController.inspection = inspection
-		if inspection?.id != nil{
-			self.push(controller: inspectionFormController)
-		} else{
-			AlertView.present(on: self, with: "Couldn't proceed because of internal error", delay: 4, offsetY: -50)
-		}
-		sender.isEnabled = true
-	}
-	
+
 	//MARK: -
 	override func viewDidLoad() {
 		addDismissKeyboardOnTapRecognizer(on: scrollView)
 		if inspection == nil{
 			subtextTextField.text = PFUser.current()?.username
 			isNew = true
+		} else{
+			button.isHidden = true
 		}
 		setMode()
 		populate()
 	}
 
-	override func viewWillAppear(_ animated: Bool) {
+	override func viewDidAppear(_ animated: Bool) {
 		addKeyboardObservers()
 	}
 	
@@ -134,29 +123,17 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 			startDateButton.isEnabled   = false
 			endDateButton.isEnabled     = false
 			navigationItem.rightBarButtonItem = nil
-			button.setTitle("View Elements", for: .normal)
 			arrow_1.isHidden = true
 			arrow_2.isHidden = true
 			arrow_3.isHidden = true 
 		} else if isNew{
 			//new
-			button.setTitle("Create Inspection", for: .normal)
 			navigationItem.rightBarButtonItem = nil
 		} else{
 			//modifying
-			button.setTitle("Add Elements", for: .normal)
 			navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveTapped(_:)))
 			navigationItem.rightBarButtonItem?.isEnabled = false
 		}
-	}
-	
-	//MARK: -
-	func keyboardWillShow(with height: NSNumber) {
-		scrollView.contentInset.bottom = CGFloat(height)
-	}
-	
-	func keyboardWillHide() {
-		scrollView.contentInset.bottom = 0
 	}
 	
 	//MARK: -
@@ -164,7 +141,7 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 		guard let inspection = inspection else { return }
 		linkProjectButton.setTitle(inspection.project, for: .normal)
 		startDateButton.setTitle(inspection.start?.datePickerFormat(), for: .normal)
-		endDateButton.setTitle(inspection.end?.datePickerFormat(), for: .normal)
+		endDateButton.setTitle(inspection.end?.datePickerFormat() ?? "Inspection End Date", for: .normal)
 		titleTextField.text = inspection.title
 		subtitleTextField.text = inspection.subtitle
 		subtextTextField.text = inspection.subtext
@@ -174,7 +151,18 @@ final class InspectionSetupController: UIViewController, KeyboardDelegate{
 	}
 }
 
-	//MARK: -
+//MARK: -
+extension InspectionSetupController: KeyboardDelegate{
+	func keyboardWillShow(with height: NSNumber) {
+		scrollView.contentInset.bottom = CGFloat(height)
+	}
+	func keyboardWillHide() {
+		scrollView.contentInset.bottom = 0
+	}
+}
+
+
+//MARK: -
 extension InspectionSetupController: UITextFieldDelegate{
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		navigationItem.rightBarButtonItem?.isEnabled = true
@@ -193,7 +181,7 @@ extension InspectionSetupController: UITextFieldDelegate{
 //MARK: -
 extension InspectionSetupController{
 	func validate(completion: @escaping (_ inspection : PFInspection?)->Void){
-		if linkProjectButton.title(for: .normal) == "Link Project" || titleTextField.text?.isEmpty() == true || subtitleTextField.text?.isEmpty() == true || subtextTextField.text?.isEmpty() == true || numberTextField.text?.isEmpty() == true || dates["start"] == nil || dates["end"] == nil{
+		if linkProjectButton.title(for: .normal) == "Link Project" || titleTextField.text?.isEmpty() == true || subtitleTextField.text?.isEmpty() == true || subtextTextField.text?.isEmpty() == true || numberTextField.text?.isEmpty() == true || dates["start"] == nil{
 			present(controller: Alerts.fields)
 			completion(nil)
 			return
@@ -207,6 +195,7 @@ extension InspectionSetupController{
 			inspection = PFInspection()
 			inspection?.userId = PFUser.current()?.objectId
 			inspection?.id = UUID().uuidString
+
 		}
 		inspection?.project = linkProjectButton.title(for: .normal)
 		inspection?.title = titleTextField.text
@@ -221,7 +210,7 @@ extension InspectionSetupController{
 	func validateDates() -> Bool{
 		guard let startDate = dates["start"],
 			let endDate = dates["end"] else {
-			return false
+			return dates["start"] != nil
 		}
 		return startDate <= endDate
 	}

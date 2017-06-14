@@ -5,23 +5,20 @@
 //  Created by Micha Volin on 2017-03-30.
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
-
-class InspectionFormCell: UITableViewCell{
-	@IBOutlet var titleLabel  : UILabel!
-	@IBOutlet var numberLabel : UILabel!
-	@IBOutlet var timeLabel   : UILabel!
-	@IBOutlet var editButton: UIButton!
+final class InspectionFormCell: UITableViewCell{
+	@IBOutlet fileprivate var titleLabel  : UILabel!
+	@IBOutlet fileprivate var numberLabel : UILabel!
+	@IBOutlet fileprivate var timeLabel   : UILabel!
+	@IBOutlet fileprivate var editButton: UIButton!
 	
 	func setData(number: String?, title: String?, time: String?, isReadOnly: Bool){
 		titleLabel.text  = title
 		numberLabel.text = number
 		timeLabel.text   = time
-
 		if isReadOnly{
 			editButton.isHidden = true
 		} else{
 			editButton.isHidden = false 
 		}
 	}
-	
 }

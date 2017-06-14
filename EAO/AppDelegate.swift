@@ -7,23 +7,12 @@
 //
 import Fabric
 import Crashlytics
-import UIKit
 import Parse
-import Alamofire
-
-public func delay(_ delay:Double, closure:@escaping ()->()) {
-	DispatchQueue.main.asyncAfter(
-		deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
-}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-	
-	internal var shouldRotate = false
-	static let reference = UIApplication.shared.delegate as? AppDelegate
-	static let root = AppDelegate.reference?.window?.rootViewController
-	
-    var window: UIWindow?
+	var window: UIWindow?
+	var shouldRotate = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		if ProcessInfo.processInfo.arguments.contains("UITests") {
@@ -37,50 +26,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			$0.server        = "https://parseapi.back4app.com/"
 			$0.isLocalDatastoreEnabled = true
 		}
-
 		Parse.initialize(with: configuration)
 		UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.blue
 		UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         return true
     }
 
-//	func addUsers(){
-//		for (username, password) in users{
-//			let user = PFUser()
-//			user.password = password
-//			user.username = username
-//
-//			do{
-//				try user.signUp()
-//			} catch{
-//				print(error)
-//			}
-//		}
-//	}
-
-	func application(_ application: UIApplication,
-	                 supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+	func application(_ application: UIApplication,supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
 		return shouldRotate ? .allButUpsideDown : .portrait
 	}
-
-    func applicationWillResignActive(_ application: UIApplication) {
-		
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-		
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-		
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-		
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-		
-    }
 }
+
+extension AppDelegate{
+	static var reference: AppDelegate?{
+		return UIApplication.shared.delegate as? AppDelegate
+	}
+	static var root: UIViewController?{
+		return AppDelegate.reference?.window?.rootViewController
+	}
+}
+
+
+
+
 

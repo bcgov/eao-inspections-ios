@@ -6,7 +6,7 @@
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
 
-final class InspectionsCell: UITableViewCell{
+final class InspectionCell: UITableViewCell{
 	@IBOutlet fileprivate var linkedProjectLabel: UILabel!
 	@IBOutlet fileprivate var titleLabel : UILabel!
 	@IBOutlet fileprivate var timeLabel  : UILabel!

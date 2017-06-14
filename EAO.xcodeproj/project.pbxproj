@@ -38,6 +38,7 @@
 		1159B3361EB102C000F72750 /* PFObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1159B3351EB102C000F72750 /* PFObservation.swift */; };
 		1159B3A71EB1236700F72750 /* PFInspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1159B3A61EB1236700F72750 /* PFInspection.swift */; };
 		117D3BF71EEF0AC800791D07 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D3BF61EEF0AC800791D07 /* Constants.swift */; };
+		117D3BFC1EEF5D7A00791D07 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117D3BFB1EEF5D7A00791D07 /* String.swift */; };
 		1186B5201ECA201200681426 /* ObservationElementPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186B51F1ECA201200681426 /* ObservationElementPhotoCell.swift */; };
 		1186B5231ECA20E700681426 /* ObservationElementAddNewPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186B5221ECA20E700681426 /* ObservationElementAddNewPhotoCell.swift */; };
 		1186B5251ECA235900681426 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186B5241ECA235900681426 /* URL.swift */; };
@@ -120,6 +121,7 @@
 		1159B3351EB102C000F72750 /* PFObservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFObservation.swift; sourceTree = "<group>"; };
 		1159B3A61EB1236700F72750 /* PFInspection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFInspection.swift; sourceTree = "<group>"; };
 		117D3BF61EEF0AC800791D07 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		117D3BFB1EEF5D7A00791D07 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		1186B51F1ECA201200681426 /* ObservationElementPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationElementPhotoCell.swift; sourceTree = "<group>"; };
 		1186B5221ECA20E700681426 /* ObservationElementAddNewPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationElementAddNewPhotoCell.swift; sourceTree = "<group>"; };
 		1186B5241ECA235900681426 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				110FF0991E8C25C5000DB1A5 /* Date.swift */,
+				117D3BFB1EEF5D7A00791D07 /* String.swift */,
 				1186B52D1ECA634C00681426 /* UIViewController.swift */,
 				1186B5241ECA235900681426 /* URL.swift */,
 				110FF09A1E8C25C5000DB1A5 /* MKMapView.swift */,
@@ -701,6 +704,7 @@
 				112F74741E97FDD90076926A /* SignupController.swift in Sources */,
 				112F74F21E9815A70076926A /* SettingsController.swift in Sources */,
 				1159B3A71EB1236700F72750 /* PFInspection.swift in Sources */,
+				117D3BFC1EEF5D7A00791D07 /* String.swift in Sources */,
 				11D70EB31E8D852800CBF92C /* InspectionSetupController.swift in Sources */,
 				110FF1091E8C3847000DB1A5 /* LaunchScreen.swift in Sources */,
 				110FF0A41E8C25C5000DB1A5 /* UIAlertController.swift in Sources */,
@@ -858,6 +862,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = TCH45SXZ69;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = EAO/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.freshworks.EAO-MVP";

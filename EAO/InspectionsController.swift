@@ -8,19 +8,19 @@
 import MapKit
 import Parse
 
-class InspectionsController: UIViewController, CLLocationManagerDelegate{
+final class InspectionsController: UIViewController, CLLocationManagerDelegate{
 	//MARK: Properties
-	fileprivate let locationManager = CLLocationManager()
 	var isBeingUploaded = false
 	var inspections = [Int:[PFInspection]]()
+	var locationManager = CLLocationManager()
 	//MARK: IB Outlets
 	@IBOutlet var tableView: UITableView!
 	@IBOutlet fileprivate var addNewInspectionButton: UIButton!
 	@IBOutlet fileprivate var tableViewBottomConstraint: NSLayoutConstraint!
 	@IBOutlet fileprivate var segmentedControl: UISegmentedControl!
 	@IBOutlet fileprivate var indicator: UIActivityIndicatorView!
+
 	//MARK: IB Actions
-	
 	@IBAction func addInspectionTapped(_ sender: UIButton) {
 		sender.isEnabled = false
 		let inspectionSetupController = InspectionSetupController.storyboardInstance() as! InspectionSetupController
@@ -32,14 +32,9 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 		guard let indexPath = tableView.indexPath(for: event), let inspection = inspections[0]?[indexPath.row], inspection.id != nil else{
 			return
 		}
-		let inspectionSetupController = InspectionSetupController.storyboardInstance() as! InspectionSetupController
-		inspectionSetupController.inspection = inspections[selectedIndex]?[indexPath.row]
-
 		let inspectionFormController = InspectionFormController.storyboardInstance() as! InspectionFormController
 		inspectionFormController.inspection = inspections[selectedIndex]?[indexPath.row]
-
-		navigationController?.setViewControllers([self,inspectionSetupController, inspectionFormController], animated: true)
-
+		push(controller: inspectionFormController)
 	}
 
 	@IBAction func uploadTapped(_ sender: UIButton, forEvent event: UIEvent) {
@@ -49,24 +44,31 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 		}
 		submit(inspection: inspection, indexPath: indexPath)
 	}
+
+	@IBAction func settingsTapped(_ sender: UIBarButtonItem) {
+		sender.isEnabled = false
+		push(controller: SettingsController.storyboardInstance())
+		sender.isEnabled = true
+	}
 	
 	@IBAction func segmentedControlChangedValue(_ sender: UISegmentedControl) {
 		addNewInspectionButton.isHidden = selectedIndex == 0 ? false : true
 		tableViewBottomConstraint.constant = selectedIndex == 0 ? 10 : -60
-		view.layoutIfNeeded()
+		//view.layoutIfNeeded()
 		tableView.reloadData()
-
 	}
 	
 	//MARK: -
 	override func viewDidLoad() {
+		super.viewDidLoad()
+		addObserver(#selector(insertByDate(_ :)), .insertByDate)
+		addObserver(#selector(reload), .reload)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 		tableView.contentInset.bottom = 10
 		locationManager.delegate = self
 		locationManager.requestWhenInUseAuthorization()
 		self.load()
 	}
-
 
 	//MARK: - Submission
 	func submit(inspection: PFInspection, indexPath: IndexPath){
@@ -125,14 +127,14 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 			self.tableView.reloadData()
 		})
 	}
-	
-	///Use this method to prepend an inspection to the 'In Progress' tab
-	public func prepend(inspection: PFInspection?){
-		if let inspection = inspection{
+
+	///Use this method to insert an inspection to the 'In Progress' tab
+	public func insertByDate(_ notification: Notification?){
+		if let inspection = notification?.object as? PFInspection{
 			if self.inspections[0] == nil{
 				self.inspections[0] = []
 			}
-			self.inspections[0]?.insert(inspection, at: 0)
+			self.inspections[0]?.append(inspection)
 			self.inspections[0]?.sort(by: { (left, right) -> Bool in
 				guard let startL = left.start, let startR = right.start else{
 					return false
@@ -141,6 +143,14 @@ class InspectionsController: UIViewController, CLLocationManagerDelegate{
 			})
 			self.tableView.reloadData()
 		}
+	}
+
+	func reload(){
+		tableView.reloadData()
+	}
+
+	func submitFromInspectionForm(_ notification: Notification?){
+		
 	}
 	
 	///Use this method to put an inspection from 'In Progress' tp 'Submitted'
@@ -172,11 +182,14 @@ extension InspectionsController: UITableViewDelegate, UITableViewDataSource{
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeue(identifier: "InspectionsCell") as! InspectionsCell
+		let cell = tableView.dequeue(identifier: "InspectionCell") as! InspectionCell
 		let inspection = inspections[selectedIndex]?[indexPath.row]
 		var date = ""
-		if let start = inspection?.start, let end = inspection?.end{
-			date = "\(start.inspectionFormat()) - \(end.inspectionFormat())"
+		if let start = inspection?.start{
+			date = start.inspectionFormat()
+		}
+		if let end = inspection?.end{
+			date += " - \(end.inspectionFormat())"
 		}
 		cell.setData(title: inspection?.title, time: date, isReadOnly: Bool(NSNumber(integerLiteral: selectedIndex)), progress: inspection?.progress ?? 0, isBeingUploaded: inspection?.isBeingUploaded ?? false, isEnabled: self.isBeingUploaded, linkedProject: inspection?.project)
 		return cell
@@ -184,12 +197,14 @@ extension InspectionsController: UITableViewDelegate, UITableViewDataSource{
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if inspections[selectedIndex]?[indexPath.row].id != nil{
-			let inspectionSetupController = InspectionSetupController.storyboardInstance() as! InspectionSetupController
-			inspectionSetupController.inspection = inspections[selectedIndex]?[indexPath.row]
-
 			let inspectionFormController = InspectionFormController.storyboardInstance() as! InspectionFormController
 			inspectionFormController.inspection = inspections[selectedIndex]?[indexPath.row]
-			navigationController?.setViewControllers([self,inspectionSetupController, inspectionFormController], animated: true)
+			if selectedIndex == 0{
+				inspectionFormController.submit = {
+					self.submit(inspection: self.inspections[self.selectedIndex]![indexPath.row], indexPath: indexPath)
+				}
+			}
+			push(controller: inspectionFormController)
 		} else{
 			AlertView.present(on: self, with: "Couldn't proceed because of internal error", delay: 4, offsetY: -50)
 		}
@@ -222,11 +237,10 @@ extension InspectionsController{
 	}
 }
 
-//MARK: -
 extension InspectionsController{
-	static let reference = (AppDelegate.root?.presentedViewController as? UINavigationController)?.viewControllers.first as? InspectionsController
+	static var reference: InspectionsController?{
+		return (AppDelegate.root?.presentedViewController as? UINavigationController)?.viewControllers.first as? InspectionsController
+	}
 }
-
-
 
 

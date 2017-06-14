@@ -214,7 +214,7 @@
                                             <constraint firstAttribute="height" constant="50" id="wnh-mE-1R4"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                        <state key="normal" title="Add Elements">
+                                        <state key="normal" title="Create Inspection">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -223,7 +223,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="addElementTapped:" destination="gL0-0A-G6s" eventType="touchUpInside" id="2ME-na-p2n"/>
+                                            <action selector="saveTapped:" destination="gL0-0A-G6s" eventType="touchUpInside" id="ONn-VT-iTl"/>
                                         </connections>
                                     </button>
                                 </subviews>

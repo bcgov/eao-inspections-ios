@@ -6,8 +6,6 @@
 //  Copyright © 2017 FreshWorks. All rights reserved.
 //
 
-class SignupController: UIViewController{
-	@IBAction func loginTapped(_ sender: UIButton) {
-		dismiss(animated: true, completion: nil)
-	}
+final class SignupController: UIViewController{
+	 
 }

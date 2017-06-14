@@ -9,14 +9,13 @@ import Parse
 import MapKit
 
 final class NewObservationController: UIViewController{
-
 	let maximumNumberOfPhotos = 20
-
 	fileprivate var locationManager = CLLocationManager()
 	var saveAction  : ((PFObservation)->Void)?
 	var inspection  : PFInspection!
 	var observation : PFObservation!
 	var photos		: [PFPhoto]?
+	var didMakeChange = false
 
 	//MARK: -
 	@IBOutlet fileprivate var arrow_0: UIImageView!
@@ -44,13 +43,16 @@ final class NewObservationController: UIViewController{
 			pop()
 			return
 		}
-		present(controller: UIAlertController(title: "Would you like to save data?", message: nil, yes: {
-			self.saveTapped(sender)
-		}, cancel: { 
-			self.pop()
-		}))
+		if didMakeChange{
+			present(controller: UIAlertController(title: "Would you like to save this observation element?", message: nil, yes: {
+				self.saveTapped(sender)
+			}, cancel: {
+				self.pop()
+			}))
+		} else{
+			pop()
+		}
 	}
-
 
 	@IBAction fileprivate func saveTapped(_ sender: UIBarButtonItem) {
 		if !validate() { return }
@@ -107,7 +109,7 @@ final class NewObservationController: UIViewController{
 	
 	@IBAction fileprivate func addPhotoTapped(_ sender: UIButton) {
 		if photos?.count == maximumNumberOfPhotos{
-			present(controller: UIAlertController(title: "You've reached maximum (\(maximumNumberOfPhotos)) number of photos per element", message: nil))
+			present(controller: UIAlertController(title: "You've reached maximum number of photos per element", message: nil))
 			return
 		}
 		sender.isEnabled = false
@@ -118,6 +120,7 @@ final class NewObservationController: UIViewController{
 		uploadPhotoController.observation = observation
 		uploadPhotoController.uploadPhotoAction = { (photo) in
 			if let photo = photo{
+				self.didMakeChange = true
 				if self.photos == nil{
 					self.photos = []
 				}
@@ -270,6 +273,7 @@ extension NewObservationController: UITextFieldDelegate{
 	}
 
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		didMakeChange = true
 		var length = textField.text?.characters.count ?? 0
 		length += string.characters.count
 		length -= range.length

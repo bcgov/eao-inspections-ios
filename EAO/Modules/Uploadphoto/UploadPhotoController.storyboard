@@ -56,10 +56,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qKG-0J-XCw">
-                                        <rect key="frame" x="5" y="364.5" width="365" height="120"/>
+                                        <rect key="frame" x="5" y="364.5" width="365" height="180"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="HVM-0w-5xw"/>
+                                            <constraint firstAttribute="height" constant="180" id="HVM-0w-5xw"/>
                                         </constraints>
                                         <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -91,7 +91,7 @@
                                         </connections>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zvy-mg-5W7">
-                                        <rect key="frame" x="10" y="504.5" width="355" height="50"/>
+                                        <rect key="frame" x="10" y="564.5" width="355" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="T4i-YI-1uv">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
@@ -139,7 +139,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ob7-GE-FdD">
-                                        <rect key="frame" x="10" y="564.5" width="355" height="50"/>
+                                        <rect key="frame" x="10" y="624.5" width="355" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NDE-5s-GnW">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
@@ -226,6 +226,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="9yT-HH-i9C">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" image="icon_back" id="Xau-D8-IGU">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="Wu6-Uf-QB5" id="5U5-4X-Rrv"/>
+                            </connections>
+                        </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="ceV-Yg-AI3">
                             <rect key="frame" x="112.5" y="5.5" width="150" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -275,6 +280,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_back" width="25" height="25"/>
         <image name="icon_camera" width="105" height="105"/>
     </resources>
 </document>

@@ -27,7 +27,7 @@
                                 <rect key="frame" x="0.0" y="284" width="375" height="313"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="InspectionsCell" rowHeight="100" id="vvA-3p-EZ2" customClass="InspectionsCell" customModule="EAO" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="InspectionCell" rowHeight="100" id="vvA-3p-EZ2" customClass="InspectionCell" customModule="EAO" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vvA-3p-EZ2" id="nKq-40-xll">
@@ -244,7 +244,7 @@
                         </view>
                         <barButtonItem key="rightBarButtonItem" image="icon_tab_settings" id="blS-Pk-ile">
                             <connections>
-                                <segue destination="Db9-MM-BGa" kind="show" id="bU8-Mr-pUG"/>
+                                <action selector="settingsTapped:" destination="C9T-wz-vIA" id="vHu-JF-9pV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -259,14 +259,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yr0-d5-zSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1152.8" y="141.67916041979012"/>
-        </scene>
-        <!--SettingsController-->
-        <scene sceneID="Xvf-R4-fK4">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SettingsController" id="Db9-MM-BGa" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eYV-Ro-S5Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1843" y="141"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eI6-rd-FAg">
@@ -293,8 +285,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon_document_edit" width="180" height="180"/>
+        <image name="icon_document_edit" width="60" height="60"/>
         <image name="icon_tab_settings" width="30" height="30"/>
-        <image name="icon_upload" width="172" height="172"/>
+        <image name="icon_upload" width="60" height="60"/>
     </resources>
 </document>

@@ -7,20 +7,22 @@
 //
 
 import Parse
-
-class SettingsController: UITableViewController {
-	@IBOutlet var indicator: UIActivityIndicatorView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-	
-	@IBAction func logoutTapped(_ sender: UIButton) {
+final class SettingsController: UITableViewController {
+	//MARK: IB Outlets
+	@IBOutlet fileprivate var indicator: UIActivityIndicatorView!
+	//MARK: IB Actions
+	@IBAction fileprivate func logoutTapped(_ sender: UIButton) {
+		if !Reachability.isConnectedToNetwork(){
+			self.present(controller: UIAlertController.noInternet)
+			return
+		}
 		sender.isEnabled = false
+		navigationController?.view.isUserInteractionEnabled = false
 		indicator.startAnimating()
 		PFUser.logOutInBackground { (error) in
 			guard error == nil else{
 				sender.isEnabled = true
+				self.navigationController?.view.isUserInteractionEnabled = true
 				self.indicator.stopAnimating()
 				self.present(controller: UIAlertController(title: "Error", message: "Couldn't log out, please try again later"))
 				return
@@ -28,5 +30,4 @@ class SettingsController: UITableViewController {
 			self.dismiss(animated: true, completion: nil)
 		}
 	}
-	
 }

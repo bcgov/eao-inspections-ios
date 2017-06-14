@@ -26,38 +26,6 @@ class EAOUITests: XCTestCase {
     }
 
 	func test(){
-		XCUIDevice.shared().orientation = .faceUp
-		XCUIDevice.shared().orientation = .faceUp
-
-		let app = XCUIApplication()
-		let tablesQuery = app.tables
-		tablesQuery.cells.children(matching: .staticText).matching(identifier: "1").element(boundBy: 1).tap()
-		app.buttons["icon add blue"].tap()
-		
-		let iconAddPhotoButton = app.collectionViews.buttons["icon add photo"]
-		iconAddPhotoButton.tap()
-		
-		let iconCameraButton = app.buttons["icon camera"]
-		iconCameraButton.tap()
-		
-		let sheetsQuery = app.sheets
-		let photoLibraryButton = sheetsQuery.buttons["Photo Library"]
-		photoLibraryButton.tap()
-		tablesQuery.buttons["Camera Roll"].tap()
-		
-		let photosgridviewCollectionView = app.collectionViews["PhotosGridView"]
-		photosgridviewCollectionView.cells["Photo, Portrait, June 06, 10:44 PM"].tap()
-		iconCameraButton.swipeDown()
-		app.navigationBars["EAO.UploadPhoto"].buttons["Back"].tap()
-		iconAddPhotoButton.tap()
-		iconCameraButton.tap()
-		sheetsQuery.buttons["Take Picture"].tap()
-		app.alerts["“EAO-MVP” Would Like to Access the Camera"].buttons["Don’t Allow"].tap()
-		app.children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .other).element.tap()
-		iconCameraButton.tap()
-		photoLibraryButton.tap()
-		tablesQuery.buttons["Moments"].tap()
-		photosgridviewCollectionView.cells["Photo, Portrait, 12:20 AM"].tap()
 
 		
 	}
@@ -69,7 +37,7 @@ class EAOUITests: XCTestCase {
 		
 		let app = XCUIApplication()
 
-		for i in 1...1{
+		for i in 1...2{
 			
 			app.buttons["   Add New Inspection   "].tap()
 			
@@ -109,17 +77,17 @@ class EAOUITests: XCTestCase {
 			
 			
 			elementsQuery.buttons["Inspection Start Date"].tap()
-			app.datePickers.pickerWheels["7"].adjust(toPickerWheelValue: "\(7)")
+			app.datePickers.pickerWheels["12"].adjust(toPickerWheelValue: "\(7)")
 			app.buttons["Select"].tap()
 			
 			
 			elementsQuery.buttons["Inspection End Date"].tap()
-			app.datePickers.pickerWheels["7"].adjust(toPickerWheelValue: "\(8)")
+			app.datePickers.pickerWheels["12"].adjust(toPickerWheelValue: "\(8)")
 			app.buttons["Select"].tap()
 			
 			app.buttons["Create Inspection"].tap()
 
-			for _ in 0...1{
+			for _ in 0...10{
 
 				app.buttons["icon add blue"].tap()
 				
@@ -132,8 +100,8 @@ class EAOUITests: XCTestCase {
 				requirementTextField.tap()
 				requirementTextField.typeText("q")
 				returnButton.tap()
-				
-				app.buttons["Tap to enter description"].tap()
+
+				app.scrollViews.children(matching: .button).element.tap()
 				app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element.typeText(descriptionText)
 				 
 				app.navigationBars["Element Description"].buttons["Done"].tap()
@@ -142,14 +110,14 @@ class EAOUITests: XCTestCase {
 					//add photos
 					app.collectionViews.buttons["icon add photo"].tap()
 					app.buttons["icon camera"].tap()
-					app.sheets.buttons["Photo Library"].tap()
 
-					app.tables.buttons["Moments"].tap()
-					app.collectionViews["PhotosGridView"].cells["Photo, Portrait, 12:20 AM"].tap()
-					
+					app.sheets.buttons["Take Picture"].tap()
+					app.children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .other).element.tap()
+					app.buttons["Use Photo"].tap()
+ 
 					let textView = app.scrollViews.children(matching: .textView).element
 					textView.tap()
-					textView.typeText("Captioin")
+					textView.typeText(descriptionText)
 					
 					app.navigationBars["EAO.UploadPhoto"].buttons["Save"].tap()
 				}

@@ -65,9 +65,9 @@ final class ProjectListController: UIViewController{
 	
 	fileprivate func load(){
 		indicator.startAnimating()
-		Alamofire.request("https://projects.eao.gov.bc.ca/api/projects/published").responseJSON { response in
+		Alamofire.request(String.projects_API).responseJSON { response in
 			guard let objects = response.result.value as? [Any] else{
-				if let array = NSArray(contentsOf: FileManager.directory.appendingPathComponent("projects")) as? [String]{
+				if let array = NSArray(contentsOf: FileManager.directory.appendingPathComponent(.projects)) as? [String]{
 					self.projects = array
 					self.tableView.reloadData()
 				}
@@ -77,14 +77,14 @@ final class ProjectListController: UIViewController{
 			}
 			var projects = [String?]()
 			for case let object as [String: Any] in objects  {
-				guard let title = object["name"] as? String else { continue }
+				guard let title = object[.name] as? String else { continue }
 				projects.append(title)
 			}
 			self.projects = projects.flatMap({$0})
 			self.tableView.reloadData()
 			self.indicator.stopAnimating()
 			let array = NSArray(array: projects.flatMap({$0}))
-			array.write(to: FileManager.directory.appendingPathComponent("projects"), atomically: true)
+			array.write(to: FileManager.directory.appendingPathComponent(.projects), atomically: true)
 		}
 	}
 }
@@ -146,7 +146,7 @@ extension ProjectListController: UITableViewDelegate, UITableViewDataSource{
 //MARK: -
 extension ProjectListController{
 	fileprivate struct Alerts{
-		static let error = UIAlertController(title: "Oops...", message: "Projects were not retrieved due to an error.\n Cached projects will be displayed")
+		static let error = UIAlertController(title: "Network Error", message: "Project list was not refreshed due to an error.\n Cached projects are displayed")
 	}
 }
 

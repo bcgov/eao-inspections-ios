@@ -8,6 +8,7 @@
 import MapKit
 import Parse
 class UploadPhotoController: UIViewController, KeyboardDelegate{
+	fileprivate var didMakeChange = false
 	var isReadOnly = false
 	var photo: PFPhoto!
 	var observation: PFObservation!
@@ -34,9 +35,22 @@ class UploadPhotoController: UIViewController, KeyboardDelegate{
 	@IBOutlet fileprivate var captionTextView: UITextView!
 	
 	//MARK: -
-    @IBAction fileprivate func save(_ sender: UIBarButtonItem) {
+
+	@IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
+		if didMakeChange{
+			present(controller: UIAlertController(title: "Would you like to save data?", message: nil, yes: {
+				self.save(nil)
+			}, cancel: {
+				self.pop()
+			}))
+		} else{
+			pop()
+		}
+	}
+
+    @IBAction fileprivate func save(_ sender: UIBarButtonItem?) {
 		if !validate() { return }
-		sender.isEnabled = false
+		sender?.isEnabled = false
 		indicator.startAnimating()
 		if photo == nil{
 			photo = PFPhoto()
@@ -48,7 +62,7 @@ class UploadPhotoController: UIViewController, KeyboardDelegate{
 				} else{
 					AlertView.present(on: self, with: "Error occured while updating caption text")
 					self.indicator.stopAnimating()
-					sender.isEnabled = true
+					sender?.isEnabled = true
 				}
 			})
 			return
@@ -74,17 +88,17 @@ class UploadPhotoController: UIViewController, KeyboardDelegate{
 						AlertView.present(on: self, with: "Error occured while saving image to local storage")
 					}
 					self.indicator.stopAnimating()
-					sender.isEnabled = true
+					sender?.isEnabled = true
 				}
 			} catch {
 				AlertView.present(on: self, with: "Error occured while saving image to local storage")
 				self.indicator.stopAnimating()
-				sender.isEnabled = true
+				sender?.isEnabled = true
 			}
 		} else{
 			AlertView.present(on: self, with: "Error occured while compressing image")
 			self.indicator.stopAnimating()
-			sender.isEnabled = true
+			sender?.isEnabled = true
 		}
     }
     
@@ -116,6 +130,7 @@ class UploadPhotoController: UIViewController, KeyboardDelegate{
 
 	func keyboardWillShow(with height: NSNumber) {
 		scrollView.contentInset.bottom = CGFloat(height.intValue + 40)
+		scrollView.setContentOffset(CGPoint(x: 0, y: 100), animated: true)
 	}
 
 	func keyboardWillHide() {
@@ -152,12 +167,19 @@ extension UploadPhotoController{
 	}
 }
 
+//MARK: -
 extension UploadPhotoController: UITextViewDelegate{
 	func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+		didMakeChange = true
 		var length = textView.text?.characters.count ?? 0
 		length += text.characters.count
 		length -= range.length
-		return length < EAO.Constants.textViewLenght
+		if length < EAO.Constants.textViewLenght{
+			return true
+		} else{
+			present(controller: UIAlertController(title: "Text Limit Exceeded", message: "You've reached maximum number of characters allowed"))
+			return false
+		}
 	}
 }
 
@@ -165,13 +187,14 @@ extension UploadPhotoController: UITextViewDelegate{
 extension UploadPhotoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+			didMakeChange = true
 			imageView.image = image
             uploadButton.alpha = 0.25
             uploadLabel.alpha = 0
 			date = Date()
 			location = locationManager.location
         }
-		 self.dismiss(animated: true, completion: nil)
+		self.dismiss(animated: true, completion: nil)
     }
     
     fileprivate func media(sourceType: UIImagePickerControllerSourceType) {

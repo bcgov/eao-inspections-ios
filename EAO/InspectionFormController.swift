@@ -9,40 +9,36 @@ import Parse
 final class InspectionFormController: UIViewController{
 	var inspection : PFInspection!
 	var observations = [PFObservation]()
-	
+	var submit: (()->Void)?
 	//MARK: -
 	@IBOutlet fileprivate var addButton : UIButton!
 	@IBOutlet fileprivate var indicator : UIActivityIndicatorView!
 	@IBOutlet fileprivate var tableView : UITableView!
 	@IBOutlet fileprivate var submitButton: UIButton!
-	
-	
+
 	@IBAction fileprivate func submitTapped(_ sender: UIButton) {
 		sender.isEnabled = false
-		guard let index = InspectionsController.reference?.inspections[0]?.index(of: inspection) else{
-			sender.isEnabled = true
-			return
-		}
-		navigationController?.popToViewController(InspectionsController.reference!, animated: true)
-		InspectionsController.reference?.submit(inspection: inspection, indexPath: IndexPath(row: index, section: 0))
-		sender.isEnabled = true
+		pop()
+		submit?()
+		//InspectionsController.reference?.submit(inspection: inspection, indexPath: index)
 	}
 	
 	@IBAction fileprivate func editInspectionSetUpTapped(_ sender: UIButton) {
 		sender.isEnabled = false
-		pop()
-
+		let inspectionSetupController = InspectionSetupController.storyboardInstance() as! InspectionSetupController
+		inspectionSetupController.inspection = inspection
+		push(controller: inspectionSetupController)
+		sender.isEnabled = true 
 	}
 	
 	@IBAction fileprivate func backTapped(_ sender: UIBarButtonItem) {
 		sender.isEnabled = false
-		navigationController?.popToRootViewController(animated: true)
-		//navigationController?.popToViewController(InspectionsController.reference!, animated: true)
+		pop()
 	}
 	
 	@IBAction fileprivate func saveTapped(_ sender: UIBarButtonItem) {
 		present(controller: UIAlertController(title: "Tip", message: "You may save this inspection and edit it later before submission", handler: {
-			self.navigationController?.popToRootViewController(animated: true)
+			self.pop()
 		}))
 	}
 
@@ -66,11 +62,6 @@ final class InspectionFormController: UIViewController{
 			addButton.isHidden = true 
 			navigationItem.rightBarButtonItem = nil
 		}
-
-		if InspectionsController.reference?.isBeingUploaded == true {
-			submitButton.isHidden = true
-		}
-
 		load()
 	}
  
@@ -131,7 +122,6 @@ extension InspectionFormController: UITableViewDataSource, UITableViewDelegate{
 		if observations[indexPath.row].id == nil{
 			return
 		}
-		
 		let observationElementController = NewObservationController.storyboardInstance() as! NewObservationController
 		observationElementController.inspection = inspection
 		observationElementController.observation = observations[indexPath.row]
