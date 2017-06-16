@@ -31,6 +31,10 @@ final class LoginController: UIViewController{
 	@IBAction fileprivate func loginTapped(_ sender: UIButton) {
 		do{
 			let credentials = try validateCredentials()
+			if !Reachability.isConnectedToNetwork(){
+				present(controller: UIAlertController.noInternet)
+				return
+			}
 			sender.isEnabled = false
 			indicator.startAnimating()
 			PFUser.logInWithUsername(inBackground: credentials.0, password: credentials.1) { (user, error) in

@@ -85,7 +85,7 @@ final class InspectionsController: UIViewController, CLLocationManagerDelegate{
 				self.navigationController?.view.isUserInteractionEnabled = true
 
 				if let error = error {
-					self.present(controller: UIAlertController(title: "Error", message: error.message))
+					self.present(controller: UIAlertController(title: "Unable to Submit", message: error.message))
 				}
 				self.tableView.reloadData()
 				guard success else{

@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let configuration = ParseClientConfiguration {
 			$0.applicationId = "XTHCaxK6sIDRsk27KOacQLYy4ZXHlf9XUi6DxSLx"
 			$0.clientKey     = "Bq8cEpJRuHW29byxt18yf1MKTmjRvbrEOkIGNCQu"
-			$0.server        = "https://parseapi.back4app.com/"
+			$0.server        = "http://esm-test.pathfinder.gov.bc.ca/parse"
 			$0.isLocalDatastoreEnabled = true
 		}
 		Parse.initialize(with: configuration)

@@ -24,7 +24,7 @@ final class SettingsController: UITableViewController {
 				sender.isEnabled = true
 				self.navigationController?.view.isUserInteractionEnabled = true
 				self.indicator.stopAnimating()
-				self.present(controller: UIAlertController(title: "Error", message: "Couldn't log out, please try again later"))
+				self.present(controller: UIAlertController(title: "Couldn't log out", message: "Error code is \((error as NSError? )?.code ?? 0)"))
 				return
 			}
 			self.dismiss(animated: true, completion: nil)
