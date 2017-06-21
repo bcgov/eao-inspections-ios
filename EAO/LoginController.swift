@@ -79,10 +79,11 @@ final class LoginController: UIViewController{
 	}
 
 	func presentMainScreen(){
+		print(PFUser.current())
 		if PFUser.current() != nil{
 			clearTextFields()
 			let inspectionsController = InspectionsController.storyboardInstance()
-			self.present(controller: inspectionsController)
+			//self.present(controller: inspectionsController)
 		}
 	}
 
