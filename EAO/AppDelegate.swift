@@ -20,7 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			window?.layer.speed = 500
 		}
 		Fabric.with([Crashlytics.self])
-		 
+		let configuration = ParseClientConfiguration {
+			$0.applicationId = ""
+			$0.clientKey     = ""
+			$0.server        = ""
+			$0.isLocalDatastoreEnabled = true
+		}
 		Parse.initialize(with: configuration)
 		UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.blue
 		UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])

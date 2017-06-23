@@ -87,8 +87,6 @@ public class TextView: UITextView{
 
 	public func scrollViewDidScroll(_ scrollView: UIScrollView) {
 		let offsetY = scrollView.contentOffset.y
-		print(offsetY)
-
 		counterLabel.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor, constant: offsetY).isActive = true
 		layoutIfNeeded()
 	}
